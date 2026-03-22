@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://cves7iny884bp"]
+
+[ext_resource type="Texture2D" uid="uid://c1fpb16a2a0bd" path="res://images/sts2chartest/char_select_bg_chartest.png" id="1_e8dud"]
+[ext_resource type="Texture2D" uid="uid://dal6dlnagg3io" path="res://images/sts2chartest/ui/particle.png" id="2_r5bt7"]
+
+[sub_resource type="Curve" id="Curve_e8dud"]
+_limits = [-500.0, 500.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 3), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_count = 100
+
+[sub_resource type="Curve" id="Curve_r5bt7"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 115.560394), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_dtam2"]
+_data = [Vector2(0, 0), 0.0, 5.386291, 0, 0, Vector2(0.5944444, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dtam2"]
+colors = PackedColorArray(0.6509804, 1, 0.9843137, 1, 0.32328537, 0.99999994, 0.9804763, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -523.0
+offset_right = 1600.0
+offset_bottom = 677.0
+
+[node name="CharSelectBgChartest" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.002
+anchor_top = -0.017
+anchor_right = -0.002
+anchor_bottom = -0.017
+offset_left = 0.12000036
+offset_top = 0.40000153
+offset_right = 1956.12
+offset_bottom = 1104.4
+texture = ExtResource("1_e8dud")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CharSelectBgChartest"]
+position = Vector2(1252, 108)
+amount = 24
+texture = ExtResource("2_r5bt7")
+lifetime = 2.5
+preprocess = 2.5
+randomness = 0.29
+emission_shape = 1
+emission_sphere_radius = 54.2
+direction = Vector2(-1, 1)
+spread = 120.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 555.0
+orbit_velocity_max = 0.1
+orbit_velocity_curve = SubResource("Curve_e8dud")
+angle_min = -90.0
+angle_max = -90.0
+angle_curve = SubResource("Curve_r5bt7")
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_dtam2")
+color = Color(0.6518475, 0.99999994, 0.98451656, 1)
+color_ramp = SubResource("Gradient_dtam2")

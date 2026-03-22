@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://csufaw0nw13da"]
+
+[ext_resource type="Texture2D" uid="uid://beuwxma6udsyr" path="res://images/sts2chartest/character/merchant_anim_chartest.png" id="1_1b54j"]
+[ext_resource type="Script" uid="uid://bsjtr5ioi8255" path="res://CustomNodes/CustomMerchantCharacter.cs" id="2_oau7k"]
+
+[node name="MerchantAnimChartest" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, -465)
+texture = ExtResource("1_1b54j")
+script = ExtResource("2_oau7k")

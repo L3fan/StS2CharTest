@@ -1,0 +1,19 @@
+﻿{
+  "STS2CHARTEST-STRIKE_CHAR_TEST.description": "Deal {Damage:diff()} damage.",
+  "STS2CHARTEST-STRIKE_CHAR_TEST.title": "Strike",
+  
+  "STS2CHARTEST-DEFEND_CHAR_TEST.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "STS2CHARTEST-DEFEND_CHAR_TEST.title": "Defend",
+
+  "STS2CHARTEST-TAIL_SWIPE.description": "Deal {Damage:diff()} damage.\n Apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
+  "STS2CHARTEST-TAIL_SWIPE.title": "Tail Swipe",
+
+  "STS2CHARTEST-SHIELD_THE_FLAME.description": "Gain {Block:diff()} [gold]Block[/gold].\n Gain {Heat} [gold]Heat[/gold].",
+  "STS2CHARTEST-SHIELD_THE_FLAME.title": "Shield The Flame",
+  
+  "STS2CHARTEST-SWEEPING_FIRE.description": "Deal {Damage:diff()} damage and apply {EmbersPower:diff()} [gold]Embers[/gold] to ALL enemies.",
+  "STS2CHARTEST-SWEEPING_FIRE.title": "Sweeping Fire",
+
+  "STS2CHARTEST-CAUTERIZE.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold] and trigger [gold]Blaze[/gold].",
+  "STS2CHARTEST-CAUTERIZE.title": "Cauterize"
+}

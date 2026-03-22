@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://un8lnok0jc2e"]
+
+[ext_resource type="Script" uid="uid://cd26cmexkcyl7" path="res://CustomNodes/CustomRestSiteCharacter.cs" id="1_056wb"]
+[ext_resource type="Texture2D" uid="uid://m1idvds5af86" path="res://images/sts2chartest/character/test.png" id="2_fmum2"]
+
+[node name="RestSiteAnimChartest" type="Node2D"]
+script = ExtResource("1_056wb")
+
+[node name="Test" type="Sprite2D" parent="."]
+texture = ExtResource("2_fmum2")
+
+[node name="ControlRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectionReticle" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -137.0
+offset_top = -126.0
+offset_right = 138.0
+offset_bottom = 136.0
+
+[node name="Hitbox" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -137.0
+offset_top = -126.0
+offset_right = 138.0
+offset_bottom = 136.0
+
+[node name="ThoughtBubbleRight" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 138.0
+offset_top = -126.0
+offset_right = 138.0
+offset_bottom = -126.0
+
+[node name="ThoughtBubbleLeft" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -136.0
+offset_top = -126.0
+offset_right = -136.0
+offset_bottom = -126.0

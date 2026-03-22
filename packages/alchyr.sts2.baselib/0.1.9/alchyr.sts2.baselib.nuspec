@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Alchyr.Sts2.BaseLib</id>
+    <version>0.1.9</version>
+    <title>BaseLib-StS2</title>
+    <authors>Alchyr</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <description>Mod for Slay the Spire 2 providing utilities and features for other mods.</description>
+    <releaseNotes>alternate card definition, another character compatibility patch, mod config work, creature visuals from static image</releaseNotes>
+    <tags>c#</tags>
+    <repository type="git" url="https://github.com/Alchyr/BaseLib-StS2" commit="4548e367120105fd0cb360f18aaa7034957b5191" />
+  </metadata>
+</package>
