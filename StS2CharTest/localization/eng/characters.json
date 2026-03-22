@@ -1,0 +1,16 @@
+﻿{
+  "STS2CHARTEST-CHAR_TEST.aromaPrinciple": "Lore",
+  "STS2CHARTEST-CHAR_TEST.banter.alive.endTurnPing": "Co-op hurry up end turn ping message",
+  "STS2CHARTEST-CHAR_TEST.banter.dead.endTurnPing": "...",
+  "STS2CHARTEST-CHAR_TEST.cardsModifierDescription": "__ cards will now appear in rewards and shops.",
+  "STS2CHARTEST-CHAR_TEST.cardsModifierTitle": "__ Cards",
+  "STS2CHARTEST-CHAR_TEST.description": "Character Selection\nScreen Description",
+  "STS2CHARTEST-CHAR_TEST.eventDeathPrevention": "Co-op survival line",
+  "STS2CHARTEST-CHAR_TEST.goldMonologue": "Line spoken when obtaining a large amount of gold",
+  "STS2CHARTEST-CHAR_TEST.possessiveAdjective": "his/her/its",
+  "STS2CHARTEST-CHAR_TEST.pronounObject": "him/her/it",
+  "STS2CHARTEST-CHAR_TEST.pronounPossessive": "his/hers/its",
+  "STS2CHARTEST-CHAR_TEST.pronounSubject": "he/she/it",
+  "STS2CHARTEST-CHAR_TEST.title": "The CharTest",
+  "STS2CHARTEST-CHAR_TEST.titleObject": "The CharTest"
+}
