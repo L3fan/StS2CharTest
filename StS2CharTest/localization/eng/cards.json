@@ -14,6 +14,9 @@
   "STS2CHARTEST-SWEEPING_FIRE.description": "Deal {Damage:diff()} damage and apply {EmbersPower:diff()} [gold]Embers[/gold] to ALL enemies.",
   "STS2CHARTEST-SWEEPING_FIRE.title": "Sweeping Fire",
 
-  "STS2CHARTEST-CAUTERIZE.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold] and trigger [gold]Blaze[/gold].",
-  "STS2CHARTEST-CAUTERIZE.title": "Cauterize"
+  "STS2CHARTEST-CAUTERIZE.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold].\n[gold]Blaze[/gold].",
+  "STS2CHARTEST-CAUTERIZE.title": "Cauterize",
+  
+  "STS2CHARTEST-DANCING_FLAME.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold].",
+  "STS2CHARTEST-DANCING_FLAME.title": "Dancing Flame"
 }

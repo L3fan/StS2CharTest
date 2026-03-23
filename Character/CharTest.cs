@@ -101,5 +101,5 @@ public class CharTest : CustomCharacterModel
     public override string CustomRestSiteAnimPath => "res://scenes/sts2chartest/rest_site_anim_chartest.tscn";
     public override string CustomIconPath => "res://scenes/sts2chartest/CharTestIcon.tscn";
 
-    //public override CreatureAnimator? SetupCustomAnimationStates(MegaSprite controller) => new CustomCreatureAnimator(null, null);
+    public string CustomStaticHoverTipsPath => "res://StS2CharTest/localization/eng/static_hover_tips.json";
 }

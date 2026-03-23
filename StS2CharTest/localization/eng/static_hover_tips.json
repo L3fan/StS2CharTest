@@ -1,0 +1,7 @@
+﻿{
+  "BLAZE.description": "Triggers [gold]Embers[/gold] on EVERYONE.",
+  "BLAZE.title": "Blaze",
+
+  "EMBERS.description": "Afflicted creatures take damage at the end of their turn or when [gold]Blaze[/gold] is triggered.",
+  "EMBERS.title": "Embers"
+}
