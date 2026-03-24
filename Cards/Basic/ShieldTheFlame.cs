@@ -1,4 +1,5 @@
 ﻿using BaseLib.Abstracts;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -16,7 +17,7 @@ public class ShieldTheFlame() : CharTestCard(1,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new BlockVar(7m, ValueProp.Move), new DynamicVar("Heat", 2m)];
+        [new BlockVar(7m, ValueProp.Move), new DynamicVar("Heat", 2m).WithTooltip("HEAT")];
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

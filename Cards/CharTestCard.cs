@@ -23,17 +23,16 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
 
     public async Task TriggerBlaze()
     {
-        foreach (NCreature creatureNode in NCombatRoom.Instance?.CreatureNodes)
+        foreach (Creature hittableCreature in CombatState.HittableEnemies)
         {
-            Creature creature = creatureNode.Entity;
-            EmbersPower embers = null;
-            foreach (PowerModel power in creature.Powers)
+            CharTestPowerModel charTestPower = null;
+            foreach (PowerModel power in hittableCreature.Powers)
             {
-                if(power.GetType() == typeof(EmbersPower))
-                    embers = (power as EmbersPower);
+                if(power.GetType() == typeof(CharTestPowerModel))
+                    charTestPower = (power as CharTestPowerModel);
             }
-            if (embers != null)
-                await embers.OnBlazeTriggered();
+            if (charTestPower != null)
+                await charTestPower.OnBlazeTriggered();
         }
     }
 }
