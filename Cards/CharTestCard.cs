@@ -25,14 +25,17 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
     {
         foreach (Creature hittableCreature in CombatState.HittableEnemies)
         {
-            CharTestPowerModel charTestPower = null;
             foreach (PowerModel power in hittableCreature.Powers)
             {
-                if(power.GetType() == typeof(CharTestPowerModel))
+                MainFile.Logger.Info(power + " is Type of CharTestPower: " + (power.GetType() == typeof(CharTestPowerModel)));
+                CharTestPowerModel charTestPower = null;
+                if (power.GetType().IsSubclassOf(typeof(CharTestPowerModel)))
+                {
                     charTestPower = (power as CharTestPowerModel);
+                }
+                if (charTestPower != null)
+                    await charTestPower.OnBlazeTriggered();
             }
-            if (charTestPower != null)
-                await charTestPower.OnBlazeTriggered();
         }
     }
 }

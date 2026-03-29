@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace StS2CharTest.Powers;
@@ -16,18 +17,23 @@ public class EmbersPower : CharTestPowerModel
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
-
+    public decimal multiplier = 1m;
+    
     public override async Task OnBlazeTriggered()
     {
-        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), Owner, Amount, ValueProp.Unpowered, null, null);
+        MainFile.Logger.Info("OnBlazeTriggered: " + CalculateTotalDamage());
+        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), Owner, CalculateTotalDamage(), ValueProp.Unpowered, null, null);
         if (Owner.IsAlive)
             await PowerCmd.ModifyAmount(this, (decimal)Math.Floor(-Amount/2f), null, null);
         else
             await Cmd.CustomScaledWait(0.1f, 0.25f);
     }
 
-    public int CalculateTotalDamageNextTurn()
+    public int CalculateTotalDamage()
     {
-        return Amount;
+        multiplier = 1m;
+        if (Owner.HasPower<MeltingPointPower>())
+            multiplier = 2m;
+        return (int)(Amount * multiplier);
     }
 }

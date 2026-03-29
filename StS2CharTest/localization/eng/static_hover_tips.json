@@ -5,7 +5,7 @@
   "EMBERS.description": "Afflicted creatures take damage when [gold]Blaze[/gold] is triggered.",
   "EMBERS.title": "Embers",
 
-  "HEAT.description": "At {MaxStack:diff()} Heat gain 1 [gold]Overheat[/gold].",
+  "HEAT.description": "At 20 Heat gain 1 [gold]Overheat[/gold].",
   "HEAT.title": "Heat",
 
   "OVERHEAT.description": "Gain one of two powerful effects unique to each stack (max 3).",

@@ -5,7 +5,7 @@
   "STS2CHARTEST-DEFEND_CHAR_TEST.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "STS2CHARTEST-DEFEND_CHAR_TEST.title": "Defend",
 
-  "STS2CHARTEST-TAIL_SWIPE.description": "Deal {Damage:diff()} damage.\n Apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
+  "STS2CHARTEST-TAIL_SWIPE.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold].\n Deal {CalculatedDamage:diff()} damage.\nDeal extra damage equal to [gold]Embers[/gold].",
   "STS2CHARTEST-TAIL_SWIPE.title": "Tail Swipe",
 
   "STS2CHARTEST-SHIELD_THE_FLAME.description": "Gain {Block:diff()} [gold]Block[/gold].\n Gain {Heat} [gold]Heat[/gold].",
@@ -18,5 +18,11 @@
   "STS2CHARTEST-CAUTERIZE.title": "Cauterize",
   
   "STS2CHARTEST-DANCING_FLAME.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold].",
-  "STS2CHARTEST-DANCING_FLAME.title": "Dancing Flame"
+  "STS2CHARTEST-DANCING_FLAME.title": "Dancing Flame",
+
+  "STS2CHARTEST-JUST_THE_TIP.description": "For the first attack you play each turn, gain Heat equal to half the damage dealt.",
+  "STS2CHARTEST-JUST_THE_TIP.title": "Just The Tip",
+  
+  "STS2CHARTEST-MELTING_POINT.description": "Draw {Cards:diff()} cards.\nEnemies take double damage from [gold]Embers[/gold] this turn.",
+  "STS2CHARTEST-MELTING_POINT.title": "Melting Point"
 }

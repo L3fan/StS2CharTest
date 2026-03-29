@@ -15,14 +15,15 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 115.560394), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_dtam2"]
-_data = [Vector2(0, 0), 0.0, 5.386291, 0, 0, Vector2(0.5944444, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 5.386291, 0, 0, Vector2(0.5944444, 1), 0.0, 0.0, 0, 0, Vector2(0.87250996, 0.9890203), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_dtam2"]
 colors = PackedColorArray(0.6509804, 1, 0.9843137, 1, 0.32328537, 0.99999994, 0.9804763, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -48,7 +49,7 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="CharSelectBgChartest"]
-position = Vector2(1252, 108)
+position = Vector2(1248, 114)
 amount = 24
 texture = ExtResource("2_r5bt7")
 lifetime = 2.5

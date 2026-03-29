@@ -37,7 +37,7 @@ internal class CustomHpBarPatch
             PoisonPower poisonPower = ____creature.GetPower<PoisonPower>();
             EmbersPower emberPower = ____creature.GetPower<EmbersPower>();
             int poisonDamageNextTurn = poisonPower != null ? poisonPower.CalculateTotalDamageNextTurn() : 0;
-            int embersDamageNextTurn = emberPower != null ? emberPower.CalculateTotalDamageNextTurn() : 0;
+            int embersDamageNextTurn = emberPower != null ? emberPower.CalculateTotalDamage() : 0;
             int totalDamageNextTurn = poisonDamageNextTurn + embersDamageNextTurn;
 
             float num1 = GetFgWidth(____creature, GetMaxFgWidth(____hpForegroundContainer, ____expectedMaxFgWidth), GetMaxFgWidth(____hpForegroundContainer, ____expectedMaxFgWidth)) - GetMaxFgWidth(____hpForegroundContainer, ____expectedMaxFgWidth);
