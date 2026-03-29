@@ -40,7 +40,7 @@ internal class CustomHpBarPatch
             int embersDamageNextTurn = emberPower != null ? emberPower.CalculateTotalDamage() : 0;
             int totalDamageNextTurn = poisonDamageNextTurn + embersDamageNextTurn;
 
-            float num1 = GetFgWidth(____creature, ____creature.CurrentHp, GetMaxFgWidth(____hpForegroundContainer, ____expectedMaxFgWidth)) - GetMaxFgWidth(____hpForegroundContainer, ____expectedMaxFgWidth);
+            float num1 = GetFgWidth(____creature, ____creature.CurrentHp - poisonDamageNextTurn, GetMaxFgWidth(____hpForegroundContainer, ____expectedMaxFgWidth)) - GetMaxFgWidth(____hpForegroundContainer, ____expectedMaxFgWidth);
             if (____creature.HasPower<EmbersPower>())
             {
                 _embersForeground.Visible = true;
