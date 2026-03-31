@@ -18,7 +18,7 @@ using StS2CharTest.Powers;
 namespace StS2CharTest.Code.Cards;
 
 [Pool(typeof(CharTestCardPool))]
-public class TailSwipe() : CharTestCard(0, CardType.Attack,
+public class TailSwipe() : CharTestCard(1, CardType.Attack,
     CardRarity.Basic, TargetType.AnyEnemy)
 {
     protected int embersInfliction = 3;

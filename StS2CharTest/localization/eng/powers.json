@@ -15,7 +15,19 @@
   "STS2CHARTEST-JUST_THE_TIP_POWER.smartDescription": "For the next {Amount:cond:>1?[blue]{}[/blue] Attacks|Attack} played, gain [gold]Heat[/gold] equal to half the damage dealt.",
   "STS2CHARTEST-JUST_THE_TIP_POWER.title": "Just The Tip",
 
-  "STS2CHARTEST-MELTING_POINT_POWER.description": "Take double damage from [gold]Embers[/gold].",
+  "STS2CHARTEST-MELTING_POINT_POWER.description": "Target takes double damage from [gold]Embers[/gold].",
   "STS2CHARTEST-MELTING_POINT_POWER.smartDescription": "Take double damage from [gold]Embers[/gold] for {Amount:plural:this turn|the next {} turns}.",
-  "STS2CHARTEST-MELTING_POINT_POWER.title": "Melting Point"
+  "STS2CHARTEST-MELTING_POINT_POWER.title": "Melting Point",
+
+  "STS2CHARTEST-OBSIDIAN_SKIN_POWER.description": "At the start of the turn, lose 1 [gold]Heat[/gold]. Whenever you lose [gold]Heat[/gold], gain Block.",
+  "STS2CHARTEST-OBSIDIAN_SKIN_POWER.smartDescription": "At the start of turn, lose 1 [gold]Heat[/gold]. Whenever you lose [gold]Heat[/gold], gain {Block:diff()} Block.",
+  "STS2CHARTEST-OBSIDIAN_SKIN_POWER.title": "Obsidian Skin",
+
+  "STS2CHARTEST-BURN_IT_DOWN_POWER.description": "Whenever you draw a Status card, exhaust it, draw a card and deal damage to a random enemy.",
+  "STS2CHARTEST-BURN_IT_DOWN_POWER.smartDescription": "Whenever you draw a Status card, exhaust it, draw a card and deal {Amount:diff()} damage to a random enemy.",
+  "STS2CHARTEST-BURN_IT_DOWN_POWER.title": "Burn It Down",
+
+  "STS2CHARTEST-FLYING_POWER.description": "Take [gold]50%[/gold] less damage from attacks.",
+  "STS2CHARTEST-FLYING_POWER.smartDescription": "Take [gold]50%[/gold] less damage from attacks for {Amount:plural:this turn|the next {} turns}.",
+  "STS2CHARTEST-FLYING_POWER.title": "Flying"
 }

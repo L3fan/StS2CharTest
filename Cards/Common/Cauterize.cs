@@ -28,6 +28,6 @@ public class Cauterize() : CharTestCard(1, CardType.Attack,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["EmbersPower"].UpgradeValueBy(2m);
+        DynamicVars["EmbersPower"].UpgradeValueBy(3m);
     }
 }

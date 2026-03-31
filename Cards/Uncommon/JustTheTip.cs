@@ -10,19 +10,20 @@ using StS2CharTest.Powers;
 namespace StS2CharTest.Cards.Uncommon;
 
 [Pool(typeof(CharTestCardPool))]
-public class JustTheTip() : CharTestCard(1, CardType.Power,
+public class JustTheTip() : CharTestCard(1, CardType.Skill,
     CardRarity.Uncommon, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<JustTheTipPower>(1).WithTooltip("HEAT")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1), new PowerVar<JustTheTipPower>(1).WithTooltip("HEAT")];
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        await CommonActions.Draw(this, choiceContext);
         await CommonActions.ApplySelf<JustTheTipPower>(this, DynamicVars["JustTheTipPower"].IntValue);
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars["JustTheTipPower"].UpgradeValueBy(1m);
     }
 }

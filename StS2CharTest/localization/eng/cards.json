@@ -20,9 +20,33 @@
   "STS2CHARTEST-DANCING_FLAME.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold].",
   "STS2CHARTEST-DANCING_FLAME.title": "Dancing Flame",
 
-  "STS2CHARTEST-JUST_THE_TIP.description": "For the first attack you play each turn, gain Heat equal to half the damage dealt.",
+  "STS2CHARTEST-JUST_THE_TIP.description": "Draw {Cards:diff()} card.\nFor the next {JustTheTipPower:plural:attack |2 attacks} you play this turn, gain Heat equal to half the damage dealt.",
   "STS2CHARTEST-JUST_THE_TIP.title": "Just The Tip",
   
   "STS2CHARTEST-MELTING_POINT.description": "Draw {Cards:diff()} cards.\nEnemies take double damage from [gold]Embers[/gold] this turn.",
-  "STS2CHARTEST-MELTING_POINT.title": "Melting Point"
+  "STS2CHARTEST-MELTING_POINT.title": "Melting Point",
+
+  "STS2CHARTEST-HEATWAVE.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold] to ALL enemies.\n[gold]Blaze[/gold].",
+  "STS2CHARTEST-HEATWAVE.title": "Heatwave",
+
+  "STS2CHARTEST-NAIL_STRIKE.description": "Deal {Damage:diff()} damage twice.",
+  "STS2CHARTEST-NAIL_STRIKE.title": "Nail Strike",
+
+  "STS2CHARTEST-COOL_OFF.description": "Lose {HeatPower:diff()} [gold]Heat[/gold].\nDraw {Cards:diff()} cards.",
+  "STS2CHARTEST-COOL_OFF.title": "Cool Off",
+
+  "STS2CHARTEST-OBSIDIAN_SKIN.description": "At the start of your turn lose 1 [gold]Heat[/gold].\n Whenever you lose [gold]Heat[/gold], gain {ObsidianSkinPower:diff()} Block.",
+  "STS2CHARTEST-OBSIDIAN_SKIN.title": "Obsidian Skin",
+
+  "STS2CHARTEST-WARM_UP_STRIKE.description": "Deal {Damage:diff()} damage.\nGain {HeatPower:diff()} [gold]Heat[/gold].",
+  "STS2CHARTEST-WARM_UP_STRIKE.title": "Warm-Up Strike",
+
+  "STS2CHARTEST-BURNING_WINGS.description": "Gain [gold]Flying[/gold] for 3 turns.",
+  "STS2CHARTEST-BURNING_WINGS.title": "Burning Wings",
+
+  "STS2CHARTEST-BURN_IT_DOWN.description": "Whenever a Status card is added to your hand, exhaust it, draw 1 card and deal {BurnItDownPower:diff()} damage to a random enemy.",
+  "STS2CHARTEST-BURN_IT_DOWN.title": "Burn It Down",
+  
+  "STS2CHARTEST-GAIN20_HEAT.description": "Take a fucking guess.",
+  "STS2CHARTEST-GAIN20_HEAT.title": "Gain 20 Heat"
 }

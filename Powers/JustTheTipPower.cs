@@ -19,12 +19,11 @@ public class JustTheTipPower : CharTestPowerModel
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("AttacksPlayed", 0)];
 
     public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer, DamageResult result, ValueProp props,
         Creature target, CardModel? cardSource)
     {
-        if (DynamicVars["AttacksPlayed"].IntValue < Amount && result.TotalDamage > 0)
+        if (result.TotalDamage > 0)
         {
             int amountGained = (int)Mathf.Floor(result.TotalDamage / 2f);
             await PowerCmd.Apply<HeatPower>(Owner, amountGained, Owner, null);
@@ -34,11 +33,11 @@ public class JustTheTipPower : CharTestPowerModel
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
         if (cardPlay.Card.Type == CardType.Attack)
-            DynamicVars["AttacksPlayed"].BaseValue++;
+            PowerCmd.Decrement(this);
     }
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        DynamicVars["AttacksPlayed"].BaseValue = 0;
+        PowerCmd.Remove(this);
     }
 }

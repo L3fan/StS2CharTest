@@ -2,12 +2,15 @@
   "BLAZE.description": "Triggers [gold]Embers[/gold] on EVERYONE.",
   "BLAZE.title": "Blaze",
 
-  "EMBERS.description": "Afflicted creatures take damage when [gold]Blaze[/gold] is triggered.",
+  "EMBERS.description": "Afflicted creatures take damage and lose half of their stack when [gold]Blaze[/gold] is triggered.",
   "EMBERS.title": "Embers",
 
   "HEAT.description": "At 20 Heat gain 1 [gold]Overheat[/gold].",
   "HEAT.title": "Heat",
 
   "OVERHEAT.description": "Gain one of two powerful effects unique to each stack (max 3).",
-  "OVERHEAT.title": "Overheat"
+  "OVERHEAT.title": "Overheat",
+  
+  "FLYING.description": "Take [gold]50%[/gold] less damage from attacks.",
+  "FLYING.title": "Flying"
 }

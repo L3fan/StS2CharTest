@@ -19,11 +19,11 @@ public class EmbersPower : CharTestPowerModel
     public override PowerStackType StackType => PowerStackType.Counter;
     public decimal multiplier = 1m;
     
-    public override async Task OnBlazeTriggered()
+    public override async Task OnBlazeTriggered(bool reduceEmbers = true)
     {
         MainFile.Logger.Info("OnBlazeTriggered: " + CalculateTotalDamage());
         await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), Owner, CalculateTotalDamage(), ValueProp.Unpowered, null, null);
-        if (Owner.IsAlive)
+        if (Owner.IsAlive && reduceEmbers)
             await PowerCmd.ModifyAmount(this, (decimal)Math.Floor(-Amount/2f), null, null);
         else
             await Cmd.CustomScaledWait(0.1f, 0.25f);
