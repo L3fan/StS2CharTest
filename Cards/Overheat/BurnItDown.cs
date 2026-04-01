@@ -9,8 +9,7 @@ using StS2CharTest.Powers;
 namespace StS2CharTest.Cards.Overheat;
 
 [Pool(typeof(CharTestCardPool))]
-public class BurnItDown() : CharTestCard(-1, CardType.Status,
-    CardRarity.Status, TargetType.None), OverheatPower.IChoosable
+public class BurnItDown() : OverheatCard(), OverheatPower.IChoosable
 {
     public override int MaxUpgradeLevel => 0;
     
@@ -22,6 +21,4 @@ public class BurnItDown() : CharTestCard(-1, CardType.Status,
     {
         await CommonActions.Apply<BurnItDownPower>(Owner.Creature, this, DynamicVars["BurnItDownPower"].IntValue);
     }
-
-    public override Color CustomBackgroundColor => new("30C9C9");
 }

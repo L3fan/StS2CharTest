@@ -21,8 +21,6 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
 {
     public override string CustomPortraitPath => "res://images/packed/card_portraits/" + Id.Entry.RemovePrefix().ToLowerInvariant() + ".png";
     public override string PortraitPath => "res://images/packed/card_portraits/big/" + Id.Entry.RemovePrefix().ToLowerInvariant() + ".png";
-    
-    public virtual Color CustomBackgroundColor => new Color("00000001");
 
     public async Task TriggerBlaze(bool reduceEmbers = true)
     {

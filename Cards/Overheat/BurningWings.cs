@@ -11,9 +11,7 @@ using StS2CharTest.Powers;
 namespace StS2CharTest.Cards.Overheat;
 
 [Pool(typeof(CharTestCardPool))]
-public class BurningWings() : CharTestCard(-1,
-    CardType.Status, CardRarity.Status,
-    TargetType.None), OverheatPower.IChoosable
+public class BurningWings() : OverheatCard(), OverheatPower.IChoosable
 {
     public override int MaxUpgradeLevel => 0;
     
@@ -25,6 +23,4 @@ public class BurningWings() : CharTestCard(-1,
     {
         await CommonActions.Apply<FlyingPower>(Owner.Creature, this, DynamicVars["FlyingPower"].IntValue);
     }
-
-    public override Color CustomBackgroundColor => new("30C9C9");
 }

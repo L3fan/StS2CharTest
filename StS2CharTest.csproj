@@ -93,7 +93,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="images\atlases\ui.atlas.sprites\card\" />
       <Folder Include="images\packed\card_portraits\big\" />
       <Folder Include="images\sts2chartest\relics\big\" />
       <Folder Include="images\sts2chartest\relics\outline\" />

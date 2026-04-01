@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnhy5ycbvu23l"]
+
+[ext_resource type="Texture2D" uid="uid://caywvt8i0if85" path="res://images/sts2chartest/ui/custom_card_frames/overheat_power.png" id="1_cg014"]
+
+[node name="OverheatPower" type="TextureRect"]
+texture = ExtResource("1_cg014")
