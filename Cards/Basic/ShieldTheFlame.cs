@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2CharTest.Actions;
 using StS2CharTest.Cards;
 using StS2CharTest.Code.Character;
 using StS2CharTest.Code.Powers;
@@ -23,7 +24,7 @@ public class ShieldTheFlame() : CharTestCard(1,
         CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await CommonActions.ApplySelf<HeatPower>(this, DynamicVars["Heat"].IntValue);
+        await CharTestActions.GainHeat(this, DynamicVars["Heat"].IntValue);
     }
 
     protected override void OnUpgrade()

@@ -3,6 +3,7 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using StS2CharTest.Actions;
 using StS2CharTest.Code.Powers;
 
 namespace StS2CharTest.Cards.Dev;
@@ -19,7 +20,7 @@ public class Gain20Heat() : CharTestCard(0, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.Apply<HeatPower>(Owner.Creature, this, 20);
+        await CharTestActions.GainHeat(this, 20);
     }
 
     protected override void OnUpgrade()

@@ -20,8 +20,8 @@ internal class CustomHpBarPatch
         _embersForeground.SelfModulate = new Color(1.0f, 0.7f, 0.1f);
         _embersForeground.Visible = true;
         MainFile.Logger.Info("Adding: " + _embersForeground.GetType() + " " + _embersForeground.Name);
-        __instance.GetNode<Control>("%Mask").AddChildSafely(_embersForeground);
-        __instance.GetNode<Control>("%Mask").MoveChild(_embersForeground, 2);
+        ____poisonForeground.GetParent().AddChildSafely(_embersForeground);
+        ____poisonForeground.GetParent().MoveChild(_embersForeground, ____poisonForeground.GetIndex()+1);
     }
 
     [HarmonyPostfix, HarmonyPatch("RefreshForeground")]
