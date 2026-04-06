@@ -11,11 +11,10 @@ public class MeltingPointPower : CharTestPowerModel
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    protected Creature Applier;
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side == Applier.Side)
+        if (side != Owner.Side)
         {
             PowerCmd.Decrement(this);
         }
