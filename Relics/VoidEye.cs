@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using StS2CharTest.Actions;
 using StS2CharTest.Code.Character;
 using StS2CharTest.Code.Powers;
 
@@ -36,6 +37,6 @@ public class VoidEye() : CustomRelicModel
     public override async Task BeforeCombatStartLate()
     {
         Flash();
-        await PowerCmd.Apply<HeatPower>(Owner.Creature, DynamicVars["HeatPower"].IntValue, Owner.Creature, null);
+        await CharTestActions.GainHeat(Owner.Creature, DynamicVars["HeatPower"].IntValue);
     }
 }

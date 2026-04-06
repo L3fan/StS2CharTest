@@ -9,7 +9,9 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.HoverTips;
+using StS2CharTest;
 using StS2CharTest.Cards;
+using StS2CharTest.Code.Character;
 
 public partial class NHeatCounter : Control
 {
@@ -164,8 +166,9 @@ public partial class NHeatCounter : Control
     else
     {
       int heat = (int)HeatResource.Amount.Get(_player.PlayerCombatState);
-      bool ShouldAlwaysShowHeatCounter = _player.Character.GetType() == typeof(CharTestModel);
+      bool ShouldAlwaysShowHeatCounter = _player.Character.GetType() == typeof(CharTest);
       this.Visible = this.Visible || ShouldAlwaysShowHeatCounter || heat > 0;
     }
+    MainFile.Logger.Info("Heat Counter Visibility: " + Visible);
   }
 }

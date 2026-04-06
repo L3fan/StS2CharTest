@@ -24,7 +24,7 @@ public class ShieldTheFlame() : CharTestCard(1,
         CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await CharTestActions.GainHeat(this, DynamicVars["Heat"].IntValue);
+        await CharTestActions.GainHeat(Owner.Creature, DynamicVars["Heat"].IntValue);
     }
 
     protected override void OnUpgrade()
