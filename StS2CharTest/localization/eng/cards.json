@@ -5,7 +5,7 @@
   "STS2CHARTEST-DEFEND_CHAR_TEST.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "STS2CHARTEST-DEFEND_CHAR_TEST.title": "Defend",
 
-  "STS2CHARTEST-TAIL_SWIPE.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold].\n Deal {CalculatedDamage:diff()} damage.\nDeal extra damage equal to [gold]Embers[/gold].",
+  "STS2CHARTEST-TAIL_SWIPE.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold].\n Deal damage equal to [gold]Embers[/gold].{InCombat:\n(Deal {CalculatedDamage:diff()} damage.)|}",
   "STS2CHARTEST-TAIL_SWIPE.title": "Tail Swipe",
 
   "STS2CHARTEST-SHIELD_THE_FLAME.description": "Gain {Block:diff()} [gold]Block[/gold].\n Gain {Heat} [gold]Heat[/gold].",
@@ -32,13 +32,16 @@
   "STS2CHARTEST-NAIL_STRIKE.description": "Deal {Damage:diff()} damage twice.",
   "STS2CHARTEST-NAIL_STRIKE.title": "Nail Strike",
 
-  "STS2CHARTEST-COOL_OFF.description": "Lose {HeatPower:diff()} [gold]Heat[/gold].\nDraw {Cards:diff()} cards.",
+  "STS2CHARTEST-MEAL.description": "Gain {Heat:diff()} [gold]Heat[/gold].\nDraw {Cards:diff()} cards.",
+  "STS2CHARTEST-MEAL.title": "Meal",
+  
+  "STS2CHARTEST-COOL_OFF.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "STS2CHARTEST-COOL_OFF.title": "Cool Off",
 
-  "STS2CHARTEST-OBSIDIAN_SKIN.description": "At the start of your turn lose 1 [gold]Heat[/gold].\n Whenever you lose [gold]Heat[/gold], gain {ObsidianSkinPower:diff()} Block.",
+  "STS2CHARTEST-OBSIDIAN_SKIN.description": "At the start of your turn lose 1 [gold]Heat[/gold].\nWhenever you lose [gold]Heat[/gold], gain {ObsidianSkinPower:diff()} Block.",
   "STS2CHARTEST-OBSIDIAN_SKIN.title": "Obsidian Skin",
 
-  "STS2CHARTEST-WARM_UP_STRIKE.description": "Deal {Damage:diff()} damage.\nGain {HeatPower:diff()} [gold]Heat[/gold].",
+  "STS2CHARTEST-WARM_UP_STRIKE.description": "Deal {Damage:diff()} damage.\nGain {Heat:diff()} [gold]Heat[/gold].",
   "STS2CHARTEST-WARM_UP_STRIKE.title": "Warm-Up Strike",
 
   "STS2CHARTEST-BURNING_WINGS.description": "Gain [gold]Flying[/gold] for 3 turns.",

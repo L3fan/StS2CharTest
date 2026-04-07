@@ -5,6 +5,8 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.ValueProps;
+using StS2CharTest.Actions;
 using StS2CharTest.Code.Character;
 using StS2CharTest.Code.Powers;
 
@@ -14,20 +16,18 @@ namespace StS2CharTest.Cards.Common;
 public class CoolOff() : CharTestCard(1, CardType.Skill,
     CardRarity.Common, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<HeatPower>(1).WithTooltip("HEAT"), new CardsVar(3)];
+    public override int CanonicalHeatCost => 1;
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(9m, ValueProp.Move).WithTooltip("HEAT_COUNT")];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        HeatPower heatPower = Owner.Creature.GetPower<HeatPower>();
-        if (heatPower != null)
-            await PowerCmd.ModifyAmount(heatPower, -DynamicVars["HeatPower"].IntValue, Owner.Creature, this);
-        await CommonActions.Draw(this, choiceContext);
+        await CommonActions.CardBlock(this, play);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(2);
+        DynamicVars.Block.UpgradeValueBy(3m);
     }
 }

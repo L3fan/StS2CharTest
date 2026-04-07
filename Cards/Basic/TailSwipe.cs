@@ -21,12 +21,12 @@ namespace StS2CharTest.Code.Cards;
 public class TailSwipe() : CharTestCard(1, CardType.Attack,
     CardRarity.Basic, TargetType.AnyEnemy)
 {
-    protected int embersInfliction = 3;
+    protected int embersInfliction = 6;
     protected override IEnumerable<DynamicVar> CanonicalVars => 
     [
-        new CalculationBaseVar(6m), 
+        new CalculationBaseVar(0m), 
         new ExtraDamageVar(1m), 
-        new PowerVar<EmbersPower>(3).WithTooltip("EMBERS"), 
+        new PowerVar<EmbersPower>(embersInfliction).WithTooltip("EMBERS"), 
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? target) => (target?.GetPowerAmount<EmbersPower>() ?? 0) + (target != null ? (target.GetPowerAmount<ArtifactPower>() > 0 ? 0 : (card as TailSwipe).embersInfliction) : 0))
     ];
 

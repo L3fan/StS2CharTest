@@ -4,6 +4,7 @@ using BaseLib.Patches.Content;
 using BaseLib.Utils;
 using Godot;
 using HarmonyLib;
+using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -13,6 +14,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Cards;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using StS2CharTest.Code.Relics;
@@ -203,7 +205,7 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
     public async Task SpendHeat(int amount)
     {
         this.LastHeatSpent = amount;
-        if (amount <= 0)
+        if (amount <= 0 || HeatResource.Amount.Get(Owner.PlayerCombatState) == 0)
             return;
         if (HeatResource.Amount.Get(Owner.PlayerCombatState) < LastHeatSpent)
             LastHeatSpent = (int)HeatResource.Amount.Get(Owner.PlayerCombatState);
@@ -285,6 +287,9 @@ public class HeatResource
 
     public static readonly SpireField<CharacterModel, bool> ShouldAlwaysShowHeatCounter = new(() => false);
     public static readonly SpireField<NCombatUi, NHeatCounter> _heatCounter = new(() => null);
+    
+    public static readonly SpireField<NCard, TextureRect> heatCostIcon = new(() => null);
+    public static readonly SpireField<NCard, MegaLabel> heatCostLabel = new(() => null);
 }
 
 public interface CharTestModel

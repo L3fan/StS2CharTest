@@ -18,7 +18,7 @@ public class ShieldTheFlame() : CharTestCard(1,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new BlockVar(7m, ValueProp.Move), new DynamicVar("Heat", 2m).WithTooltip("HEAT")];
+        [new BlockVar(7m, ValueProp.Move), new DynamicVar("Heat", 2m).WithTooltip("HEAT_COUNT")];
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

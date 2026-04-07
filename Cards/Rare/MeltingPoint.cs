@@ -15,7 +15,7 @@ namespace StS2CharTest.Cards.Rare;
 public class MeltingPoint() : CharTestCard(0, CardType.Skill,
     CardRarity.Rare, TargetType.AllEnemies)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3).WithTooltip("EMBERS")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1).WithTooltip("EMBERS")];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
