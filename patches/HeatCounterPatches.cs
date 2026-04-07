@@ -20,24 +20,28 @@ internal class HeatCounterPatch1
             .Instantiate<NHeatCounter>();
         __instance.AddChildSafely(heatCounter);
         HeatResource._heatCounter.Set(__instance, heatCounter);
-        MainFile.Logger.Info("Patching Test NCombatUi _Ready");
     }
 }
 
 [HarmonyPatch(typeof(NCombatUi), nameof(NCombatUi.Activate))]
 internal class HeatCounterPatch2
 {
-    [HarmonyPostfix]
-    public static void InitializeHeatCounter(ref NCombatUi __instance, ref CombatState state, ref NEnergyCounter ____energyCounter)
+    [HarmonyPrefix]
+    public static void GetPreAnimPosition(ref NCombatUi __instance, out Vector2 __state)
     {
-        MainFile.Logger.Info("Patching Test NCombatUi Activate Start");
+        __state = __instance.EnergyCounterContainer.GlobalPosition;
+    }
+    
+    [HarmonyPostfix]
+    public static void InitializeHeatCounter(ref NCombatUi __instance, ref CombatState state, ref NEnergyCounter ____energyCounter, Vector2 __state)
+    {
         Player me = LocalContext.GetMe(state);
         NHeatCounter heatCounter = HeatResource._heatCounter.Get(__instance);
         if (heatCounter == null)
             return;
         heatCounter.Initialize(me);
-        
-        heatCounter.Reparent((Node) ____energyCounter);
-        MainFile.Logger.Info("Patching Test NCombatUi Activate End");
+        Vector2 offset = heatCounter.GlobalPosition - __state;
+        heatCounter.Reparent(____energyCounter, false);
+        heatCounter.Position = offset;
     }
 }

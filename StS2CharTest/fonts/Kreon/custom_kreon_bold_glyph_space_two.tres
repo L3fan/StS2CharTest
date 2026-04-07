@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cwowuks880eqw"]
+
+[ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://StS2CharTest/fonts/Kreon/custom_kreon_bold_shared.tres" id="1_ylfij"]
+
+[resource]
+base_font = ExtResource("1_ylfij")
+spacing_glyph = 2

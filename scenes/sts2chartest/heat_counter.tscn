@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://3qwh7ue2vbio"]
+[gd_scene load_steps=8 format=3 uid="uid://3qwh7ue2vbio"]
 
-[ext_resource type="Script" uid="uid://d3a4pqrvc3gqy" path="res://CustomNodes/NHeatCounter.cs" id="1_pdtmb"]
+[ext_resource type="Script" uid="uid://dvf6u5ayduy2m" path="res://CustomNodes/NHeatCounter.cs" id="1_pdtmb"]
 [ext_resource type="Shader" uid="uid://cy3pkeq8uir3x" path="res://StS2CharTest/shaders/hsv.gdshader" id="2_5nrqu"]
-[ext_resource type="Texture2D" uid="uid://bmf2vf7klesuc" path="res://images/sts2chartest/powers/heat_power.png" id="3_47o4q"]
-[ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://StS2CharTest/fonts/Kreon/kreon_bold_shared.tres" id="4_scjup"]
-[ext_resource type="Script" uid="uid://n8tcsye7lcp7" path="res://CustomNodes/CustomMegaRichTextLabel.cs" id="5_6m4bt"]
+[ext_resource type="Texture2D" uid="uid://dhmlx36ee75ja" path="res://images/sts2chartest/ui/heat_counter_bg.png" id="3_pdtmb"]
+[ext_resource type="FontFile" uid="uid://gpbynlriq8xq" path="res://StS2CharTest/fonts/Kreon/static/Kreon-Bold.ttf" id="4_pdtmb"]
+[ext_resource type="Script" uid="uid://bhkye0k014f0u" path="res://CustomNodes/CustomMegaRichTextLabel.cs" id="5_6m4bt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wwrnu"]
 shader = ExtResource("2_5nrqu")
@@ -12,17 +12,20 @@ shader_parameter/h = 1.0
 shader_parameter/s = 1.0
 shader_parameter/v = 1.0
 
+[sub_resource type="FontVariation" id="FontVariation_5nrqu"]
+base_font = ExtResource("4_pdtmb")
+spacing_glyph = 2
+
 [node name="HeatCounter" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 246.0
-offset_top = 907.0
-offset_right = -1546.0
-offset_bottom = -45.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 160.0
+offset_top = -168.0
+offset_right = 288.0
+offset_bottom = -40.0
+grow_vertical = 0
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_pdtmb")
 
@@ -32,7 +35,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource("3_47o4q")
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_pdtmb")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="RotationLayers" type="Control" parent="Icon"]
 unique_name_in_owner = true
@@ -40,21 +47,29 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CountLabel" type="RichTextLabel" parent="Icon"]
+[node name="MarginContainer" type="MarginContainer" parent="Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 41
+
+[node name="CountLabel" type="RichTextLabel" parent="Icon/MarginContainer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_top = 41.0
-offset_right = 128.0
-offset_bottom = 128.0
-mouse_filter = 2
+layout_mode = 2
+mouse_filter = 1
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.713081, 0, 0.12526935, 1)
 theme_override_colors/font_shadow_color = Color(0.3090153, 0, 0.017147627, 0.1254902)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 14
-theme_override_fonts/normal_font = ExtResource("4_scjup")
+theme_override_fonts/normal_font = SubResource("FontVariation_5nrqu")
 theme_override_font_sizes/normal_font_size = 36
 theme_override_font_sizes/bold_font_size = 36
 theme_override_font_sizes/bold_italics_font_size = 36
@@ -64,6 +79,7 @@ bbcode_enabled = true
 text = "[center]0[/center]"
 scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 1
 script = ExtResource("5_6m4bt")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.713081, 0, 0.12526935, 1)
@@ -75,11 +91,5 @@ theme_override_font_sizes/mono_font_size = 36
 theme_override_constants/outline_size = 14
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/shadow_offset_x = 5
-theme_override_fonts/normal_font = ExtResource("4_scjup")
+theme_override_fonts/normal_font = SubResource("FontVariation_5nrqu")
 theme_override_colors/font_shadow_color = Color(0.3090153, 0, 0.017147627, 0.1254902)
-
-[node name="MarginContainer" type="MarginContainer" parent="Icon"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0

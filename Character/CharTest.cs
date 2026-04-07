@@ -102,4 +102,6 @@ public class CharTest : CustomCharacterModel
     public override string CustomIconPath => "res://scenes/sts2chartest/CharTestIcon.tscn";
 
     public string CustomStaticHoverTipsPath => "res://StS2CharTest/localization/eng/static_hover_tips.json";
+    
+    public override Color EnergyLabelOutlineColor => new Color("8d5216");
 }
