@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7q2xc1k0d2qs"
-path="res://.godot/imported/layer7.png-9950890ac459cf8d4f8fc516015c423f.ctex"
+uid="uid://b4eeosngp4mv5"
+path="res://.godot/imported/layer1.png-9a1d88517e8d6854560b614355771be8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sts2chartest/ui/energy_counter/layer7.png"
-dest_files=["res://.godot/imported/layer7.png-9950890ac459cf8d4f8fc516015c423f.ctex"]
+source_file="res://images/sts2chartest/ui/energy_counter/deprecated/layer1.png"
+dest_files=["res://.godot/imported/layer1.png-9a1d88517e8d6854560b614355771be8.ctex"]
 
 [params]
 

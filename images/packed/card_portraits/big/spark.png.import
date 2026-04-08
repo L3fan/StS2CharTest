@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tlxgnf22xu2o"
-path="res://.godot/imported/layer8.png-efacd4a57d8f66886ce037a893bdb216.ctex"
+uid="uid://b4mby7nrfdc4j"
+path="res://.godot/imported/spark.png-4740424a88d66f0c6e176d1da8956c78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sts2chartest/ui/energy_counter/layer8.png"
-dest_files=["res://.godot/imported/layer8.png-efacd4a57d8f66886ce037a893bdb216.ctex"]
+source_file="res://images/packed/card_portraits/big/spark.png"
+dest_files=["res://.godot/imported/spark.png-4740424a88d66f0c6e176d1da8956c78.ctex"]
 
 [params]
 

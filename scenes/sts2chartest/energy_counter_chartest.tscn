@@ -1,13 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://d4lbiha8smb7f"]
+[gd_scene load_steps=15 format=3 uid="uid://d4lbiha8smb7f"]
 
 [ext_resource type="Script" uid="uid://bajqnl0rkp2kn" path="res://CustomNodes/CustomEnergyCounter.cs" id="1_0xqb4"]
 [ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://StS2CharTest/shaders/canvas_item_material_additive_shared.tres" id="2_1v23c"]
 [ext_resource type="Texture2D" uid="uid://jxkmyxkxr5r2" path="res://images/sts2chartest/ui/energy_orb_shine.png" id="3_hyvwa"]
-[ext_resource type="Texture2D" uid="uid://btrg6up6o1ylg" path="res://images/sts2chartest/ui/energy_counter/layer1.png" id="4_nbv03"]
-[ext_resource type="Texture2D" uid="uid://cucc2gcqdv3v6" path="res://images/sts2chartest/ui/energy_counter/layer2.png" id="5_t1758"]
-[ext_resource type="Texture2D" uid="uid://dlxnlwxxos00e" path="res://images/sts2chartest/ui/energy_counter/layer4.png" id="6_dayds"]
-[ext_resource type="Texture2D" uid="uid://b6toffhayfae8" path="res://images/sts2chartest/ui/energy_counter/layer6.png" id="7_vrwda"]
-[ext_resource type="Texture2D" uid="uid://tlxgnf22xu2o" path="res://images/sts2chartest/ui/energy_counter/layer8.png" id="8_bfg1x"]
+[ext_resource type="Texture2D" uid="uid://ct74rh60gfksl" path="res://images/sts2chartest/ui/energy_counter/layer1.png" id="4_nbv03"]
+[ext_resource type="Texture2D" uid="uid://bac2u5sp3b136" path="res://images/sts2chartest/ui/energy_counter/layer2.png" id="5_t1758"]
+[ext_resource type="Texture2D" uid="uid://dra7ah01yo8d8" path="res://images/sts2chartest/ui/energy_counter/layer4.png" id="6_dayds"]
+[ext_resource type="Texture2D" path="res://images/sts2chartest/ui/energy_counter/layer6.png" id="7_vrwda"]
 [ext_resource type="Texture2D" uid="uid://bdk0p242v3v43" path="res://images/sts2chartest/ui/energy_orb_burst.png" id="9_t06sv"]
 [ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://StS2CharTest/fonts/Kreon/custom_kreon_bold_shared.tres" id="10_7ixla"]
 [ext_resource type="Script" uid="uid://bxac2vmsu7bno" path="res://CustomNodes/CustomMegaLabel.cs" id="11_uw5qo"]
@@ -35,8 +34,6 @@ offset_right = 128.0
 offset_bottom = 128.0
 pivot_offset = Vector2(64, 64)
 script = ExtResource("1_0xqb4")
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="BurstBack" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
@@ -76,6 +73,9 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 64)
 texture = ExtResource("4_nbv03")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
 
 [node name="RotationLayers" type="Control" parent="Layers"]
 unique_name_in_owner = true
@@ -89,28 +89,17 @@ grow_vertical = 2
 [node name="Layer2" type="TextureRect" parent="Layers/RotationLayers"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 3.2
-anchor_bottom = 3.2
-offset_right = -281.6
-offset_bottom = -281.6
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 64)
 texture = ExtResource("5_t1758")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
 
 [node name="Layer3" type="TextureRect" parent="Layers/RotationLayers"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 3.2
-anchor_bottom = 3.2
-offset_right = -281.6
-offset_bottom = -281.6
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(64, 64)
-texture = ExtResource("6_dayds")
-
-[node name="Layer4" type="TextureRect" parent="Layers"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,16 +108,22 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 64)
 texture = ExtResource("7_vrwda")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
 
-[node name="Layer5" type="TextureRect" parent="Layers"]
+[node name="Layer4" type="TextureRect" parent="Layers"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(64, 64)
-texture = ExtResource("8_bfg1x")
+texture = ExtResource("6_dayds")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
 
 [node name="BurstFront" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
@@ -162,7 +157,7 @@ offset_right = -16.0
 offset_bottom = 29.0
 theme_override_colors/font_color = Color(1, 0.9647059, 0.8862745, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.1882353)
-theme_override_colors/font_outline_color = Color(0.55435747, 0.32038227, 0.08669161, 1)
+theme_override_colors/font_outline_color = Color(0.44959903, 0.0984404, 0, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 16
@@ -176,4 +171,4 @@ script = ExtResource("11_uw5qo")
 AutoSizeEnabled = null
 MinFontSize = null
 MaxFontSize = null
-theme_override_colors/font_outline_color = Color(0.55435747, 0.32038227, 0.08669161, 1)
+theme_override_colors/font_outline_color = Color(0.44959903, 0.0984404, 0, 1)

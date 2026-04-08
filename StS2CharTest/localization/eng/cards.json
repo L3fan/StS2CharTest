@@ -51,5 +51,8 @@
   "STS2CHARTEST-BURN_IT_DOWN.title": "Burn It Down",
   
   "STS2CHARTEST-GAIN20_HEAT.description": "Take a fucking guess.",
-  "STS2CHARTEST-GAIN20_HEAT.title": "Gain 20 Heat"
+  "STS2CHARTEST-GAIN20_HEAT.title": "Gain 20 Heat",
+
+  "STS2CHARTEST-SPARK.description": "Gain {Energy:energyIcons()}.",
+  "STS2CHARTEST-SPARK.title": "Spark"
 }
