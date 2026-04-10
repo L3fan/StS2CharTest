@@ -207,9 +207,11 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
         this.LastHeatSpent = amount;
         if (amount <= 0 || HeatResource.Amount.Get(Owner.PlayerCombatState) == 0)
             return;
-        if (HeatResource.Amount.Get(Owner.PlayerCombatState) < LastHeatSpent)
+        decimal currentHeat = HeatResource.Amount.Get(Owner.PlayerCombatState);
+        if (currentHeat < LastHeatSpent)
             LastHeatSpent = (int)HeatResource.Amount.Get(Owner.PlayerCombatState);
-        HeatResource.Amount.Set(Owner.PlayerCombatState, -(Decimal)LastHeatSpent);
+        HeatResource.Amount.Set(Owner.PlayerCombatState, currentHeat-(Decimal)LastHeatSpent);
+        HeatResource.HeatChanged.Get(Owner.PlayerCombatState).Invoke((int)currentHeat, (int)HeatResource.Amount.Get(Owner.PlayerCombatState));
         await AfterHeatSpent(this.Owner.Creature.CombatState, LastHeatSpent, this.Owner);
     }
 

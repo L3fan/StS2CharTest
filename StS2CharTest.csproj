@@ -64,6 +64,7 @@
         <PackageReference Include="Alchyr.Sts2.BaseLib" Version="*" PrivateAssets="All" />
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.7" />
         <AdditionalFiles Include="StS2CharTest\localization\**\*.json"/>
+        <PackageReference Update="GodotSharp" Version="4.7.0-dev.4" />
     </ItemGroup>
 
     <ItemGroup>

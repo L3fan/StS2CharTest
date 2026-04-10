@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://3qwh7ue2vbio"]
+[gd_scene load_steps=9 format=3 uid="uid://3qwh7ue2vbio"]
 
 [ext_resource type="Script" uid="uid://dvf6u5ayduy2m" path="res://CustomNodes/NHeatCounter.cs" id="1_pdtmb"]
 [ext_resource type="Shader" uid="uid://cy3pkeq8uir3x" path="res://StS2CharTest/shaders/hsv.gdshader" id="2_5nrqu"]
-[ext_resource type="Texture2D" uid="uid://dhmlx36ee75ja" path="res://images/sts2chartest/ui/heat_counter_bg.png" id="3_pdtmb"]
+[ext_resource type="Texture2D" uid="uid://b557348rluag6" path="res://images/sts2chartest/ui/heat_counter/heat_counter_main.png" id="3_pdtmb"]
 [ext_resource type="FontFile" uid="uid://gpbynlriq8xq" path="res://StS2CharTest/fonts/Kreon/static/Kreon-Bold.ttf" id="4_pdtmb"]
 [ext_resource type="Script" uid="uid://bhkye0k014f0u" path="res://CustomNodes/CustomMegaRichTextLabel.cs" id="5_6m4bt"]
+[ext_resource type="PackedScene" uid="uid://bv5jvriuxpj63" path="res://scenes/sts2chartest/heat_counter_vfx.tscn" id="6_5nrqu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wwrnu"]
 shader = ExtResource("2_5nrqu")
@@ -29,6 +30,11 @@ grow_vertical = 0
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_pdtmb")
 
+[node name="HeatCounterVfx" parent="." instance=ExtResource("6_5nrqu")]
+unique_name_in_owner = true
+position = Vector2(63.999985, 64)
+scale = Vector2(0.99999994, 0.99999994)
+
 [node name="Icon" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_wwrnu")
 layout_mode = 1
@@ -44,9 +50,11 @@ stretch_mode = 5
 [node name="RotationLayers" type="Control" parent="Icon"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
+anchor_top = 0.039
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 1.039
+offset_top = 0.007999897
+offset_bottom = 0.0079956055
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -57,7 +65,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 41
+theme_override_constants/margin_top = 46
 
 [node name="CountLabel" type="RichTextLabel" parent="Icon/MarginContainer"]
 unique_name_in_owner = true

@@ -9,15 +9,16 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.HoverTips;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 using StS2CharTest;
 using StS2CharTest.Cards;
 using StS2CharTest.Code.Character;
+using StS2CharTest.CustomNodes;
 
 public partial class NHeatCounter : Control
 {
 	private static readonly StringName _v = new StringName("v");
   private static readonly StringName _s = new StringName("s");
-  private static readonly string _heatGainVfxPath = SceneHelper.GetScenePath("vfx/heat_gain_vfx");
   private Player? _player;
   private MegaRichTextLabel _label;
   private Godot.Control _rotationLayers;
@@ -30,16 +31,11 @@ public partial class NHeatCounter : Control
   private bool _isListeningToCombatState;
   private HoverTip _hoverTip;
 
-  public static IEnumerable<string> AssetPaths
-  {
-    get
-    {
-      return (IEnumerable<string>)new List<string>() { _heatGainVfxPath };
-    }
-  }
+  private CharTestParticlesContainer particlesContainer;
 
   public override void _Ready()
   {
+    particlesContainer = GetNode<CharTestParticlesContainer>("%HeatCounterVfx");
     this._label = this.GetNode<MegaRichTextLabel>((NodePath) "%CountLabel");
     this._rotationLayers = this.GetNode<Godot.Control>((NodePath) "%RotationLayers");
     this._icon = this.GetNode<Godot.Control>((NodePath) "Icon");
@@ -97,6 +93,7 @@ public partial class NHeatCounter : Control
   {
     this.UpdateHeatCount(oldHeat, newHeat);
     this.RefreshVisibility();
+    MainFile.Logger.Info("Heat Changed. Old heat: " + oldHeat + ", New heat: " + newHeat);
   }
 
   public override void _Process(double delta)
@@ -106,31 +103,24 @@ public partial class NHeatCounter : Control
     float num = HeatResource.Amount.Get(_player.PlayerCombatState) == 0 ? 5f : 30f;
     for (int idx = 0; idx < this._rotationLayers.GetChildCount(); ++idx)
       this._rotationLayers.GetChild<Godot.Control>(idx).RotationDegrees += (float) delta * num * (float) (idx + 1);
-    this._lerpingHeatCount = MathHelper.SmoothDamp(this._lerpingHeatCount, (float) HeatResource.Amount.Get(_player.PlayerCombatState), ref this._velocity, 0.1f, (float) delta);
-    this.SetHeatCountText(Mathf.RoundToInt(this._lerpingHeatCount));
+    //this._lerpingHeatCount = MathHelper.SmoothDamp(this._lerpingHeatCount, (float) HeatResource.Amount.Get(_player.PlayerCombatState), ref this._velocity, 0.1f, (float) delta);
+    //this.SetHeatCountText(Mathf.RoundToInt(this._lerpingHeatCount));
   }
 
   private void UpdateHeatCount(int oldCount, int newCount)
   {
-    if (newCount < oldCount)
-    {
-      this._hsvTween?.Kill();
-      this._hsv.SetShaderParameter(_v, (Variant) 1f);
-      this._lerpingHeatCount = (float) newCount;
-      this.SetHeatCountText(newCount);
-    }
-    else
-    {
-      if (newCount <= oldCount)
-        return;
-      this._hsvTween?.Kill();
-      this._hsvTween = this.CreateTween();
-      this._hsvTween.TweenMethod(Callable.From<float>(new Action<float>(this.UpdateShaderV)), (Variant) 2f, (Variant) 1f, 0.20000000298023224);
-      Node2D node2D = PreloadManager.Cache.GetAsset<PackedScene>(_heatGainVfxPath).Instantiate<Node2D>();
-      this.AddChildSafely((Node) node2D);
-      this.MoveChild((Node) node2D, 0);
-      node2D.Position = this.Size / 2f;
-    }
+    this._hsvTween?.Kill();
+    this._hsv.SetShaderParameter(_v, (Variant) 1f);
+    this._lerpingHeatCount = (float) newCount;
+    this.SetHeatCountText(newCount);
+    if (newCount <= oldCount)
+      return;
+    this._hsvTween?.Kill();
+    this._hsvTween = this.CreateTween();
+    this._hsvTween.TweenMethod(Callable.From<float>(new Action<float>(this.UpdateShaderV)), (Variant) 2f, (Variant) 1f, 0.20000000298023224);
+    MainFile.Logger.Info("Playing Heat Gain VFX");
+    particlesContainer.Restart();
+    
   }
 
   private void SetHeatCountText(int heat)

@@ -25,6 +25,8 @@ public static class CharTestActions
         }
         
         HeatResource.Amount.Set(player.PlayerCombatState, setToAmount);
+        Action<int, int> heatChanged = HeatResource.HeatChanged.Get(player.PlayerCombatState);
+        heatChanged.Invoke((int)currentHeat, (int)setToAmount);
 
         CombatState combatState = target.CombatState;
         if (target.CombatState == null)

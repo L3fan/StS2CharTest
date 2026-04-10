@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://bv5jvriuxpj63"]
+
+[ext_resource type="Script" uid="uid://c26he1h5xq5fy" path="res://CustomNodes/CharTestParticlesContainer.cs" id="1_s7bvj"]
+[ext_resource type="Texture2D" uid="uid://d1ijbpyoebx4" path="res://images/sts2chartest/ui/heat_counter/heat_counter_anim.png" id="2_i8kjl"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s7bvj"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 2
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_sx44n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49763036, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.729404, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gkcd5"]
+curve = SubResource("Curve_sx44n")
+
+[sub_resource type="Gradient" id="Gradient_8lh8w"]
+offsets = PackedFloat32Array(0.5081081, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k5ahu"]
+gradient = SubResource("Gradient_8lh8w")
+use_hdr = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uksjp"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_k5ahu")
+alpha_curve = SubResource("CurveTexture_gkcd5")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="HeatCounterVfx" type="Node2D"]
+script = ExtResource("1_s7bvj")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_s7bvj")
+scale = Vector2(0.5, 0.5)
+emitting = false
+amount = 1
+texture = ExtResource("2_i8kjl")
+lifetime = 0.4
+one_shot = true
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_uksjp")

@@ -1,23 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://d4lbiha8smb7f"]
+[gd_scene load_steps=12 format=3 uid="uid://d4lbiha8smb7f"]
 
 [ext_resource type="Script" uid="uid://bajqnl0rkp2kn" path="res://CustomNodes/CustomEnergyCounter.cs" id="1_0xqb4"]
-[ext_resource type="Material" uid="uid://c4ycqv0gdxvmr" path="res://StS2CharTest/shaders/canvas_item_material_additive_shared.tres" id="2_1v23c"]
-[ext_resource type="Texture2D" uid="uid://jxkmyxkxr5r2" path="res://images/sts2chartest/ui/energy_orb_shine.png" id="3_hyvwa"]
+[ext_resource type="PackedScene" uid="uid://c7qs5dhfs0hhy" path="res://scenes/sts2chartest/chartest_energy_vfx_back.tscn" id="2_gor37"]
 [ext_resource type="Texture2D" uid="uid://ct74rh60gfksl" path="res://images/sts2chartest/ui/energy_counter/layer1.png" id="4_nbv03"]
 [ext_resource type="Texture2D" uid="uid://bac2u5sp3b136" path="res://images/sts2chartest/ui/energy_counter/layer2.png" id="5_t1758"]
 [ext_resource type="Texture2D" uid="uid://do2ba68a7iln6" path="res://images/sts2chartest/ui/energy_counter/layer3.png" id="6_anx34"]
+[ext_resource type="PackedScene" uid="uid://dn84p13ovofbs" path="res://scenes/sts2chartest/chartest_energy_vfx_front.tscn" id="7_anx34"]
 [ext_resource type="Texture2D" uid="uid://dra7ah01yo8d8" path="res://images/sts2chartest/ui/energy_counter/layer4.png" id="7_vrwda"]
-[ext_resource type="Texture2D" uid="uid://bdk0p242v3v43" path="res://images/sts2chartest/ui/energy_orb_burst.png" id="9_t06sv"]
 [ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://StS2CharTest/fonts/Kreon/custom_kreon_bold_shared.tres" id="10_7ixla"]
 [ext_resource type="Script" uid="uid://bxac2vmsu7bno" path="res://CustomNodes/CustomMegaLabel.cs" id="11_uw5qo"]
-
-[sub_resource type="Curve" id="Curve_55jc2"]
-_data = [Vector2(0, 0), 0.0, 2.0166857, 0, 0, Vector2(0.44166663, 0.7100109), 1.0184977, 1.0184977, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_0tvsg"]
-offsets = PackedFloat32Array(0, 0.333, 0.667, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="FontVariation" id="FontVariation_0xqb4"]
 base_font = ExtResource("10_7ixla")
@@ -35,25 +26,8 @@ offset_bottom = 128.0
 pivot_offset = Vector2(64, 64)
 script = ExtResource("1_0xqb4")
 
-[node name="BurstBack" type="CPUParticles2D" parent="."]
+[node name="EnergyVfxBack" parent="." instance=ExtResource("2_gor37")]
 unique_name_in_owner = true
-material = ExtResource("2_1v23c")
-position = Vector2(65, 62)
-emitting = false
-amount = 1
-texture = ExtResource("3_hyvwa")
-one_shot = true
-local_coords = true
-gravity = Vector2(0, 0)
-angular_velocity_min = 30.0
-angular_velocity_max = 30.0
-radial_accel_max = 10.0
-angle_max = 260.0
-scale_amount_min = 0.45
-scale_amount_max = 0.45
-scale_amount_curve = SubResource("Curve_55jc2")
-color = Color(1, 0.8980392, 0.45490196, 0.654902)
-color_ramp = SubResource("Gradient_0tvsg")
 
 [node name="Layers" type="Control" parent="."]
 unique_name_in_owner = true
@@ -127,26 +101,8 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_lock_ = true
 
-[node name="BurstFront" type="CPUParticles2D" parent="."]
+[node name="EnergyVfxFront" parent="." instance=ExtResource("7_anx34")]
 unique_name_in_owner = true
-material = ExtResource("2_1v23c")
-position = Vector2(65, 62)
-emitting = false
-amount = 1
-texture = ExtResource("9_t06sv")
-lifetime = 0.5
-one_shot = true
-local_coords = true
-gravity = Vector2(0, 0)
-angular_velocity_min = 30.0
-angular_velocity_max = 30.0
-radial_accel_max = 10.0
-angle_max = 260.0
-scale_amount_min = 0.45
-scale_amount_max = 0.45
-scale_amount_curve = SubResource("Curve_55jc2")
-color = Color(1, 0.8980392, 0.45490196, 0.654902)
-color_ramp = SubResource("Gradient_0tvsg")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
