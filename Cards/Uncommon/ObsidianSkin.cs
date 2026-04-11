@@ -14,7 +14,7 @@ public class ObsidianSkin() : CharTestCard(1,
     CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<ObsidianSkinPower>(3).WithTooltip("HEAT")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<ObsidianSkinPower>(4).WithTooltip("HEAT")];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
