@@ -54,5 +54,8 @@
   "STS2CHARTEST-GAIN20_HEAT.title": "Gain 20 Heat",
 
   "STS2CHARTEST-SPARK.description": "Gain {Energy:energyIcons()}.",
-  "STS2CHARTEST-SPARK.title": "Spark"
+  "STS2CHARTEST-SPARK.title": "Spark",
+
+  "STS2CHARTEST-FIRESTORM.description": "Deal {Damage:diff()} damage. Apply {EmbersPower:diff()} [gold]Embers[/gold]. [gold]Blaze[/gold] twice.\n",
+  "STS2CHARTEST-FIRESTORM.title": "Firestorm"
 }

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct6gk6lq8meqw"]
+
+[ext_resource type="PackedScene" uid="uid://d4lbiha8smb7f" path="res://scenes/sts2chartest/energy_counter_chartest.tscn" id="1_1prjw"]
+[ext_resource type="PackedScene" uid="uid://3qwh7ue2vbio" path="res://scenes/sts2chartest/heat_counter.tscn" id="2_mtbgi"]
+
+[node name="CombatUiTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="energy_counter_chartest" parent="." instance=ExtResource("1_1prjw")]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 828.0
+offset_right = 228.0
+offset_bottom = 956.0
+
+[node name="HeatCounter" parent="." instance=ExtResource("2_mtbgi")]
+layout_mode = 1

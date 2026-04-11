@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2CharTest.Actions;
 using StS2CharTest.Code.Powers;
 
 namespace StS2CharTest.Powers;
@@ -26,7 +27,7 @@ public class JustTheTipPower : CharTestPowerModel
         if (result.TotalDamage > 0)
         {
             int amountGained = (int)Mathf.Floor(result.TotalDamage / 2f);
-            await PowerCmd.Apply<HeatPower>(Owner, amountGained, Owner, null);
+            await CharTestActions.GainHeat(Owner, amountGained);
         }
     }
 

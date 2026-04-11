@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://3qwh7ue2vbio"]
+[gd_scene load_steps=10 format=3 uid="uid://3qwh7ue2vbio"]
 
 [ext_resource type="Script" uid="uid://dvf6u5ayduy2m" path="res://CustomNodes/NHeatCounter.cs" id="1_pdtmb"]
 [ext_resource type="Shader" uid="uid://cy3pkeq8uir3x" path="res://StS2CharTest/shaders/hsv.gdshader" id="2_5nrqu"]
+[ext_resource type="Texture2D" uid="uid://cq7yeqy5dth8b" path="res://images/sts2chartest/ui/heat_counter/heat_counter_dark_outline.png" id="2_47o4q"]
 [ext_resource type="Texture2D" uid="uid://b557348rluag6" path="res://images/sts2chartest/ui/heat_counter/heat_counter_main.png" id="3_pdtmb"]
 [ext_resource type="FontFile" uid="uid://gpbynlriq8xq" path="res://StS2CharTest/fonts/Kreon/static/Kreon-Bold.ttf" id="4_pdtmb"]
 [ext_resource type="Script" uid="uid://bhkye0k014f0u" path="res://CustomNodes/CustomMegaRichTextLabel.cs" id="5_6m4bt"]
@@ -9,7 +10,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wwrnu"]
 shader = ExtResource("2_5nrqu")
-shader_parameter/h = 1.0
+shader_parameter/h = 0.0
 shader_parameter/s = 1.0
 shader_parameter/v = 1.0
 
@@ -22,18 +23,30 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 160.0
-offset_top = -168.0
-offset_right = 288.0
-offset_bottom = -40.0
+offset_left = 165.0
+offset_top = -299.0
+offset_right = 293.0
+offset_bottom = -171.0
 grow_vertical = 0
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_pdtmb")
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_47o4q")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="HeatCounterVfx" parent="." instance=ExtResource("6_5nrqu")]
 unique_name_in_owner = true
-position = Vector2(63.999985, 64)
-scale = Vector2(0.99999994, 0.99999994)
+z_index = -1
+position = Vector2(63.999954, 64)
+scale = Vector2(0.9999994, 0.9999994)
 
 [node name="Icon" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_wwrnu")

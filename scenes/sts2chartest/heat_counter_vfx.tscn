@@ -1,13 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv5jvriuxpj63"]
+[gd_scene load_steps=10 format=3 uid="uid://bv5jvriuxpj63"]
 
 [ext_resource type="Script" uid="uid://c26he1h5xq5fy" path="res://CustomNodes/CharTestParticlesContainer.cs" id="1_s7bvj"]
 [ext_resource type="Texture2D" uid="uid://d1ijbpyoebx4" path="res://images/sts2chartest/ui/heat_counter/heat_counter_anim.png" id="2_i8kjl"]
+[ext_resource type="Shader" uid="uid://6cartnsx83yj" path="res://StS2CharTest/shaders/hsv_animated_sprite.gdshader" id="2_sx44n"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s7bvj"]
-particles_animation = true
-particles_anim_h_frames = 4
-particles_anim_v_frames = 2
-particles_anim_loop = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gkcd5"]
+shader = ExtResource("2_sx44n")
+shader_parameter/particles_anim_h_frames = 4
+shader_parameter/particles_anim_v_frames = 2
+shader_parameter/particles_anim_loop = true
+shader_parameter/h = 0.0
+shader_parameter/s = 1.0
+shader_parameter/v = 1.0
 
 [sub_resource type="Curve" id="Curve_sx44n"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49763036, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.729404, 0.0, 0, 0]
@@ -37,7 +41,7 @@ anim_speed_max = 1.0
 script = ExtResource("1_s7bvj")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_s7bvj")
+material = SubResource("ShaderMaterial_gkcd5")
 scale = Vector2(0.5, 0.5)
 emitting = false
 amount = 1

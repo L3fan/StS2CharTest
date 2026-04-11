@@ -6,6 +6,7 @@ using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -237,22 +238,28 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
         heatCostChanged();
     }
 
-    public async Task TriggerBlaze(bool reduceEmbers = true)
+    public async Task TriggerBlaze(int triggerAmount = 1, bool reduceEmbers = true)
     {
-        foreach (Creature hittableCreature in CombatState.HittableEnemies)
+        for (int i = 0; i < triggerAmount; i++)
         {
-            foreach (PowerModel power in hittableCreature.Powers)
+            foreach (AbstractModel iterateHookListener in CombatState.IterateHookListeners())
             {
-                MainFile.Logger.Info(power + " is Type of CharTestPower: " + (power.GetType() == typeof(CharTestPowerModel)));
-                CharTestPowerModel charTestPower = null;
-                if (power.GetType().IsSubclassOf(typeof(CharTestPowerModel)))
+                if (!iterateHookListener.GetType().IsSubclassOf(typeof(CharTestPowerModel)))
+                    continue;
+                CharTestPowerModel charTestPowerModel = iterateHookListener as CharTestPowerModel;
+                Creature owner = charTestPowerModel.Owner;
+                if (!owner.IsDead)
                 {
-                    charTestPower = (power as CharTestPowerModel);
+                    if (charTestPowerModel != null && owner.IsAlive)
+                        await charTestPowerModel.OnBlazeTriggered(reduceEmbers);
                 }
-                if (charTestPower != null)
-                    await charTestPower.OnBlazeTriggered(reduceEmbers);
             }
         }
+    }
+    
+    private IReadOnlyList<Creature> GetPossibleTargets()
+    {
+        return CombatState.GetOpponentsOf(Owner.Creature);
     }
 
     [CustomEnum]

@@ -17,6 +17,7 @@ using StS2CharTest.CustomNodes;
 
 public partial class NHeatCounter : Control
 {
+  private static readonly StringName _h = new StringName("h");
 	private static readonly StringName _v = new StringName("v");
   private static readonly StringName _s = new StringName("s");
   private Player? _player;
@@ -24,10 +25,10 @@ public partial class NHeatCounter : Control
   private Godot.Control _rotationLayers;
   private Godot.Control _icon;
   private ShaderMaterial _hsv;
-  private float _lerpingHeatCount;
   private float _velocity;
   private int _displayedHeatCount;
-  private Tween? _hsvTween;
+  private Tween? _vTween;
+  private Tween? _hTween;
   private bool _isListeningToCombatState;
   private HoverTip _hoverTip;
 
@@ -103,24 +104,32 @@ public partial class NHeatCounter : Control
     float num = HeatResource.Amount.Get(_player.PlayerCombatState) == 0 ? 5f : 30f;
     for (int idx = 0; idx < this._rotationLayers.GetChildCount(); ++idx)
       this._rotationLayers.GetChild<Godot.Control>(idx).RotationDegrees += (float) delta * num * (float) (idx + 1);
-    //this._lerpingHeatCount = MathHelper.SmoothDamp(this._lerpingHeatCount, (float) HeatResource.Amount.Get(_player.PlayerCombatState), ref this._velocity, 0.1f, (float) delta);
-    //this.SetHeatCountText(Mathf.RoundToInt(this._lerpingHeatCount));
   }
 
   private void UpdateHeatCount(int oldCount, int newCount)
   {
-    this._hsvTween?.Kill();
-    this._hsv.SetShaderParameter(_v, (Variant) 1f);
-    this._lerpingHeatCount = (float) newCount;
+    if (oldCount == 0)
+    {
+      _vTween?.Kill();
+      _hsv.SetShaderParameter(_v, (Variant)1f);
+    }
     this.SetHeatCountText(newCount);
-    if (newCount <= oldCount)
-      return;
-    this._hsvTween?.Kill();
-    this._hsvTween = this.CreateTween();
-    this._hsvTween.TweenMethod(Callable.From<float>(new Action<float>(this.UpdateShaderV)), (Variant) 2f, (Variant) 1f, 0.20000000298023224);
-    MainFile.Logger.Info("Playing Heat Gain VFX");
-    particlesContainer.Restart();
+    if (newCount > oldCount)
+    {
+      _vTween?.Kill();
+      _vTween = CreateTween();
+      _vTween.TweenMethod(Callable.From<float>(new Action<float>(this.UpdateShaderV)), (Variant)2f, (Variant)1f,
+        0.20000000298023224);
+      MainFile.Logger.Info("Playing Heat Gain VFX");
+      particlesContainer.Restart();
+    }
     
+    _hTween?.Kill();
+    _hTween = CreateTween();
+    Variant currentHue = _hsv.GetShaderParameter(_h);
+    _hTween.TweenMethod(Callable.From(new Action<float>(UpdateShaderH)), currentHue, (Variant)(newCount / 20f * 0.4f), 0.2f);
+    
+
   }
 
   private void SetHeatCountText(int heat)
@@ -145,6 +154,13 @@ public partial class NHeatCounter : Control
   private void UpdateShaderV(float value)
   {
     this._hsv.SetShaderParameter(_v, (Variant) value);
+  }
+  
+  private void UpdateShaderH(float hue)
+  {
+    this._hsv.SetShaderParameter(_h, (Variant) hue);
+
+    particlesContainer.SetHueForParticles(hue);
   }
 
   private void RefreshVisibility()
