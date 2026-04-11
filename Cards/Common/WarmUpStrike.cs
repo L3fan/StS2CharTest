@@ -16,7 +16,8 @@ public class WarmUpStrike() : CharTestCard(1,
     CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7m, ValueProp.Move), new DynamicVar("Heat", 2).WithTooltip("HEAT_COUNT")];
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7m, ValueProp.Move), new DynamicVar("Heat", 3).WithTooltip("HEAT_COUNT")];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
