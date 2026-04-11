@@ -1,8 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
 using BaseLib.Abstracts;
+using BaseLib.Patches.Content;
 using Godot;
 using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
@@ -104,4 +106,7 @@ public class CharTest : CustomCharacterModel
     public string CustomStaticHoverTipsPath => "res://StS2CharTest/localization/eng/static_hover_tips.json";
     
     public override Color EnergyLabelOutlineColor => new Color("8d5216");
+
+    [CustomEnum] 
+    public static CardTag Nails;
 }

@@ -14,7 +14,7 @@ public class NailStrike() : CharTestCard(1, CardType.Attack,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move), new RepeatVar(2)];
 
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike, CharTest.Nails];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
