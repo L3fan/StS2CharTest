@@ -10,7 +10,7 @@ namespace StS2CharTest.Cards.Common;
 
 [Pool(typeof(CharTestCardPool))]
 public class Meal() : CharTestCard(1, CardType.Skill,
-    CardRarity.Common, TargetType.Self)
+    CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Heat", 2m), new CardsVar(3)];
 
