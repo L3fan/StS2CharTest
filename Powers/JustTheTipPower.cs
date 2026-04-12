@@ -31,14 +31,8 @@ public class JustTheTipPower : CharTestPowerModel
         }
     }
 
-    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
-    {
-        if (cardPlay.Card.Type == CardType.Attack)
-            PowerCmd.Decrement(this);
-    }
-
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        PowerCmd.Remove(this);
+        PowerCmd.Decrement(this);
     }
 }

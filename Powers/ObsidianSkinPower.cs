@@ -6,11 +6,13 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2CharTest.Actions;
+using StS2CharTest.Cards;
 using StS2CharTest.Code.Powers;
 
 namespace StS2CharTest.Powers;
 
-public class ObsidianSkinPower : CharTestPowerModel, HeatPower.IHeatChangeActor
+public class ObsidianSkinPower : CharTestPowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -20,11 +22,7 @@ public class ObsidianSkinPower : CharTestPowerModel, HeatPower.IHeatChangeActor
         if(side != Owner.Side)
             return;
 
-        HeatPower heatPower = Owner.GetPower<HeatPower>();
-        if (heatPower == null)
-            return;
-
-        await PowerCmd.Decrement(heatPower);
+        await CharTestActions.SpendHeat(Owner, 1);
     }
 
     public async Task OnHeatChanged(int change)

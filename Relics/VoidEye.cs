@@ -32,11 +32,11 @@ public class VoidEye() : CustomRelicModel
     }
 
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<HeatPower>(3).WithTooltip("HEAT")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Heat", 5).WithTooltip("HEAT")];
 
     public override async Task BeforeCombatStartLate()
     {
         Flash();
-        await CharTestActions.GainHeat(Owner.Creature, DynamicVars["HeatPower"].IntValue);
+        await CharTestActions.GainHeat(Owner.Creature, DynamicVars["Heat"].IntValue);
     }
 }

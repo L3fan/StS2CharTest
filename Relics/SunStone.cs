@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using StS2CharTest.Actions;
 using StS2CharTest.Code.Character;
 using StS2CharTest.Code.Powers;
 
@@ -23,20 +24,20 @@ public class SunStone() : CustomRelicModel
 
     protected override string PackedIconOutlinePath => "res://images/sts2chartest/relics/outline/SunStone.png";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<HeatPower>(3).WithTooltip("HEAT")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Heat", 10).WithTooltip("HEAT")];
 
     public override async Task BeforeCombatStartLate()
     {
         Flash();
-        await PowerCmd.Apply<HeatPower>(Owner.Creature, DynamicVars["Heat"].IntValue, Owner.Creature, null);
+        await CharTestActions.GainHeat(Owner.Creature, DynamicVars["Heat"].IntValue);
     }
 
     public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
     {
-        if (Owner.Creature.Side != side || Owner.Creature.CombatState.RoundNumber == 1)
+        /*if (Owner.Creature.Side != side || Owner.Creature.CombatState.RoundNumber == 1)
             return;
         Flash();
-        await PowerCmd.Apply<HeatPower>(Owner.Creature, 1, Owner.Creature, null);
+        await PowerCmd.Apply<HeatPower>(Owner.Creature, 1, Owner.Creature, null);*/
     }
 
     

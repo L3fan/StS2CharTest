@@ -1,18 +1,14 @@
 ﻿{
-  "STS2CHARTEST-HEAT_POWER.description": "At [blue]20[/blue] [gold]Heat[/gold], gain 1 [gold]Overheat[/gold] and lose all [gold]Heat[/gold].",
-  "STS2CHARTEST-HEAT_POWER.smartDescription": "At [blue]{MaxStack:diff()}[/blue] [gold]Heat[/gold], gain 1 [gold]Overheat[/gold] and lose all [gold]Heat[/gold]",
-  "STS2CHARTEST-HEAT_POWER.title": "Heat",
-
   "STS2CHARTEST-OVERHEAT_POWER.description": "Gain one of two powerful effects this combat.",
   "STS2CHARTEST-OVERHEAT_POWER.smartDescription": "Gain one of two powerful effects for this combat.",
   "STS2CHARTEST-OVERHEAT_POWER.title": "Overheat",
   
   "STS2CHARTEST-EMBERS_POWER.description": "Creatures with Embers take damage equal to the stack when [gold]Blaze[/gold] is triggered and then lose half the stack.",
-  "STS2CHARTEST-EMBERS_POWER.smartDescription": "Upon triggering [gold]Blaze[/gold] takes [blue]{Amount}[/blue] damage, then reduce [gold]Blaze[/gold] by half (rounded up).",
+  "STS2CHARTEST-EMBERS_POWER.smartDescription": "At end of the {OnPlayer:player|enemy} turn takes [blue]{Amount}[/blue] damage and is then reduced by half (rounded up).",
   "STS2CHARTEST-EMBERS_POWER.title": "Embers",
 
-  "STS2CHARTEST-JUST_THE_TIP_POWER.description": "For the first Attack played each turn, gain Heat equal to half the damage dealt.",
-  "STS2CHARTEST-JUST_THE_TIP_POWER.smartDescription": "For the next {Amount:cond:>1?[blue]{}[/blue] Attacks|Attack} played, gain [gold]Heat[/gold] equal to half the damage dealt.",
+  "STS2CHARTEST-JUST_THE_TIP_POWER.description": "For the turn gain Heat equal to half of any attack damage dealt.",
+  "STS2CHARTEST-JUST_THE_TIP_POWER.smartDescription": "For {Amount:cond:>1?the next [blue]{}[/blue] turns|this turn}, gain [gold]Heat[/gold] equal to half of any attack damage dealt.",
   "STS2CHARTEST-JUST_THE_TIP_POWER.title": "Just The Tip",
 
   "STS2CHARTEST-MELTING_POINT_POWER.description": "Target takes double damage from [gold]Embers[/gold].",

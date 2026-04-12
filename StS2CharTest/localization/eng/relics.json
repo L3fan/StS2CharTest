@@ -1,9 +1,9 @@
 ﻿{
-  "STS2CHARTEST-VOID_EYE.description": "Gain [blue]3[/blue] [gold]Heat[/gold] at the start of combat.",
+  "STS2CHARTEST-VOID_EYE.description": "Gain [blue]{Heat:diff()}[/blue] [gold]Heat[/gold] at the start of combat.",
   "STS2CHARTEST-VOID_EYE.flavor": "'How is the void giving her heat? Isn't the void cold?' - Norgna",
   "STS2CHARTEST-VOID_EYE.title": "Void Eye",
 
-  "STS2CHARTEST-SUN_STONE.description": "Gain [blue]3[/blue] [gold]Heat[/gold] at the start of combat. Gain [blue]1[/blue] [gold]Heat[/gold] on each turn after the first one.",
+  "STS2CHARTEST-SUN_STONE.description": "Gain [blue]{Heat:diff()}[/blue] [gold]Heat[/gold] at the start of combat.",
   "STS2CHARTEST-SUN_STONE.flavor": "Take that, Norgna.",
   "STS2CHARTEST-SUN_STONE.title": "Sun Stone"
 }

@@ -1,8 +1,8 @@
 ﻿{
-  "BLAZE.description": "Triggers [gold]Embers[/gold] on EVERYONE.",
+  "BLAZE.description": "Triggers [gold]Embers[/gold] on EVERYONE without reducing its count.",
   "BLAZE.title": "Blaze",
 
-  "EMBERS.description": "Afflicted creatures take damage and lose half of their stack when [gold]Blaze[/gold] is triggered.",
+  "EMBERS.description": "Afflicted creatures take damage and lose half of their stack at the end of their turn.",
   "EMBERS.title": "Embers",
 
   "HEAT_COUNT.description": "Can collect up to 20 Heat. Reduced by certain cards. At 20 Heat gain 1 [gold]Overheat[/gold].",
