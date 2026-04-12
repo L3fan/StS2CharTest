@@ -1,4 +1,5 @@
 ﻿using BaseLib.Utils;
+using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -29,7 +30,7 @@ public static class CharTestActions
         heatChanged.Invoke((int)currentHeat, (int)setToAmount);
 
         CombatState combatState = target.CombatState;
-        if (target.CombatState == null)
+        if (combatState == null)
             return;
         foreach (AbstractModel model in combatState.IterateHookListeners())
         {
@@ -39,5 +40,18 @@ public static class CharTestActions
                 await charTestModel.AfterHeatGained((int)amount, player);
             }
         }
+    }
+
+    public static async Task SpendHeat(Creature target, decimal amount)
+    {
+        if (!target.IsPlayer || amount <= 0)
+            return;
+        Player player = target.Player;
+        decimal currentHeat = HeatResource.Amount.Get(player.PlayerCombatState);
+        decimal setToAmount = (decimal)Mathf.Max((float)(currentHeat - amount), 0);
+        
+        HeatResource.Amount.Set(player.PlayerCombatState, setToAmount);
+        Action<int, int> heatChanged = HeatResource.HeatChanged.Get(player.PlayerCombatState);
+        heatChanged.Invoke((int)currentHeat, (int)setToAmount);
     }
 }

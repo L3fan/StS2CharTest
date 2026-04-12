@@ -14,7 +14,7 @@ public class Cauterize() : CharTestCard(1, CardType.Attack,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => 
     [
-        new PowerVar<EmbersPower>(6m).WithTooltip("EMBERS"), 
+        new PowerVar<EmbersPower>(5m).WithTooltip("EMBERS"), 
         new DynamicVar("Blaze", 1).WithTooltip("BLAZE")
     ];
 

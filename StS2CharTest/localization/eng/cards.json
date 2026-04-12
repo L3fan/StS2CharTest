@@ -29,7 +29,7 @@
   "STS2CHARTEST-HEATWAVE.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold] to ALL enemies.\n[gold]Blaze[/gold].",
   "STS2CHARTEST-HEATWAVE.title": "Heatwave",
 
-  "STS2CHARTEST-NAIL_STRIKE.description": "Deal {Damage:diff()} damage twice.",
+  "STS2CHARTEST-NAIL_STRIKE.description": "Deal {Damage:diff()} damage {Repeat:cond:<3?twice|three times}.",
   "STS2CHARTEST-NAIL_STRIKE.title": "Nail Strike",
 
   "STS2CHARTEST-MEAL.description": "Gain {Heat:diff()} [gold]Heat[/gold].\nDraw {Cards:diff()} cards.",
@@ -56,6 +56,6 @@
   "STS2CHARTEST-SPARK.description": "Gain {Energy:energyIcons()}.",
   "STS2CHARTEST-SPARK.title": "Spark",
 
-  "STS2CHARTEST-FIRESTORM.description": "Deal {Damage:diff()} damage. Apply {EmbersPower:diff()} [gold]Embers[/gold]. [gold]Blaze[/gold] twice.\n",
+  "STS2CHARTEST-FIRESTORM.description": "Deal {Damage:diff()} damage.\nApply {EmbersPower:diff()} [gold]Embers[/gold].\n[gold]Blaze[/gold]{Blaze:cond:>1? twice|}.",
   "STS2CHARTEST-FIRESTORM.title": "Firestorm"
 }

@@ -17,7 +17,7 @@ namespace StS2CharTest.Cards.Rare;
 public class Firestorm() : CharTestCard(3, CardType.Attack,
     CardRarity.Rare, TargetType.AllEnemies)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(16m, ValueProp.Move), new PowerVar<EmbersPower>(16), new DynamicVar("Blaze", 2)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(16m, ValueProp.Move), new PowerVar<EmbersPower>(8), new DynamicVar("Blaze", 1)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -34,7 +34,7 @@ public class Firestorm() : CharTestCard(3, CardType.Attack,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(6);
-        DynamicVars["Blaze"].UpgradeValueBy(6);
+        DynamicVars.Damage.UpgradeValueBy(4);
+        DynamicVars["Blaze"].UpgradeValueBy(1);
     }
 }

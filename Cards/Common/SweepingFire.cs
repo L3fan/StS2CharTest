@@ -35,6 +35,6 @@ public class SweepingFire() : CharTestCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["EmbersPower"].UpgradeValueBy(3m);
+        DynamicVars["EmbersPower"].UpgradeValueBy(4m);
     }
 }

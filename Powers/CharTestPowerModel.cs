@@ -10,7 +10,7 @@ public abstract class CharTestPowerModel : CustomPowerModel, CharTestModel
     public override string CustomPackedIconPath => "res://images/sts2chartest/powers/" + Id.Entry.RemovePrefix().ToLowerInvariant() + ".png";
     public override string CustomBigIconPath => "res://images/sts2chartest/powers/big/" + Id.Entry.RemovePrefix().ToLowerInvariant() + ".png";
 
-    public virtual Task OnBlazeTriggered(bool reduceEmbers = true)
+    public virtual Task OnBlazeTriggered()
     {
         return Task.CompletedTask;
     }

@@ -15,7 +15,7 @@ namespace StS2CharTest.Cards.Uncommon;
 public class Heatwave() : CharTestCard(2, CardType.Skill,
     CardRarity.Common, TargetType.AllEnemies)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<EmbersPower>(8m).WithTooltip("EMBERS"), new BoolVar("empty", false).WithTooltip("BLAZE")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<EmbersPower>(5m).WithTooltip("EMBERS"), new BoolVar("empty", false).WithTooltip("BLAZE")];
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
@@ -27,6 +27,6 @@ public class Heatwave() : CharTestCard(2, CardType.Skill,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["EmbersPower"].UpgradeValueBy(4m);
+        DynamicVars["EmbersPower"].UpgradeValueBy(3m);
     }
 }

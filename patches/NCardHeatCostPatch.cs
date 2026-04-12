@@ -18,14 +18,14 @@ internal class NCardHeatCostPatch
     {
         TextureRect heatIcon = __instance.GetNode<TextureRect>((NodePath) "%StarIcon").Duplicate() as TextureRect;
         heatIcon.Name = "HeatIcon";
-        heatIcon.Texture = PreloadManager.Cache.GetTexture2D("res://images/sts2chartest/powers/heat_power.png");
+        heatIcon.Texture = PreloadManager.Cache.GetTexture2D("res://images/sts2chartest/ui/heat_counter_bg.png");
         HeatResource.heatCostIcon.Set(__instance, heatIcon);
         
         MegaLabel heatLabel = heatIcon.GetChild<MegaLabel>(0);
         heatLabel.Name = "HeatLabel";
         HeatResource.heatCostLabel.Set(__instance, heatLabel);
         
-        __instance.AddChildSafely(heatIcon);
+        __instance.GetNode((NodePath)"%CardContainer").AddChildSafely(heatIcon);
     }
 }
 

@@ -25,6 +25,6 @@ public class NailStrike() : CharTestCard(1, CardType.Attack,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Repeat.UpgradeValueBy(2m);
+        DynamicVars.Repeat.UpgradeValueBy(1m);
     }
 }

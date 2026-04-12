@@ -251,7 +251,7 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
                 if (!owner.IsDead)
                 {
                     if (charTestPowerModel != null && owner.IsAlive)
-                        await charTestPowerModel.OnBlazeTriggered(reduceEmbers);
+                        await charTestPowerModel.OnBlazeTriggered();
                 }
             }
         }
