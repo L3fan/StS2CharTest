@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://d4lbiha8smb7f"]
 
 [ext_resource type="Script" uid="uid://bajqnl0rkp2kn" path="res://CustomNodes/CustomEnergyCounter.cs" id="1_0xqb4"]
-[ext_resource type="PackedScene" uid="uid://c7qs5dhfs0hhy" path="res://scenes/sts2chartest/chartest_energy_vfx_back.tscn" id="2_gor37"]
+[ext_resource type="PackedScene" uid="uid://c7qs5dhfs0hhy" path="res://scenes/vfx/energy/chartest_energy_vfx_back.tscn" id="2_gor37"]
 [ext_resource type="Texture2D" uid="uid://ct74rh60gfksl" path="res://images/sts2chartest/ui/energy_counter/layer1.png" id="4_nbv03"]
 [ext_resource type="Texture2D" uid="uid://bac2u5sp3b136" path="res://images/sts2chartest/ui/energy_counter/layer2.png" id="5_t1758"]
 [ext_resource type="Texture2D" uid="uid://do2ba68a7iln6" path="res://images/sts2chartest/ui/energy_counter/layer3.png" id="6_anx34"]
-[ext_resource type="PackedScene" uid="uid://dn84p13ovofbs" path="res://scenes/sts2chartest/chartest_energy_vfx_front.tscn" id="7_anx34"]
+[ext_resource type="PackedScene" uid="uid://bspcjh8848ybs" path="res://scenes/vfx/energy/chartest_energy_vfx_front.tscn" id="7_gor37"]
 [ext_resource type="Texture2D" uid="uid://dra7ah01yo8d8" path="res://images/sts2chartest/ui/energy_counter/layer4.png" id="7_vrwda"]
 [ext_resource type="FontVariation" uid="uid://bg85h22rkxs6g" path="res://StS2CharTest/fonts/Kreon/custom_kreon_bold_shared.tres" id="10_7ixla"]
 [ext_resource type="Script" uid="uid://bxac2vmsu7bno" path="res://CustomNodes/CustomMegaLabel.cs" id="11_uw5qo"]
@@ -28,6 +28,7 @@ script = ExtResource("1_0xqb4")
 
 [node name="EnergyVfxBack" parent="." instance=ExtResource("2_gor37")]
 unique_name_in_owner = true
+position = Vector2(64, 64)
 
 [node name="Layers" type="Control" parent="."]
 unique_name_in_owner = true
@@ -101,8 +102,9 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_lock_ = true
 
-[node name="EnergyVfxFront" parent="." instance=ExtResource("7_anx34")]
+[node name="EnergyVfxFront" parent="." instance=ExtResource("7_gor37")]
 unique_name_in_owner = true
+position = Vector2(64, 64)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

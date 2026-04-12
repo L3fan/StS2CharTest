@@ -13,11 +13,16 @@ public partial class CustomParticlesContainer : NParticlesContainer
     public override void _Ready()
     {
         Array<GpuParticles2D> particles = new Array<GpuParticles2D>();
+        MainFile.Logger.Info("Children Count: " + GetChildren().Count);
         foreach (Node child in GetChildren())
         {
-            if(child is GpuParticles2D)
+            MainFile.Logger.Info("Checking if " + child.Name + " is GpuParticles2D...");
+            if (child.GetType() == typeof(GpuParticles2D))
+            {
                 particles.Add(child as GpuParticles2D);
+            }
         }
         ParticlesField?.SetValue(this, particles);
+        MainFile.Logger.Info("Particles amount: " + ParticlesField?.GetValue(this));
     }
 }
