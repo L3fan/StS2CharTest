@@ -20,7 +20,7 @@ public class Gain20Heat() : CharTestCard(0, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CharTestActions.GainHeat(Owner.Creature, 20);
+        await CharTestActions.GainHeat(Owner, 20);
     }
 
     protected override void OnUpgrade()

@@ -12,12 +12,11 @@ public class MeltingPointPower : CharTestPowerModel
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
     {
         if (side != Owner.Side)
         {
             PowerCmd.Decrement(this);
         }
-        
     }
 }

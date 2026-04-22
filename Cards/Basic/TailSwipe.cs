@@ -26,7 +26,7 @@ public class TailSwipe() : CharTestCard(1, CardType.Attack,
     [
         new CalculationBaseVar(0m), 
         new ExtraDamageVar(1m), 
-        new PowerVar<EmbersPower>(embersInfliction).WithTooltip("EMBERS"), 
+        new EmbersVar(embersInfliction), 
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? target) => (target?.GetPowerAmount<EmbersPower>() ?? 0) + (target != null ? (target.GetPowerAmount<ArtifactPower>() > 0 ? 0 : (card as TailSwipe).embersInfliction) : 0))
     ];
 

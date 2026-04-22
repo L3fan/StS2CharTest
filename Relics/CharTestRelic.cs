@@ -6,5 +6,8 @@ namespace StS2CharTest.Code.Relics;
 
 public abstract class CharTestRelic : CustomRelicModel, CharTestModel
 {
-    
+    public virtual Task OnBlaze()
+    {
+        return Task.CompletedTask;
+    }
 }

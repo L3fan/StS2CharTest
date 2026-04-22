@@ -15,14 +15,14 @@ namespace StS2CharTest.Cards.Uncommon;
 public class Heatwave() : CharTestCard(2, CardType.Skill,
     CardRarity.Common, TargetType.AllEnemies)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<EmbersPower>(5m).WithTooltip("EMBERS"), new BoolVar("empty", false).WithTooltip("BLAZE")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new EmbersVar(5m), new BlazeVar(1)];
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
         foreach (Creature enemy in CombatState.HittableEnemies)
             await CommonActions.Apply<EmbersPower>(enemy, this, DynamicVars["EmbersPower"].IntValue);
-        await TriggerBlaze();
+        await Blaze(Owner);
     }
 
     protected override void OnUpgrade()

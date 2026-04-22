@@ -1,7 +1,10 @@
-﻿using BaseLib.Utils;
+﻿using BaseLib.Extensions;
+using BaseLib.Utils;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using StS2CharTest.Cards.Status;
 using StS2CharTest.Code.Character;
 using StS2CharTest.Code.Powers;
 using StS2CharTest.Powers;
@@ -15,7 +18,9 @@ public class BurnItDown() : OverheatCard(), OverheatPower.IChoosable
     
     public override bool CanBeGeneratedInCombat => false;
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<BurnItDownPower>(9)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<BurnItDownPower>(1).WithTooltip("CONSUMPTION")];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<Consume>()];
 
     public async Task OnChosen()
     {

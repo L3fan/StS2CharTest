@@ -9,7 +9,7 @@ using StS2CharTest.Code.Character;
 namespace StS2CharTest.Cards.Common;
 
 [Pool(typeof(CharTestCardPool))]
-public class NailStrike() : CharTestCard(1, CardType.Attack,
+public class NailsStrike() : CharTestCard(1, CardType.Attack,
     CardRarity.Common, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move), new RepeatVar(2)];

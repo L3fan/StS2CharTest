@@ -14,8 +14,8 @@ public class Cauterize() : CharTestCard(1, CardType.Attack,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => 
     [
-        new PowerVar<EmbersPower>(5m).WithTooltip("EMBERS"), 
-        new DynamicVar("Blaze", 1).WithTooltip("BLAZE")
+        new EmbersVar(5m), 
+        new BlazeVar(1)
     ];
 
     protected override async Task OnPlay(
@@ -23,7 +23,7 @@ public class Cauterize() : CharTestCard(1, CardType.Attack,
         CardPlay play)
     {
         await CommonActions.Apply<EmbersPower>(play.Target, this, DynamicVars["EmbersPower"].IntValue);
-        await TriggerBlaze();
+        await Blaze(Owner);
     }
 
     protected override void OnUpgrade()

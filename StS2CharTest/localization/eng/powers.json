@@ -25,5 +25,9 @@
 
   "STS2CHARTEST-FLYING_POWER.description": "Take [gold]50%[/gold] less damage from attacks.",
   "STS2CHARTEST-FLYING_POWER.smartDescription": "Take [gold]50%[/gold] less damage from attacks for {Amount:plural:this turn|the next {} turns}.",
-  "STS2CHARTEST-FLYING_POWER.title": "Flying"
+  "STS2CHARTEST-FLYING_POWER.title": "Flying",
+  
+  "STS2CHARTEST-CONSUMPTION_POWER.description": "When at [blue]2[/blue] [gold]Consumption[/gold] gain [blue]1[/blue] [gold]Energy[/gold] and draw a card, then lose 2 [gold]Consumption[/gold].",
+  "STS2CHARTEST-CONSUMPTION_POWER.smartDescription": "When at {MaxStack:diff()} [gold]Consumption[/gold] gain {energyPrefix:energyIcons(1)} and draw a card, then lose {MaxStack:diff()} [gold]Consumption[/gold].",
+  "STS2CHARTEST-CONSUMPTION_POWER.title": "Consumption"
 }

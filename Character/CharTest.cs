@@ -2,19 +2,11 @@
 using BaseLib.Abstracts;
 using BaseLib.Patches.Content;
 using Godot;
-using MegaCrit.Sts2.Core.Animation;
-using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Characters;
-using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Characters;
-using MegaCrit.Sts2.Core.Nodes.Combat;
-using MegaCrit.Sts2.Core.Nodes.Rooms;
 using StS2CharTest.Code.Cards;
 using StS2CharTest.Code.Relics;
-using StS2CharTest.CustomNodes;
 
 namespace StS2CharTest.Code.Character;
 

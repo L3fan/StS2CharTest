@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwduf8rim74l4"
-path="res://.godot/imported/nail_strike.png-6046fcdc8d34a728cd0d1e851ce02101.ctex"
+uid="uid://c15fqeccnxqp2"
+path="res://.godot/imported/cast_into_fire.png-f7af0cdcb58fa678ef244580249b8a6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/packed/card_portraits/big/nail_strike.png"
-dest_files=["res://.godot/imported/nail_strike.png-6046fcdc8d34a728cd0d1e851ce02101.ctex"]
+source_file="res://images/packed/card_portraits/big/cast_into_fire.png"
+dest_files=["res://.godot/imported/cast_into_fire.png-f7af0cdcb58fa678ef244580249b8a6e.ctex"]
 
 [params]
 

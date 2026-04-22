@@ -29,8 +29,8 @@
   "STS2CHARTEST-HEATWAVE.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold] to ALL enemies.\n[gold]Blaze[/gold].",
   "STS2CHARTEST-HEATWAVE.title": "Heatwave",
 
-  "STS2CHARTEST-NAIL_STRIKE.description": "Deal {Damage:diff()} damage {Repeat:cond:<3?twice|three times}.",
-  "STS2CHARTEST-NAIL_STRIKE.title": "Nail Strike",
+  "STS2CHARTEST-NAILS_STRIKE.description": "Deal {Damage:diff()} damage {Repeat:cond:<3?twice|three times}.",
+  "STS2CHARTEST-NAILS_STRIKE.title": "Nails Strike",
 
   "STS2CHARTEST-MEAL.description": "Gain {Heat:diff()} [gold]Heat[/gold].\nDraw {Cards:diff()} cards.",
   "STS2CHARTEST-MEAL.title": "Meal",
@@ -47,7 +47,7 @@
   "STS2CHARTEST-BURNING_WINGS.description": "Gain [gold]Flying[/gold] for 3 turns.",
   "STS2CHARTEST-BURNING_WINGS.title": "Burning Wings",
 
-  "STS2CHARTEST-BURN_IT_DOWN.description": "Whenever a Status card is added to your hand, exhaust it, draw 1 card and deal {BurnItDownPower:diff()} damage to a random enemy.",
+  "STS2CHARTEST-BURN_IT_DOWN.description": "Whenever you draw a Status, transform it into a [gold]Consume[/gold].",
   "STS2CHARTEST-BURN_IT_DOWN.title": "Burn It Down",
   
   "STS2CHARTEST-GAIN20_HEAT.description": "Take a fucking guess.",
@@ -57,5 +57,12 @@
   "STS2CHARTEST-SPARK.title": "Spark",
 
   "STS2CHARTEST-FIRESTORM.description": "Deal {Damage:diff()} damage.\nApply {EmbersPower:diff()} [gold]Embers[/gold].\n[gold]Blaze[/gold]{Blaze:cond:>1? twice|}.",
-  "STS2CHARTEST-FIRESTORM.title": "Firestorm"
+  "STS2CHARTEST-FIRESTORM.title": "Firestorm",
+
+  "STS2CHARTEST-CAST_INTO_FIRE.selectionScreenPrompt": "Choose up to {Exhaustive:diff()} cards to [gold]Exhaust[/gold].",
+  "STS2CHARTEST-CAST_INTO_FIRE.description": "Exhaust up to {Exhaustive:diff()} cards.\nGain 1 [gold]Heat[/gold] and draw a card for each card exhausted.",
+  "STS2CHARTEST-CAST_INTO_FIRE.title": "Cast Into Fire",
+  
+  "STS2CHARTEST-CONSUME.description": "Gain {ConsumptionPower:diff()} [gold]Consumption[/gold].",
+  "STS2CHARTEST-CONSUME.title": "Consume"
 }

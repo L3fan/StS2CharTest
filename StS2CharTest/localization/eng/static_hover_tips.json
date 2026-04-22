@@ -12,5 +12,8 @@
   "OVERHEAT.title": "Overheat",
   
   "FLYING.description": "Take [gold]50%[/gold] less damage from attacks.",
-  "FLYING.title": "Flying"
+  "FLYING.title": "Flying",
+  
+  "CONSUMPTION.description": "When at [blue]2[/blue] [gold]Consumption[/gold] gain [blue]1[/blue] [gold]Energy[/gold] and draw a card, then lose [blue]2[/blue] [gold]Consumption[/gold].",
+  "CONSUMPTION.title": "Consumption"
 }

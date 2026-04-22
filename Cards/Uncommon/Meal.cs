@@ -18,7 +18,7 @@ public class Meal() : CharTestCard(1, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CharTestActions.GainHeat(Owner.Creature, DynamicVars["Heat"].IntValue);
+        await CharTestActions.GainHeat(Owner, DynamicVars["Heat"].IntValue);
         await CommonActions.Draw(this, choiceContext);
     }
 

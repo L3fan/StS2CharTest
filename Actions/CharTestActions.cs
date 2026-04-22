@@ -11,25 +11,31 @@ namespace StS2CharTest.Actions;
 
 public static class CharTestActions
 {
-    public static async Task GainHeat(Creature target, decimal amount)
+    public static async Task GainHeat(Creature target, int amount)
     {
-        if (!target.IsPlayer || amount <= 0)
+        if (!target.IsPlayer)
             return;
-        Player player = target.Player;
+        await GainHeat(target.Player, amount);
+    }
+    public static async Task GainHeat(Player target, decimal amount)
+    {
+        if (amount <= 0)
+            return;
+        Player player = target;
         decimal currentHeat = HeatResource.Amount.Get(player.PlayerCombatState);
         decimal setToAmount = currentHeat + amount;
 
         if (currentHeat + amount > HeatResource.MaxAmount.Get(player.PlayerCombatState))
         {
             setToAmount -= HeatResource.MaxAmount.Get(player.PlayerCombatState);
-            await CommonActions.Apply<OverheatPower>(target, null, 1);
+            await CommonActions.Apply<OverheatPower>(player.Creature, null, 1);
         }
         
         HeatResource.Amount.Set(player.PlayerCombatState, setToAmount);
         Action<int, int> heatChanged = HeatResource.HeatChanged.Get(player.PlayerCombatState);
         heatChanged.Invoke((int)currentHeat, (int)setToAmount);
 
-        CombatState combatState = target.CombatState;
+        CombatState combatState = target.Creature.CombatState;
         if (combatState == null)
             return;
         foreach (AbstractModel model in combatState.IterateHookListeners())

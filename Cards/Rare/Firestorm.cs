@@ -29,7 +29,7 @@ public class Firestorm() : CharTestCard(3, CardType.Attack,
             await CommonActions.Apply<EmbersPower>(enemy, this, DynamicVars["EmbersPower"].IntValue);
         }
 
-        await TriggerBlaze(DynamicVars["Blaze"].IntValue);
+        await Blaze(Owner, DynamicVars["Blaze"].IntValue);
     }
 
     protected override void OnUpgrade()

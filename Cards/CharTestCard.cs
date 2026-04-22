@@ -237,21 +237,34 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
             return;
         heatCostChanged();
     }
+    
+    
+    public async Task Blaze(Player source, int triggerAmount = 1, bool reduceEmbers = false)
+    {
+        await TriggerEmbers(source.Creature, triggerAmount, reduceEmbers, true);
+    }
 
-    public async Task TriggerBlaze(int triggerAmount = 1, bool reduceEmbers = true)
+    public async Task Blaze(Creature source, int triggerAmount = 1, bool reduceEmbers = false)
+    {
+        await TriggerEmbers(source, triggerAmount, reduceEmbers, true);
+    }
+
+    public async Task TriggerEmbers(Creature source, int triggerAmount = 1, bool reduceEmbers = true, bool isBlaze = false)
     {
         for (int i = 0; i < triggerAmount; i++)
         {
             foreach (AbstractModel iterateHookListener in CombatState.IterateHookListeners())
             {
-                if (!iterateHookListener.GetType().IsSubclassOf(typeof(CharTestPowerModel)))
+                if (!iterateHookListener.GetType().IsSubclassOf(typeof(EmbersPower)))
                     continue;
-                CharTestPowerModel charTestPowerModel = iterateHookListener as CharTestPowerModel;
-                Creature owner = charTestPowerModel.Owner;
+                EmbersPower embers = iterateHookListener as EmbersPower;
+                Creature owner = embers.Owner;
                 if (!owner.IsDead)
                 {
-                    if (charTestPowerModel != null && owner.IsAlive)
-                        await charTestPowerModel.OnBlazeTriggered();
+                    if (owner.IsAlive)
+                    {
+                        await embers.TriggerDamage(source);
+                    }
                 }
             }
         }

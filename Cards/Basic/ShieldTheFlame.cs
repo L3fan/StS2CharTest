@@ -18,13 +18,13 @@ public class ShieldTheFlame() : CharTestCard(1,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new BlockVar(7m, ValueProp.Move), new DynamicVar("Heat", 2m).WithTooltip("HEAT_COUNT")];
+        [new BlockVar(7m, ValueProp.Move), new HeatVar(2m)];
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await CharTestActions.GainHeat(Owner.Creature, DynamicVars["Heat"].IntValue);
+        await CharTestActions.GainHeat(Owner, DynamicVars["Heat"].IntValue);
     }
 
     protected override void OnUpgrade()

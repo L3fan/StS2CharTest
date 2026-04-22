@@ -15,7 +15,7 @@ public class DancingFlame() : CharTestCard(1,
     CardType.Skill, CardRarity.Common,
     TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<EmbersPower>(8m).WithTooltip("EMBERS")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new EmbersVar(8m)];
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

@@ -5,12 +5,14 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2CharTest.Code.Relics;
 
 namespace StS2CharTest.Powers;
 
@@ -19,15 +21,11 @@ public class EmbersPower : CharTestPowerModel
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
     public decimal multiplier = 1m;
-    
-    public override async Task OnBlazeTriggered()
-    {
-        DealDamage(false);
-    }
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        await DealDamage();
+        if(side == Owner.Side)
+            await DealDamage();
     }
 
     public async Task DealDamage(bool reduceEmbers = true)
@@ -46,5 +44,35 @@ public class EmbersPower : CharTestPowerModel
             multiplier = 2m;
         bool hasArtifact = Owner.HasPower<ArtifactPower>();
         return (int)(hasArtifact ? 1 : Amount * multiplier);
+    }
+
+    public async Task TriggerDamage(Creature source)
+    {
+        await DealDamage(false);
+
+        await TriggerOnBlaze(source);
+    }
+
+    public async Task TriggerOnBlaze(Creature source)
+    {
+        foreach (AbstractModel iterateHookListener in CombatState.IterateHookListeners())
+        {
+            if (iterateHookListener.GetType().IsSubclassOf(typeof(CharTestPowerModel)))
+            {
+                CharTestPowerModel power = iterateHookListener as CharTestPowerModel;
+                if (power.Owner == source)
+                    await power.OnBlaze();
+            }
+
+            if (!source.IsPlayer)
+                return;
+            Player player = source.Player;
+            if (iterateHookListener.GetType().IsSubclassOf(typeof(CharTestRelic)))
+            {
+                CharTestRelic relic = iterateHookListener as CharTestRelic;
+                if (relic.Owner == player)
+                    await relic.OnBlaze();
+            }
+        }
     }
 }

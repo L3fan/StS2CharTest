@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dorqxuk6jeqj"
-path="res://.godot/imported/nail_strike.png-d12d7dffaef2899eca08926a42a214a5.ctex"
+uid="uid://dwduf8rim74l4"
+path="res://.godot/imported/nails_strike.png-529866b896b0e57ca6396fce0d2eb1fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/packed/card_portraits/nail_strike.png"
-dest_files=["res://.godot/imported/nail_strike.png-d12d7dffaef2899eca08926a42a214a5.ctex"]
+source_file="res://images/packed/card_portraits/big/nails_strike.png"
+dest_files=["res://.godot/imported/nails_strike.png-529866b896b0e57ca6396fce0d2eb1fd.ctex"]
 
 [params]
 

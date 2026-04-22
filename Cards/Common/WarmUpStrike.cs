@@ -24,7 +24,7 @@ public class WarmUpStrike() : CharTestCard(1,
         CardPlay play)
     {
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
-        await CharTestActions.GainHeat(Owner.Creature, DynamicVars["Heat"].IntValue);
+        await CharTestActions.GainHeat(Owner, DynamicVars["Heat"].IntValue);
     }
 
     protected override void OnUpgrade()
