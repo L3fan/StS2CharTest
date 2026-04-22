@@ -17,7 +17,7 @@ public class BurningWings() : OverheatCard(), OverheatPower.IChoosable
     
     public override bool CanBeGeneratedInCombat => false;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<FlyingPower>(1).WithTooltip("FLYING")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<FlyingPower>(3).WithTooltip("FLYING")];
 
     public async Task OnChosen()
     {
