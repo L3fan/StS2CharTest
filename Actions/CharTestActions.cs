@@ -35,7 +35,7 @@ public static class CharTestActions
         Action<int, int> heatChanged = HeatResource.HeatChanged.Get(player.PlayerCombatState);
         heatChanged.Invoke((int)currentHeat, (int)setToAmount);
 
-        CombatState combatState = target.Creature.CombatState;
+        ICombatState combatState = target.Creature.CombatState;
         if (combatState == null)
             return;
         foreach (AbstractModel model in combatState.IterateHookListeners())

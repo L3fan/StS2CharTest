@@ -108,7 +108,7 @@ public static class NCardHeatCostVisuals
 
     private static bool TryModifyHeatCostWithHooks(
         CardModel card,
-        CombatState state,
+        ICombatState state,
         out Decimal hookModifiedCost)
     {
         hookModifiedCost = 0;
@@ -129,7 +129,7 @@ public static class NCardHeatCostVisuals
     }
     
     
-    public static CardCostColor GetHeatCostColor(CardModel card, CombatState? state)
+    public static CardCostColor GetHeatCostColor(CardModel card, ICombatState state)
     {
         if (!card.GetType().IsSubclassOf(typeof(CharTestCard)))
             return CardCostColor.Unmodified;

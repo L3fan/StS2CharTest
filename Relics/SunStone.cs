@@ -32,7 +32,7 @@ public class SunStone() : CustomRelicModel
         await CharTestActions.GainHeat(Owner, DynamicVars["Heat"].IntValue);
     }
 
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)
     {
         /*if (Owner.Creature.Side != side || Owner.Creature.CombatState.RoundNumber == 1)
             return;

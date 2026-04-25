@@ -32,7 +32,7 @@ public class EmbersPower : CharTestPowerModel
     {
         await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), Owner, CalculateTotalDamage(), ValueProp.Unpowered, null, null);
         if (Owner.IsAlive && reduceEmbers)
-            await PowerCmd.ModifyAmount(this, (decimal)Math.Floor(-Amount/2f), null, null);
+            await PowerCmd.ModifyAmount(new ThrowingPlayerChoiceContext(),this, (decimal)Math.Floor(-Amount/2f), null, null);
         else
             await Cmd.CustomScaledWait(0.1f, 0.25f);
     }

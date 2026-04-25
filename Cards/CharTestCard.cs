@@ -178,7 +178,7 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
         return pile != null && pile.IsCombatPile && this.CombatState != null ? (int) ModifyHeatCost(this.CombatState, this, (Decimal) this.CurrentHeatCost) : this.CurrentHeatCost;
     }
     
-    public static Decimal ModifyHeatCost(CombatState combatState, CardModel card, Decimal originalCost)
+    public static Decimal ModifyHeatCost(ICombatState combatState, CardModel card, Decimal originalCost)
     {
         if (originalCost < 0M)
             return originalCost;
@@ -216,7 +216,7 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
         await AfterHeatSpent(this.Owner.Creature.CombatState, LastHeatSpent, this.Owner);
     }
 
-    private async Task AfterHeatSpent(CombatState? combatState, int amount, Player spender)
+    private async Task AfterHeatSpent(ICombatState? combatState, int amount, Player spender)
     {
         foreach (AbstractModel model in combatState.IterateHookListeners())
         {

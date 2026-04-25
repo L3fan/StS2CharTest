@@ -28,6 +28,6 @@ public class ConsumptionPower : CharTestPowerModel
         await PlayerCmd.GainEnergy(activateTimes, Owner.Player);
         await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), activateTimes, Owner.Player);
         
-        await PowerCmd.ModifyAmount(this, -DynamicVars["MaxStack"].IntValue * activateTimes, applier, cardSource);
+        await PowerCmd.ModifyAmount(new BlockingPlayerChoiceContext(),this, -DynamicVars["MaxStack"].IntValue * activateTimes, applier, cardSource);
     }
 }
