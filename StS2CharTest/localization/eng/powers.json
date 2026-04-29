@@ -16,7 +16,7 @@
   "STS2CHARTEST-MELTING_POINT_POWER.title": "Melting Point",
 
   "STS2CHARTEST-OBSIDIAN_SKIN_POWER.description": "At the start of the turn, lose 1 [gold]Heat[/gold]. Whenever you lose [gold]Heat[/gold], gain Block.",
-  "STS2CHARTEST-OBSIDIAN_SKIN_POWER.smartDescription": "At the start of turn, lose 1 [gold]Heat[/gold]. Whenever you lose [gold]Heat[/gold], gain {Block:diff()} Block.",
+  "STS2CHARTEST-OBSIDIAN_SKIN_POWER.smartDescription": "At the start of turn, lose 1 [gold]Heat[/gold]. Whenever you lose [gold]Heat[/gold], gain {Amount:diff()} Block.",
   "STS2CHARTEST-OBSIDIAN_SKIN_POWER.title": "Obsidian Skin",
 
   "STS2CHARTEST-BURN_IT_DOWN_POWER.description": "Whenever you draw a Status card, exhaust it, draw a card and deal damage to a random enemy.",

@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v9.0": {
       "StS2CharTest/1.0.0": {
         "dependencies": {
-          "Alchyr.Sts2.BaseLib": "3.0.3",
+          "Alchyr.Sts2.BaseLib": "3.0.9",
           "Alchyr.Sts2.ModAnalyzers": "0.1.7",
           "BepInEx.AssemblyPublicizer.MSBuild": "0.4.3",
           "Godot.SourceGenerators": "4.5.1",
@@ -18,7 +18,7 @@
           "StS2CharTest.dll": {}
         }
       },
-      "Alchyr.Sts2.BaseLib/3.0.3": {},
+      "Alchyr.Sts2.BaseLib/3.0.9": {},
       "Alchyr.Sts2.ModAnalyzers/0.1.7": {},
       "BepInEx.AssemblyPublicizer.MSBuild/0.4.3": {},
       "Godot.SourceGenerators/4.5.1": {},
@@ -38,12 +38,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Alchyr.Sts2.BaseLib/3.0.3": {
+    "Alchyr.Sts2.BaseLib/3.0.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GZE8sFPxrdwm3Qs7aOed1uK+f6BG/SORZf1IgRQgQq+0FJMzBM4sW/QbiK92yEtzcQ9hjNwfUXAs8eTndQr+Eg==",
-      "path": "alchyr.sts2.baselib/3.0.3",
-      "hashPath": "alchyr.sts2.baselib.3.0.3.nupkg.sha512"
+      "sha512": "sha512-T+EpG/94+xPIn8QyX/+t1qDGG7MEQQ++IGBFif8bbwC20VpoDQYdtNn6Y1eQYDDjRXNImdWz5EJFY7/7QR1UUA==",
+      "path": "alchyr.sts2.baselib/3.0.9",
+      "hashPath": "alchyr.sts2.baselib.3.0.9.nupkg.sha512"
     },
     "Alchyr.Sts2.ModAnalyzers/0.1.7": {
       "type": "package",
