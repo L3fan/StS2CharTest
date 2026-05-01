@@ -11,7 +11,7 @@ using StS2CharTest.Powers;
 namespace StS2CharTest.Cards.Uncommon;
 
 [Pool(typeof(CharTestCardPool))]
-public class Fireflies() : CustomCardModel(1, CardType.Skill,
+public class Fireflies() : CharTestCard(1, CardType.Skill,
     CardRarity.Uncommon, TargetType.RandomEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EmbersVar(6), new RepeatVar(3)];
