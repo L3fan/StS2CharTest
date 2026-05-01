@@ -60,9 +60,12 @@
   "STS2CHARTEST-FIRESTORM.title": "Firestorm",
 
   "STS2CHARTEST-CAST_INTO_FIRE.selectionScreenPrompt": "Choose up to {Exhaustive:diff()} cards to [gold]Exhaust[/gold].",
-  "STS2CHARTEST-CAST_INTO_FIRE.description": "Exhaust up to {Exhaustive:diff()} cards.\nGain 1 [gold]Heat[/gold] and draw a card for each card exhausted.",
+  "STS2CHARTEST-CAST_INTO_FIRE.description": "Exhaust up to {Exhaustive:diff()} cards in your discard pile.\nGain 1 [gold]Heat[/gold] and draw a card for each card exhausted.",
   "STS2CHARTEST-CAST_INTO_FIRE.title": "Cast Into Fire",
   
   "STS2CHARTEST-CONSUME.description": "Gain {ConsumptionPower:diff()} [gold]Consumption[/gold].",
-  "STS2CHARTEST-CONSUME.title": "Consume"
+  "STS2CHARTEST-CONSUME.title": "Consume",
+
+  "STS2CHARTEST-FIREFLIES.description": "Apply {EmbersPower:diff()} to a random enemy {Repeat:diff()} times.",
+  "STS2CHARTEST-FIREFLIES.title": "Fireflies"
 }

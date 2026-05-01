@@ -263,7 +263,7 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
                 {
                     if (owner.IsAlive)
                     {
-                        await embers.TriggerDamage(source);
+                        await embers.TriggerBlazeDamage(source);
                     }
                 }
             }

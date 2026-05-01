@@ -22,7 +22,7 @@ public class EmbersPower : CharTestPowerModel
     public override PowerStackType StackType => PowerStackType.Counter;
     public decimal multiplier = 1m;
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
     {
         if(side == Owner.Side)
             await DealDamage();
@@ -46,7 +46,7 @@ public class EmbersPower : CharTestPowerModel
         return (int)(hasArtifact ? 1 : Amount * multiplier);
     }
 
-    public async Task TriggerDamage(Creature source)
+    public async Task TriggerBlazeDamage(Creature source)
     {
         await DealDamage(false);
 

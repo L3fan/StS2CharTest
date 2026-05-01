@@ -17,7 +17,7 @@ public class CastIntoFire() : CharTestCard(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new ExhaustiveVar(3)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new ExhaustiveVar(3), new HeatVar(1)];
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override async Task OnPlay(
@@ -25,7 +25,7 @@ public class CastIntoFire() : CharTestCard(1,
         CardPlay play)
     {
         CardSelectorPrefs prefs = new CardSelectorPrefs(SelectionScreenPrompt, 0, DynamicVars["Exhaustive"].IntValue);
-        foreach (CardModel card in await CardSelectCmd.FromHand(choiceContext, Owner, prefs, (Func<CardModel, bool>)null, (AbstractModel)this))
+        foreach (CardModel card in await CardSelectCmd.FromSimpleGrid(choiceContext, PileType.Discard.GetPile(Owner).Cards, Owner, prefs))
         {
             await CardCmd.Exhaust(choiceContext, card);
             await CardPileCmd.Draw(choiceContext, 1, Owner);
@@ -35,6 +35,6 @@ public class CastIntoFire() : CharTestCard(1,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars["Heat"].UpgradeValueBy(1);
     }
 }
