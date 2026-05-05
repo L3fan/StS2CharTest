@@ -17,8 +17,10 @@ namespace StS2CharTest.Cards.Rare;
 public class Firestorm() : CharTestCard(3, CardType.Attack,
     CardRarity.Rare, TargetType.AllEnemies)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(16m, ValueProp.Move), new PowerVar<EmbersPower>(8), new DynamicVar("Blaze", 1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(16m, ValueProp.Move), new PowerVar<EmbersPower>(3), new BlazeVar(1)];
 
+    public override int CanonicalHeatCost => 5;
+    
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
@@ -26,7 +28,7 @@ public class Firestorm() : CharTestCard(3, CardType.Attack,
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
         foreach (Creature enemy in CombatState.HittableEnemies.ToList())
         {
-            await CommonActions.Apply<EmbersPower>(enemy, this, DynamicVars["EmbersPower"].IntValue);
+            await CommonActions.Apply<EmbersPower>(choiceContext, enemy, this, DynamicVars["EmbersPower"].IntValue + LastHeatSpent);
         }
 
         await Blaze(Owner, DynamicVars["Blaze"].IntValue);

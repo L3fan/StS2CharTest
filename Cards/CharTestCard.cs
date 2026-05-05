@@ -220,8 +220,8 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
     {
         foreach (AbstractModel model in combatState.IterateHookListeners())
         {
-            if (model.GetType().IsSubclassOf(typeof(CharTestModel)))
-                return;
+            if (model is CharTestModel)
+                continue;
             CharTestModel charTestModel = model as CharTestModel;
             await charTestModel.AfterHeatSpent(amount, spender);
             model.InvokeExecutionFinished();
@@ -239,17 +239,17 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
     }
     
     
-    public async Task Blaze(Player source, int triggerAmount = 1, bool reduceEmbers = false)
+    public async Task Blaze(Player source, int triggerAmount = 1)
     {
-        await TriggerEmbers(source.Creature, triggerAmount, reduceEmbers, true);
+        await TriggerEmbers(source.Creature, triggerAmount);
     }
 
-    public async Task Blaze(Creature source, int triggerAmount = 1, bool reduceEmbers = false)
+    public async Task Blaze(Creature source, int triggerAmount = 1)
     {
-        await TriggerEmbers(source, triggerAmount, reduceEmbers, true);
+        await TriggerEmbers(source, triggerAmount);
     }
 
-    public async Task TriggerEmbers(Creature source, int triggerAmount = 1, bool reduceEmbers = true, bool isBlaze = false)
+    public async Task TriggerEmbers(Creature source, int triggerAmount = 1)
     {
         for (int i = 0; i < triggerAmount; i++)
         {
@@ -321,7 +321,7 @@ public interface CharTestModel
         return Task.CompletedTask;
     }
     
-    public virtual Task AfterHeatGained(int amount, Player gainer)
+    public virtual Task AfterHeatGained(PlayerChoiceContext choiceContext, int amount, Player gainer)
     {
         return Task.CompletedTask;
     }

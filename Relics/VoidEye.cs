@@ -37,6 +37,6 @@ public class VoidEye() : CustomRelicModel
     public override async Task BeforeCombatStartLate()
     {
         Flash();
-        await CharTestActions.GainHeat(Owner, DynamicVars["Heat"].IntValue);
+        await CharTestActions.GainHeat(new BlockingPlayerChoiceContext(), Owner, DynamicVars["Heat"].IntValue);
     }
 }

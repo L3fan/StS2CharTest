@@ -17,13 +17,14 @@ public class Consume() : CharTestCard(0, CardType.Status,
     CardRarity.Status, TargetType.Self)
 {
     public override int MaxUpgradeLevel => 0;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<ConsumptionPower>(1).WithTooltip("CONSUMPTION")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<StrengthPower>(1).WithTooltip("STRENGTH"), new CardsVar(1)];
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.ApplySelf<ConsumptionPower>(this);
+        await CommonActions.ApplySelf<StrengthPower>(choiceContext, this);
+        await CommonActions.Draw(this, choiceContext);
     }
 }

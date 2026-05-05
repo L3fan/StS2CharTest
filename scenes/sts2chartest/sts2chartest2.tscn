@@ -2965,7 +2965,7 @@ bone_angle = 45.42998
 [node name="PinkyBaseL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL"]
 position = Vector2(0, 17)
 rotation = 0.049438477
-scale = Vector2(0.9998302, 0.9998302)
+scale = Vector2(0.9998301, 0.9998301)
 rest = Transform2D(1, 0, 0, 1, 0, 17)
 
 [node name="PinkyTipL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL/PinkyBaseL"]
@@ -2980,7 +2980,7 @@ bone_angle = 60.594997
 [node name="ShoulderR" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2"]
 position = Vector2(-6, -40)
 rotation = -0.12566371
-scale = Vector2(0.99982977, 0.99982977)
+scale = Vector2(0.9998298, 0.9998298)
 rest = Transform2D(1, 0, 0, 1, -6, -40)
 
 [node name="UpperArmR" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderR"]
@@ -3089,7 +3089,7 @@ rest = Transform2D(1, 0, 0, 1, -16, -23)
 [node name="Tail1" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Tail0"]
 position = Vector2(-55, 5)
 rotation = -0.19826938
-scale = Vector2(0.99984694, 0.99984694)
+scale = Vector2(0.9998469, 0.9998469)
 rest = Transform2D(1, 0, 0, 1, -55, 5)
 
 [node name="Tail2" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Tail0/Tail1"]
@@ -3129,7 +3129,7 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="FootL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/ThighL/CalfL"]
 position = Vector2(4.0066833, 77.065796)
-rotation = -0.13960844
+rotation = -0.13960843
 scale = Vector2(1.0000888, 1.0000888)
 rest = Transform2D(1, 0, 0, 1, 4, 77)
 metadata/_local_pose_override_enabled_ = true
@@ -3146,14 +3146,14 @@ bone_angle = 0.0
 [node name="ThighR" type="Bone2D" parent="Visuals/Skeleton2D/Spine0"]
 position = Vector2(-19.006538, -3.9982376)
 rotation = -0.14481528
-scale = Vector2(0.99998283, 0.85028195)
+scale = Vector2(0.99998283, 0.850282)
 rest = Transform2D(1, 0, 0, 1, -19, -4)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="CalfR" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/ThighR"]
 position = Vector2(1.7000961, 79.0051)
 rotation = 0.0099636465
-scale = Vector2(0.9999987, 1.1700001)
+scale = Vector2(0.9999986, 1.1700001)
 skew = 0.03273666
 rest = Transform2D(1, 0, 0, 1, 2, 79)
 metadata/_local_pose_override_enabled_ = true
@@ -3590,23 +3590,23 @@ unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = -155.0
-offset_top = -356.0
+offset_top = -311.0
 offset_right = 155.0
 
 [node name="CenterPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(27, -257)
+position = Vector2(7, -143)
 
 [node name="IntentPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1, -457)
+position = Vector2(0, -306)
 
 [node name="OrbPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1, -457)
+position = Vector2(0, -306)
 
 [node name="TalkPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(161, -371)
+position = Vector2(163, -173)
 
 [connection signal="animation_finished" from="Visuals/AnimationPlayer" to="Visuals" method="_OnAnimationFinished"]

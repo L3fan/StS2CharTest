@@ -29,7 +29,7 @@ public class SweepingFire() : CharTestCard(1,
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
         foreach (Creature enemy in CombatState.HittableEnemies)
         {
-            await CommonActions.Apply<EmbersPower>(enemy, this, DynamicVars["EmbersPower"].IntValue);
+            await CommonActions.Apply<EmbersPower>(choiceContext, enemy, this, DynamicVars["EmbersPower"].IntValue);
         }
     }
 

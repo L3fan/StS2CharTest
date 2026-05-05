@@ -22,7 +22,7 @@ public class JustTheTip() : CharTestCard(0, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.ApplySelf<JustTheTipPower>(this, DynamicVars["JustTheTipPower"].IntValue);
+        await CommonActions.ApplySelf<JustTheTipPower>(choiceContext, this, DynamicVars["JustTheTipPower"].IntValue);
     }
 
     protected override void OnUpgrade()

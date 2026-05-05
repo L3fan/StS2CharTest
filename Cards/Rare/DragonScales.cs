@@ -3,28 +3,28 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using StS2CharTest.Code.Character;
 using StS2CharTest.Powers;
 
-namespace StS2CharTest.Cards.Common;
+namespace StS2CharTest.Cards.Rare;
 
 [Pool(typeof(CharTestCardPool))]
-public class DancingFlame() : CharTestCard(1,
-    CardType.Skill, CardRarity.Common,
-    TargetType.AnyEnemy)
+public class DragonScales() : CharTestCard(1,
+    CardType.Power, CardRarity.Rare,
+    TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new EmbersVar(8m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<DragonScalesPower>(7).WithTooltip("VIGOR")];
+
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.Apply<EmbersPower>(choiceContext, play.Target, this, DynamicVars["EmbersPower"].IntValue);
+        await CommonActions.ApplySelf<DragonScalesPower>(choiceContext, this, DynamicVars["DragonScalesPower"].IntValue);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["EmbersPower"].UpgradeValueBy(4m);
+        DynamicVars["DragonScalesPower"].UpgradeValueBy(3);
     }
 }

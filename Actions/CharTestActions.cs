@@ -3,6 +3,7 @@ using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using StS2CharTest.Cards;
 using StS2CharTest.Code.Powers;
@@ -11,13 +12,13 @@ namespace StS2CharTest.Actions;
 
 public static class CharTestActions
 {
-    public static async Task GainHeat(Creature target, int amount)
+    public static async Task GainHeat(PlayerChoiceContext choiceContext, Creature target, int amount)
     {
         if (!target.IsPlayer)
             return;
-        await GainHeat(target.Player, amount);
+        await GainHeat(choiceContext, target.Player, amount);
     }
-    public static async Task GainHeat(Player target, decimal amount)
+    public static async Task GainHeat(PlayerChoiceContext choiceContext, Player target, decimal amount)
     {
         if (amount <= 0)
             return;
@@ -40,10 +41,11 @@ public static class CharTestActions
             return;
         foreach (AbstractModel model in combatState.IterateHookListeners())
         {
-            if (model.GetType().IsSubclassOf(typeof(CharTestModel)))
+            MainFile.Logger.Info("Is " + model.GetType() + " is CharTestModel? " + (model is CharTestModel));
+            if (model is CharTestModel)
             {
                 CharTestModel charTestModel = model as CharTestModel;
-                await charTestModel.AfterHeatGained((int)amount, player);
+                await charTestModel.AfterHeatGained(choiceContext, (int)amount, player);
             }
         }
     }

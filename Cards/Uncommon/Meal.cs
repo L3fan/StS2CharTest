@@ -12,19 +12,19 @@ namespace StS2CharTest.Cards.Common;
 public class Meal() : CharTestCard(1, CardType.Skill,
     CardRarity.Uncommon, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Heat", 2m), new CardsVar(3)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Heat", 2m), new CardsVar(2)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CharTestActions.GainHeat(Owner, DynamicVars["Heat"].IntValue);
+        await CharTestActions.GainHeat(choiceContext, Owner, DynamicVars["Heat"].IntValue);
         await CommonActions.Draw(this, choiceContext);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars["Heat"].UpgradeValueBy(1);
-        DynamicVars.Cards.UpgradeValueBy(2);
+        DynamicVars.Cards.UpgradeValueBy(1);
     }
 }

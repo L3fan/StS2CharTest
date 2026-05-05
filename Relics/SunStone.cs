@@ -29,7 +29,7 @@ public class SunStone() : CustomRelicModel
     public override async Task BeforeCombatStartLate()
     {
         Flash();
-        await CharTestActions.GainHeat(Owner, DynamicVars["Heat"].IntValue);
+        await CharTestActions.GainHeat(new BlockingPlayerChoiceContext(), Owner, DynamicVars["Heat"].IntValue);
     }
 
     public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)

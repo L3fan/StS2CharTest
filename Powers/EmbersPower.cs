@@ -20,7 +20,6 @@ public class EmbersPower : CharTestPowerModel
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public decimal multiplier = 1m;
 
     public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
     {
@@ -39,15 +38,13 @@ public class EmbersPower : CharTestPowerModel
 
     public int CalculateTotalDamage()
     {
-        multiplier = 1m;
-        if (Owner.HasPower<MeltingPointPower>())
-            multiplier = 2m;
-        bool hasArtifact = Owner.HasPower<ArtifactPower>();
-        return (int)(hasArtifact ? 1 : Amount * multiplier);
+        bool takesOneDamage = Owner.HasPower<IntangiblePower>() || Owner.HasPower<SlipperyPower>();
+        return (int)(takesOneDamage ? 1 : Amount);
     }
 
     public async Task TriggerBlazeDamage(Creature source)
     {
+        MainFile.Logger.Info("Blaze Triggered");
         await DealDamage(false);
 
         await TriggerOnBlaze(source);

@@ -22,7 +22,7 @@ public class Cauterize() : CharTestCard(1, CardType.Attack,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.Apply<EmbersPower>(play.Target, this, DynamicVars["EmbersPower"].IntValue);
+        await CommonActions.Apply<EmbersPower>(choiceContext, play.Target, this, DynamicVars["EmbersPower"].IntValue);
         await Blaze(Owner);
     }
 

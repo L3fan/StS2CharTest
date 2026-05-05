@@ -27,7 +27,7 @@ public class JustTheTipPower : CharTestPowerModel
         if (result.TotalDamage > 0)
         {
             int amountGained = (int)Mathf.Floor(result.TotalDamage / 2f);
-            await CharTestActions.GainHeat(Owner.Player, amountGained);
+            await CharTestActions.GainHeat(choiceContext, Owner.Player, amountGained);
         }
     }
 

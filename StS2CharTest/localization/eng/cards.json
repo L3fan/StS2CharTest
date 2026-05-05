@@ -23,7 +23,7 @@
   "STS2CHARTEST-JUST_THE_TIP.description": "For this turn, gain Heat equal to half of any attack damage dealt.",
   "STS2CHARTEST-JUST_THE_TIP.title": "Just The Tip",
   
-  "STS2CHARTEST-MELTING_POINT.description": "Draw {Cards:diff()} cards.\nEnemies take double damage from [gold]Embers[/gold] this turn.",
+  "STS2CHARTEST-MELTING_POINT.description": "Double [gold]Embers[/gold] on ALL enemies. Next turn, remove all [gold]Embers[/gold] on the enemies.",
   "STS2CHARTEST-MELTING_POINT.title": "Melting Point",
 
   "STS2CHARTEST-HEATWAVE.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold] to ALL enemies.\n[gold]Blaze[/gold].",
@@ -56,7 +56,7 @@
   "STS2CHARTEST-SPARK.description": "Gain {Energy:energyIcons()}.",
   "STS2CHARTEST-SPARK.title": "Spark",
 
-  "STS2CHARTEST-FIRESTORM.description": "Deal {Damage:diff()} damage.\nApply {EmbersPower:diff()} [gold]Embers[/gold].\n[gold]Blaze[/gold]{Blaze:cond:>1? twice|}.",
+  "STS2CHARTEST-FIRESTORM.description": "Deal {Damage:diff()} damage and apply [gold]Heat[/gold] spent + {EmbersPower:diff()} [gold]Embers[/gold] to ALL enemies.\n[gold]Blaze[/gold]{Blaze:cond:>1? twice|}.",
   "STS2CHARTEST-FIRESTORM.title": "Firestorm",
 
   "STS2CHARTEST-CAST_INTO_FIRE.selectionScreenPrompt": "Choose up to {Exhaustive:diff()} cards to [gold]Exhaust[/gold].",
@@ -66,6 +66,12 @@
   "STS2CHARTEST-CONSUME.description": "Gain {ConsumptionPower:diff()} [gold]Consumption[/gold].",
   "STS2CHARTEST-CONSUME.title": "Consume",
 
-  "STS2CHARTEST-FIREFLIES.description": "Apply {EmbersPower:diff()} to a random enemy {Repeat:diff()} times.",
-  "STS2CHARTEST-FIREFLIES.title": "Fireflies"
+  "STS2CHARTEST-FIREFLIES.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold] to a random enemy {Repeat:diff()} times.",
+  "STS2CHARTEST-FIREFLIES.title": "Fireflies",
+
+  "STS2CHARTEST-DRAGON_SCALES.description": "Whenever you gain [gold]Heat[/gold] gain an equal amount of [gold]Vigor[/gold].",
+  "STS2CHARTEST-DRAGON_SCALES.title": "Dragon Scales",
+
+  "STS2CHARTEST-SCRATCHING_NAILS.description": "Deal {Damage:diff()} damage {Repeat:diff()} times. Gain [gold]Heat[/gold] for everytime you dealt unblocked damage.",
+  "STS2CHARTEST-SCRATCHING_NAILS.title": "Scratching Nails"
 }

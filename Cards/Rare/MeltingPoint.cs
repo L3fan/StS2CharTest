@@ -15,18 +15,24 @@ namespace StS2CharTest.Cards.Rare;
 public class MeltingPoint() : CharTestCard(0, CardType.Skill,
     CardRarity.Rare, TargetType.AllEnemies)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1).WithTooltip("EMBERS")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new EmbersVar(0).WithTooltip("EMBERS")];
 
+    public override int CanonicalHeatCost => 3;
+    
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.Draw(this, choiceContext);
+        if (CombatState == null)
+            return;
         
-        foreach(Creature target in CombatState.HittableEnemies)
-            await CommonActions.Apply<MeltingPointPower>(target, this, 1);
+        foreach (Creature target in CombatState.HittableEnemies)
+        {
+            await CommonActions.Apply<EmbersPower>(choiceContext, target, this, target.GetPowerAmount<EmbersPower>());
+            await CommonActions.Apply<MeltingPointPower>(choiceContext, target, this, 1);
+        }
     }
 
     protected override void OnUpgrade()

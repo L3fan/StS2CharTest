@@ -29,7 +29,7 @@ public class CastIntoFire() : CharTestCard(1,
         {
             await CardCmd.Exhaust(choiceContext, card);
             await CardPileCmd.Draw(choiceContext, 1, Owner);
-            await CharTestActions.GainHeat(Owner, 1);
+            await CharTestActions.GainHeat(choiceContext, Owner, 1);
         }
     }
 

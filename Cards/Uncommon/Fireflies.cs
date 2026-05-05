@@ -11,7 +11,7 @@ using StS2CharTest.Powers;
 namespace StS2CharTest.Cards.Uncommon;
 
 [Pool(typeof(CharTestCardPool))]
-public class Fireflies() : CharTestCard(1, CardType.Skill,
+public class Fireflies() : CharTestCard(2, CardType.Skill,
     CardRarity.Uncommon, TargetType.RandomEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EmbersVar(6), new RepeatVar(3)];
@@ -27,7 +27,7 @@ public class Fireflies() : CharTestCard(1, CardType.Skill,
         {
             Creature enemy = Owner.RunState.Rng.CombatTargets.NextItem<Creature>((IEnumerable<Creature>) CombatState.HittableEnemies);
             if(enemy != null)
-                await CommonActions.Apply<EmbersPower>(enemy, this, DynamicVars["EmbersPower"].IntValue);
+                await CommonActions.Apply<EmbersPower>(choiceContext, enemy, this, DynamicVars["EmbersPower"].IntValue);
         }
     }
 
