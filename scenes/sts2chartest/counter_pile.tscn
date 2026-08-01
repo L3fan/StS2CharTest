@@ -1,22 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjd8u3a3b67lf"]
+[gd_scene load_steps=2 format=3 uid="uid://cjd8u3a3b67lf"]
 
 [ext_resource type="Script" uid="uid://bg381ly4wxicn" path="res://CustomNodes/NCounterPile.cs" id="1_wjrg0"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_60gy7"]
-viewport_path = NodePath("SubViewport")
-
-[node name="CounterPile" type="Node2D"]
+[node name="CounterPile" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_wjrg0")
 
-[node name="SubViewport" type="SubViewport" parent="."]
-unique_name_in_owner = true
-size = Vector2i(512, 256)
-
-[node name="ColorRect" type="ColorRect" parent="SubViewport"]
-offset_left = 206.0
-offset_top = 78.0
-offset_right = 306.0
-offset_bottom = 178.0
-
-[node name="RenderTexture" type="Sprite2D" parent="."]
-texture = SubResource("ViewportTexture_60gy7")
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -35.0
+offset_top = -20.0
+offset_right = 35.0
+offset_bottom = 20.0
+alignment = 1
