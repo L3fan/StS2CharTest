@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using StS2CharTest.Cards;
 using StS2CharTest.Code.Powers;
+using StS2CharTest.CustomNodes;
 using StS2CharTest.Powers;
 
 namespace StS2CharTest.Actions;
@@ -100,7 +101,7 @@ public static class CharTestActions
     {
         foreach (CardModel card in cards)
         {
-            CardPileCmd.Add(card, CounterPileResource.Counter, clonedBy: clonedBy);
+            CardPileCmd.Add(card, CounterPile.Counter, clonedBy: clonedBy);
             
         }
     }

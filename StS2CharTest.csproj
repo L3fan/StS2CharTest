@@ -51,6 +51,10 @@
 
 
     <ItemGroup>
+        <PackageReference Include="Krafs.Publicizer" Version="2.3.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <Reference Include="0Harmony">
             <HintPath>$(Sts2DataDir)/0Harmony.dll</HintPath>
             <Private>false</Private>
@@ -62,29 +66,28 @@
 
         <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.4.0" PrivateAssets="All" />
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
-        <AdditionalFiles Include="StS2CharTest\localization\**\*.json"/>
+        <AdditionalFiles Include="StS2CharTest\localization\**\*.json" />
         <PackageReference Update="GodotSharp" Version="4.7.0-dev.4" />
-    </ItemGroup>
-
-    <!--  Publicized class members in the format: dllName:Namespace.ClassMember  -->
-    <ItemGroup>
-        <Publicize Include="sts2:MegaCrit.Sts2.Core.Nodes.Combat.NCombatCardPile._pile"/>
     </ItemGroup>
     
     <ItemGroup>
-        <Compile Remove="StS2CharTest\**"/>
-        <Compile Remove="materials\**"/>
-        <Compile Remove="shaders\**"/>
-        <EmbeddedResource Remove="StS2CharTest\**"/>
-        <EmbeddedResource Remove="materials\**"/>
-        <EmbeddedResource Remove="shaders\**"/>
+        <Publicize Include="sts2:MegaCrit.Sts2.Core.Nodes.Combat.NCombatCardPile._pile" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Compile Remove="StS2CharTest\**" />
+        <Compile Remove="materials\**" />
+        <Compile Remove="shaders\**" />
+        <EmbeddedResource Remove="StS2CharTest\**" />
+        <EmbeddedResource Remove="materials\**" />
+        <EmbeddedResource Remove="shaders\**" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Include=".gitignore"/>
+        <None Include=".gitignore" />
         <None Include="StS2CharTest.json" />
-        <None Include="project.godot"/>
-        <None Include="StS2CharTest\**"/>
+        <None Include="project.godot" />
+        <None Include="StS2CharTest\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -112,24 +115,22 @@
     </ItemGroup>
 
     <Target Name="CopyToModsFolderOnBuild" AfterTargets="PostBuildEvent">
-        <Message Text="Copying .dll to mods folder." Importance="high"/>
-        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(Sts2Path)/mods/"/>
-        <Copy SourceFiles="StS2CharTest.json" DestinationFolder="$(Sts2Path)/mods/"/>
-        <Message Text="Copying BaseLib to mods folder." Importance="high"/>
+        <Message Text="Copying .dll to mods folder." Importance="high" />
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(Sts2Path)/mods/" />
+        <Copy SourceFiles="StS2CharTest.json" DestinationFolder="$(Sts2Path)/mods/" />
+        <Message Text="Copying BaseLib to mods folder." Importance="high" />
         <ItemGroup>
-            <BaseLibFiles Include="packages/alchyr.sts2.baselib/**/lib/**/BaseLib.dll;packages/alchyr.sts2.baselib/**/Content/BaseLib.pck;packages/alchyr.sts2.baselib/**/Content/BaseLib.json"/>
+            <BaseLibFiles Include="packages/alchyr.sts2.baselib/**/lib/**/BaseLib.dll;packages/alchyr.sts2.baselib/**/Content/BaseLib.pck;packages/alchyr.sts2.baselib/**/Content/BaseLib.json" />
         </ItemGroup>
-        <Copy SourceFiles="@(BaseLibFiles)" DestinationFolder="$(Sts2Path)\mods\"/>
+        <Copy SourceFiles="@(BaseLibFiles)" DestinationFolder="$(Sts2Path)\mods\" />
     </Target>
 
     <Target Name="GodotPublish" AfterTargets="Publish" Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true'">
-        <Message Text="Exporting Godot .pck to mods folder" Importance="high"/>
-        <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(Sts2Path)/mods/$(MSBuildProjectName).pck&quot;"
-              EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1"
-              ContinueOnError="WarnAndContinue"/>
+        <Message Text="Exporting Godot .pck to mods folder" Importance="high" />
+        <Exec Command="&quot;$(GodotPath)&quot; --headless --export-pack &quot;BasicExport&quot; &quot;$(Sts2Path)/mods/$(MSBuildProjectName).pck&quot;" EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1" ContinueOnError="WarnAndContinue" />
     </Target>
 
     <Target Name="GodotPublishSkipped" AfterTargets="Publish" Condition="'$(GodotPath)' == '' or !Exists('$(GodotPath)')">
-        <Message Text="Skipping Godot .pck export because GodotPath is not configured." Importance="high"/>
+        <Message Text="Skipping Godot .pck export because GodotPath is not configured." Importance="high" />
     </Target>
 </Project>

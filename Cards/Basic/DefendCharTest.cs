@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using StS2CharTest.Actions;
 using StS2CharTest.Cards;
 using StS2CharTest.Code.Character;
+using StS2CharTest.CustomNodes;
 
 namespace StS2CharTest.Code.Cards;
 
@@ -21,7 +22,7 @@ public class DefendCharTest() : CharTestCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        if (Pile == CardPile.Get(CounterPileResource.Counter, Owner))
+        if (Pile == CardPile.Get(CounterPile.Counter, Owner))
         {
             await CommonActions.CardBlock(this, play);
         }

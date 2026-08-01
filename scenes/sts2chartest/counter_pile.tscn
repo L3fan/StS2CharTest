@@ -7,10 +7,10 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_wjrg0")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -35.0
+offset_left = -20.0
 offset_top = -20.0
-offset_right = 35.0
+offset_right = 20.0
 offset_bottom = 20.0
-alignment = 1
+color = Color(0.8936852, 0, 0.16610745, 0.5176471)

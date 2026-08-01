@@ -1,30 +1,19 @@
 ﻿using BaseLib.Abstracts;
+using BaseLib.Patches.Content;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Extensions;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 
 namespace StS2CharTest.CustomNodes;
 
-public class CounterPile : CustomPile
+public class CounterPile : CardPile
 {
-    public CounterPile(PileType pileType) : base(pileType)
+    [CustomEnum] 
+    public static PileType Counter;
+    public CounterPile() : base(Counter)
     {
-    }
-
-    public override bool CardShouldBeVisible(CardModel card)
-    {
-        return Cards.IndexOf(card) < 3;
-
-    }
-
-    public override Vector2 GetTargetPosition(CardModel model, Vector2 size)
-    {
-        if (Cards.IndexOf(model) < 3)
-            return Vector2.Zero;
-        size = Vector2.One * 0.5f;
-
-        Vector2 position = Vector2.Right * ((Cards.IndexOf(model) - 1) * -15);
-        return position;
+        
     }
 }

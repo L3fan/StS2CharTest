@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using StS2CharTest.CustomNodes;
 
 namespace StS2CharTest.patches;
 
@@ -7,9 +8,9 @@ namespace StS2CharTest.patches;
 internal class CounterPileTypeExtensionsPatch
 {
     [HarmonyPrefix, HarmonyPatch(nameof(PileTypeExtensions.IsCombatPile))]
-    public static bool Prefix(ref PileType __pileType, ref bool __result)
+    public static bool Prefix(ref PileType pileType, ref bool __result)
     {
-        if (__pileType == CounterPileResource.Counter)
+        if (pileType == CounterPile.Counter)
         {
             __result = true;
             return false;

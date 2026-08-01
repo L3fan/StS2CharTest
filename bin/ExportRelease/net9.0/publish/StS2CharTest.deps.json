@@ -13,7 +13,8 @@
           "BepInEx.AssemblyPublicizer.MSBuild": "0.4.3",
           "Godot.SourceGenerators": "4.5.1",
           "GodotSharp": "4.5.1",
-          "GodotSharpEditor": "4.5.1"
+          "GodotSharpEditor": "4.5.1",
+          "Krafs.Publicizer": "2.3.0"
         },
         "runtime": {
           "StS2CharTest.dll": {}
@@ -41,7 +42,8 @@
             "fileVersion": "4.5.1.0"
           }
         }
-      }
+      },
+      "Krafs.Publicizer/2.3.0": {}
     }
   },
   "libraries": {
@@ -91,6 +93,13 @@
       "sha512": "sha512-8CM49047b0Us3qPJo6L7kdldreOvR7JCoXlKoSHzpA0TQP6+Qnoxz/26GZ1ONg2wW4vV9uzor0AHXSGUFP9XSw==",
       "path": "godotsharpeditor/4.5.1",
       "hashPath": "godotsharpeditor.4.5.1.nupkg.sha512"
+    },
+    "Krafs.Publicizer/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DjktTgctwxUMhMkWKrRECer3LR1lHzanCOlE4mpinAiY8SfWJq4DG/QitP5h1A+WBjyWHzQSOG+204i3VpO1FA==",
+      "path": "krafs.publicizer/2.3.0",
+      "hashPath": "krafs.publicizer.2.3.0.nupkg.sha512"
     }
   }
 }
