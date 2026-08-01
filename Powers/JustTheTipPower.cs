@@ -31,8 +31,9 @@ public class JustTheTipPower : CharTestPowerModel
         }
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         PowerCmd.Decrement(this);
+        return Task.CompletedTask;
     }
 }

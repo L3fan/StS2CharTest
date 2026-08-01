@@ -17,7 +17,7 @@ public class CastIntoFire() : CharTestCard(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new ExhaustiveVar(3), new HeatVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new ExhaustiveVar(3), new HeatVar(2)];
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override async Task OnPlay(

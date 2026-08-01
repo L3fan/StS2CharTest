@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Rooms;
+using StS2CharTest.Actions;
 using StS2CharTest.Code.Character;
 using StS2CharTest.Powers;
 
@@ -22,7 +23,7 @@ public class Heatwave() : CharTestCard(2, CardType.Skill,
     {
         foreach (Creature enemy in CombatState.HittableEnemies)
             await CommonActions.Apply<EmbersPower>(choiceContext, enemy, this, DynamicVars["EmbersPower"].IntValue);
-        await Blaze(Owner);
+        await CharTestActions.Blaze(CombatState, Owner);
     }
 
     protected override void OnUpgrade()

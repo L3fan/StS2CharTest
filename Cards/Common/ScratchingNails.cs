@@ -21,10 +21,16 @@ public class ScratchingNails() : CharTestCard(0, CardType.Attack, CardRarity.Com
         CardPlay play)
     {  
         AttackCommand attackCommand = await CommonActions.CardAttack(this, play, DynamicVars.Repeat.IntValue).Execute(choiceContext);
-        IEnumerator<DamageResult> results = attackCommand.Results.GetEnumerator();
+        IEnumerator<List<DamageResult>> results = attackCommand.Results.GetEnumerator();
         while (results.MoveNext())
         {
-            if (results.Current.UnblockedDamage > 0)
+            IEnumerator<DamageResult> iterator = results.Current.GetEnumerator();
+            bool dealtUnblockedDamage = false;
+            while (iterator.MoveNext())
+                if(iterator.Current.UnblockedDamage > 0)
+                    dealtUnblockedDamage = true;
+            
+            if(dealtUnblockedDamage)
                 await CharTestActions.GainHeat(choiceContext, Owner, DynamicVars["Heat"].IntValue);
         }
     }

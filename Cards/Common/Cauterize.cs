@@ -3,6 +3,7 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using StS2CharTest.Actions;
 using StS2CharTest.Code.Character;
 using StS2CharTest.Powers;
 
@@ -23,7 +24,7 @@ public class Cauterize() : CharTestCard(1, CardType.Attack,
         CardPlay play)
     {
         await CommonActions.Apply<EmbersPower>(choiceContext, play.Target, this, DynamicVars["EmbersPower"].IntValue);
-        await Blaze(Owner);
+        await CharTestActions.Blaze(CombatState, Owner);
     }
 
     protected override void OnUpgrade()

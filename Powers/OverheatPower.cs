@@ -1,4 +1,5 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -17,24 +18,28 @@ public class OverheatPower : CharTestPowerModel
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public IReadOnlyList<IReadOnlyList<IChoosable>> choosableOverheatPowers = new List<IReadOnlyList<IChoosable>>()
-    {
-        new List<IChoosable>()
+    public IReadOnlyList<IReadOnlyList<IChoosable>> choosableOverheatPowers 
+    { 
+        get => new List<IReadOnlyList<IChoosable>>()
         {
+            new List<IChoosable>()
+            {
             ModelDb.Card<BurningWings>(),
             ModelDb.Card<BurnItDown>()
-        }
-    };
-
-    public override async Task BeforeApplied(Creature target, decimal amount, Creature? applier, CardModel? cardSource)
-    {
-        decimal newAmount = amount;
-        if (newAmount + Amount > 3)
-            return;
-        await base.BeforeApplied(target, newAmount, applier, cardSource);
+            }
+        };
     }
 
-    public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
+    public override async Task BeforePowerAmountChanged(PowerModel power, decimal amount, Creature target, Creature? applier,
+        CardModel? cardSource)
+    {
+        if (amount + Amount > 3)
+            amount = 0;
+        await base.BeforePowerAmountChanged(power, amount, target,  applier, cardSource);
+    }
+
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier,
+        CardModel? cardSource)
     {
         if (Owner.IsDead || !Owner.IsPlayer)
             return;

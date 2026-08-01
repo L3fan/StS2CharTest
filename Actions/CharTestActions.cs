@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using StS2CharTest.Cards;
 using StS2CharTest.Code.Powers;
+using StS2CharTest.Powers;
 
 namespace StS2CharTest.Actions;
 
@@ -61,5 +62,36 @@ public static class CharTestActions
         HeatResource.Amount.Set(player.PlayerCombatState, setToAmount);
         Action<int, int> heatChanged = HeatResource.HeatChanged.Get(player.PlayerCombatState);
         heatChanged.Invoke((int)currentHeat, (int)setToAmount);
+    }
+    
+    public static async Task Blaze(ICombatState combatState, Player source, int triggerAmount = 1, bool triggerEffects = true)
+    {
+        await TriggerEmbers(combatState, source.Creature, triggerAmount, triggerEffects);
+    }
+
+    public static async Task Blaze(ICombatState combatState, Creature source, int triggerAmount = 1, bool triggerEffects = true)
+    {
+        await TriggerEmbers(combatState, source, triggerAmount, triggerEffects);
+    }
+
+    public static async Task TriggerEmbers(ICombatState combatState, Creature source, int triggerAmount = 1, bool triggerEffects = true)
+    {
+        for (int i = 0; i < triggerAmount; i++)
+        {
+            foreach (AbstractModel iterateHookListener in combatState.IterateHookListeners())
+            {
+                if (iterateHookListener is not EmbersPower)
+                    continue;
+                EmbersPower embers = iterateHookListener as EmbersPower;
+                Creature owner = embers.Owner;
+                if (!owner.IsDead)
+                {
+                    if (owner.IsAlive)
+                    {
+                        await embers.TriggerBlazeDamage(source, triggerEffects);
+                    }
+                }
+            }
+        }
     }
 }

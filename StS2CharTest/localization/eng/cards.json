@@ -73,5 +73,8 @@
   "STS2CHARTEST-DRAGON_SCALES.title": "Dragon Scales",
 
   "STS2CHARTEST-SCRATCHING_NAILS.description": "Deal {Damage:diff()} damage {Repeat:diff()} times. Gain [gold]Heat[/gold] for everytime you dealt unblocked damage.",
-  "STS2CHARTEST-SCRATCHING_NAILS.title": "Scratching Nails"
+  "STS2CHARTEST-SCRATCHING_NAILS.title": "Scratching Nails",
+
+  "STS2CHARTEST-DEVILS_FIRE.description": "Whenever you [gold]Blaze[/gold], [gold]Blaze[/gold] one additional time.",
+  "STS2CHARTEST-DEVILS_FIRE.title": "Devil's Fire"
 }

@@ -21,7 +21,7 @@ public class EmbersPower : CharTestPowerModel
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         if(side == Owner.Side)
             await DealDamage();
@@ -42,15 +42,15 @@ public class EmbersPower : CharTestPowerModel
         return (int)(takesOneDamage ? 1 : Amount);
     }
 
-    public async Task TriggerBlazeDamage(Creature source)
+    public async Task TriggerBlazeDamage(Creature source, bool triggerEffects = true)
     {
         MainFile.Logger.Info("Blaze Triggered");
         await DealDamage(false);
 
-        await TriggerOnBlaze(source);
+        await TriggerOnBlaze(source, triggerEffects);
     }
 
-    public async Task TriggerOnBlaze(Creature source)
+    public async Task TriggerOnBlaze(Creature source, bool triggerEffects = true)
     {
         foreach (AbstractModel iterateHookListener in CombatState.IterateHookListeners())
         {
@@ -58,7 +58,7 @@ public class EmbersPower : CharTestPowerModel
             {
                 CharTestPowerModel power = iterateHookListener as CharTestPowerModel;
                 if (power.Owner == source)
-                    await power.OnBlaze();
+                    await power.OnBlaze(triggerEffects);
             }
 
             if (!source.IsPlayer)
@@ -68,7 +68,7 @@ public class EmbersPower : CharTestPowerModel
             {
                 CharTestRelic relic = iterateHookListener as CharTestRelic;
                 if (relic.Owner == player)
-                    await relic.OnBlaze();
+                    await relic.OnBlaze(triggerEffects);
             }
         }
     }

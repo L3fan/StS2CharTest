@@ -33,5 +33,9 @@
 
   "STS2CHARTEST-DRAGON_SCALES_POWER.description": "Whenever you gain [gold]Heat[/gold] gain an equal amount of [gold]Vigor[/gold].",
   "STS2CHARTEST-DRAGON_SCALES_POWER.smartDescription": "Whenever you gain [gold]Heat[/gold] gain an equal amount of [gold]Vigor[/gold].",
-  "STS2CHARTEST-DRAGON_SCALES_POWER.title": "Dragon Scales"
+  "STS2CHARTEST-DRAGON_SCALES_POWER.title": "Dragon Scales",
+
+  "STS2CHARTEST-DEVILS_FIRE_POWER.description": "Whenever you [gold]Blaze[/Blaze], [gold]Blaze[/Blaze] one additional time.",
+  "STS2CHARTEST-DEVILS_FIRE_POWER.smartDescription": "Whenever you [gold]Blaze[/Blaze], [gold]Blaze[/Blaze] one additional time.",
+  "STS2CHARTEST-DEVILS_FIRE_POWER.title": "Devil's Fire"
 }

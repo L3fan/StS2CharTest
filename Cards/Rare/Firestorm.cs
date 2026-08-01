@@ -31,7 +31,7 @@ public class Firestorm() : CharTestCard(3, CardType.Attack,
             await CommonActions.Apply<EmbersPower>(choiceContext, enemy, this, DynamicVars["EmbersPower"].IntValue + LastHeatSpent);
         }
 
-        await Blaze(Owner, DynamicVars["Blaze"].IntValue);
+        await CharTestActions.Blaze(CombatState, Owner, DynamicVars["Blaze"].IntValue);
     }
 
     protected override void OnUpgrade()

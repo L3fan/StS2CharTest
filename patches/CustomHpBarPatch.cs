@@ -31,7 +31,7 @@ internal class CustomHpBarPatch
         if (____creature.CurrentHp <= 0)
         {
             _embersForeground.Visible = false;
-        } else if (!____creature.ShowsInfiniteHp)
+        } else if (!____creature.HpDisplay.IsInfinite())
         {
             int powerAmount = ____creature.GetPowerAmount<DoomPower>();
             PoisonPower poisonPower = ____creature.GetPower<PoisonPower>();

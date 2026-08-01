@@ -3,6 +3,7 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -32,12 +33,14 @@ public class SunStone() : CustomRelicModel
         await CharTestActions.GainHeat(new BlockingPlayerChoiceContext(), Owner, DynamicVars["Heat"].IntValue);
     }
 
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)
+    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants,
+        ICombatState combatState)
     {
         /*if (Owner.Creature.Side != side || Owner.Creature.CombatState.RoundNumber == 1)
             return;
         Flash();
         await PowerCmd.Apply<HeatPower>(Owner.Creature, 1, Owner.Creature, null);*/
+        return Task.CompletedTask;
     }
 
     
