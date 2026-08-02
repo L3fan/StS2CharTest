@@ -2,6 +2,7 @@
 using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -102,7 +103,6 @@ public static class CharTestActions
         foreach (CardModel card in cards)
         {
             CardPileCmd.Add(card, CounterPile.Counter, clonedBy: clonedBy);
-            
         }
     }
 }

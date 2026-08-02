@@ -6,20 +6,24 @@ using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
 using StS2CharTest.CustomNodes;
 
-public partial class NCounterPile : NCombatCardPile
+public partial class NCounterPile : NButton
 {
 	public string cardNodePath = "res://scenes/cards/card.tscn";
+
+	private CardPile? _pile;
 	
-	public void Initialize(CardPile pile)
+	public void Initialize(Player player)
 	{
-		_pile = pile;
-		_pile.CardAdded += CardAdded;
+		_pile = CardPile.Get(CounterPile.Counter, player);
+		if(_pile != null)
+			_pile.CardAdded += CardAdded;
 		
 	}
 
-	protected override PileType Pile => CounterPile.Counter;
+	protected PileType Pile => CounterPile.Counter;
 
 	public void CardAdded(CardModel card)
 	{
@@ -44,7 +48,5 @@ public partial class NCounterPile : NCombatCardPile
 
 public class CounterPileResource
 {
-	public static readonly SpireField<NCreatureVisuals, NCounterPile> CreatureVisualsCounterPile = new(() => null);
-	public static readonly SpireField<PlayerCombatState, CardPile> PlayerCombatStateCounterPile = new(() => null);
-	public static readonly SpireField<NCreatureVisuals, Player> CreatureVisualsPlayer = new(() => null);
+	public static readonly SpireField<NCreature, CounterPile> NCreatureCounterPile = new(() => null);
 }

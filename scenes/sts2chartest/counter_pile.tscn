@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cjd8u3a3b67lf"]
 
-[ext_resource type="Script" uid="uid://bg381ly4wxicn" path="res://CustomNodes/NCounterPile.cs" id="1_wjrg0"]
+[ext_resource type="Script" uid="uid://df45oh3rly4y5" path="res://CustomNodes/NCounterPile.cs" id="1_wjrg0"]
 
 [node name="CounterPile" type="Control"]
 layout_mode = 3
