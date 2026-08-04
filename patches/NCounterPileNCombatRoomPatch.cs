@@ -1,15 +1,18 @@
 ﻿using Godot;
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Context;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Rooms;
 
 namespace StS2CharTest.patches;
 
 [HarmonyPatch(typeof(NCombatRoom))]
 internal class NCounterPileNCombatRoomPatch
 {
-    [HarmonyPostfix, HarmonyPatch(nameof(NCombatRoom.AddCreature))]
-    public static void AddNCounterPile(ref NCombatRoom __instance, ref Control ____allyContainer)
+    [HarmonyPostfix, HarmonyPatch("CreateAllyNodes")]
+    public static void AddNCounterPile(ref NCombatRoom __instance, ref Control ____allyContainer, ref ICombatRoomVisuals ____visuals)
     {
         string nCounterPilePath = "res://scenes/sts2chartest/counter_pile.tscn";
         PackedScene nCounterPilePackedScene = GD.Load<PackedScene>(nCounterPilePath);
@@ -18,6 +21,7 @@ internal class NCounterPileNCombatRoomPatch
         {
             foreach (Node child in ____allyContainer.GetChildren())
             {
+                MainFile.Logger.Info("Ally Container child: " + child.GetType());
                 if (child is not NCreature)
                     continue;
 
@@ -27,8 +31,11 @@ internal class NCounterPileNCombatRoomPatch
                     continue;
 
                 NCounterPile nCounterPile = nCounterPilePackedScene.Instantiate<NCounterPile>();
-                nCounterPile.Initialize(creature.Entity.Player);
-                creature.AddChild(nCounterPile);
+                nCounterPile.Position = new Vector2(160, -175);
+                creature.Visuals.AddChild(nCounterPile);
+                Player player = LocalContext.GetMe(((CombatRoom)____visuals).CombatState);
+                nCounterPile.Initialize(player);
+                CounterPileResource.NCreatureVisualsNCounterPile.Set(creature.Visuals, nCounterPile);
             }
         }
 

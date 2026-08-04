@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjd8u3a3b67lf"]
+[gd_scene load_steps=3 format=3 uid="uid://cjd8u3a3b67lf"]
 
-[ext_resource type="Script" uid="uid://df45oh3rly4y5" path="res://CustomNodes/NCounterPile.cs" id="1_wjrg0"]
+[ext_resource type="Script" uid="uid://b3j1oeexchv41" path="res://CustomNodes/NCounterPile.cs" id="1_wjrg0"]
+[ext_resource type="Script" uid="uid://bxac2vmsu7bno" path="res://CustomNodes/CustomMegaLabel.cs" id="2_mm1nt"]
 
 [node name="CounterPile" type="Control"]
 layout_mode = 3
@@ -14,3 +15,20 @@ offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 color = Color(0.8936852, 0, 0.16610745, 0.5176471)
+
+[node name="Icon" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CountContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Count" type="Label" parent="CountContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_mm1nt")

@@ -16,13 +16,13 @@ public partial class CustomParticlesContainer : NParticlesContainer
         MainFile.Logger.Info("Children Count: " + GetChildren().Count);
         foreach (Node child in GetChildren())
         {
-            MainFile.Logger.Info("Checking if " + child.Name + " is GpuParticles2D...");
+            //MainFile.Logger.Info("Checking if " + child.Name + " is GpuParticles2D...");
             if (child.GetType() == typeof(GpuParticles2D))
             {
                 particles.Add(child as GpuParticles2D);
             }
         }
         ParticlesField?.SetValue(this, particles);
-        MainFile.Logger.Info("Particles amount: " + ParticlesField?.GetValue(this));
+        //MainFile.Logger.Info("Particles amount: " + ParticlesField?.GetValue(this));
     }
 }

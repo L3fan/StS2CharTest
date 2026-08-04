@@ -1,10 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://b6x7xjl0lb68s"]
+[gd_scene load_steps=16 format=3 uid="uid://b6x7xjl0lb68s"]
 
 [ext_resource type="Script" uid="uid://cdn0r81mg6r7h" path="res://CustomNodes/CustomCreatureVisuals.cs" id="1_uw00d"]
 [ext_resource type="Texture2D" uid="uid://b7mkla7dkni3f" path="res://images/sts2chartest/character/spritesheet.png" id="19_j5bmr"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_lgesm"]
-viewport_path = NodePath("Visuals/SubViewport")
 
 [sub_resource type="Animation" id="Animation_uwjab"]
 length = 0.001
@@ -4907,12 +4904,6 @@ script = ExtResource("1_uw00d")
 unique_name_in_owner = true
 position = Vector2(54, -5)
 
-[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-visible = false
-position = Vector2(-294, -198)
-scale = Vector2(0.41308594, 0.41308594)
-texture = SubResource("ViewportTexture_lgesm")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
 deterministic = true
 libraries = {
@@ -4964,7 +4955,7 @@ bone_angle = -94.02098
 [node name="ShoulderL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2"]
 position = Vector2(-6.002, -39.974)
 rotation = -0.34027717
-scale = Vector2(0.9999386, 0.9999386)
+scale = Vector2(0.99993855, 0.99993855)
 rest = Transform2D(1, 0, 0, 1, -6, -40)
 auto_calculate_length_and_angle = false
 length = 0.0
@@ -4998,7 +4989,7 @@ rest = Transform2D(1, 0, 0, 1, 6, 2)
 [node name="ThumbTipL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL/ThumbBaseL"]
 position = Vector2(7, 1)
 rotation = -0.30445355
-scale = Vector2(0.9999849, 0.9999849)
+scale = Vector2(0.99998504, 0.99998504)
 rest = Transform2D(1, 0, 0, 1, 7, 1)
 auto_calculate_length_and_angle = false
 length = 8.16
@@ -5037,7 +5028,7 @@ bone_angle = 28.054995
 [node name="RingBaseL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL"]
 position = Vector2(3, 18)
 rotation = 0.16215858
-scale = Vector2(0.9999823, 0.9999823)
+scale = Vector2(0.99998146, 0.99998146)
 rest = Transform2D(1, 0, 0, 1, 3, 18)
 
 [node name="RingTipL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL/RingBaseL"]
@@ -5052,7 +5043,7 @@ bone_angle = 45.42998
 [node name="PinkyBaseL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL"]
 position = Vector2(0, 17)
 rotation = 0.049438477
-scale = Vector2(0.99997944, 0.99997944)
+scale = Vector2(0.9999778, 0.9999778)
 rest = Transform2D(1, 0, 0, 1, 0, 17)
 
 [node name="PinkyTipL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL/PinkyBaseL"]

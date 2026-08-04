@@ -1,4 +1,5 @@
 ﻿using BaseLib.Abstracts;
+using BaseLib.Cards.Variables;
 using BaseLib.Patches.Content;
 using Godot;
 using MegaCrit.Sts2.Core.Context;
@@ -15,13 +16,11 @@ namespace StS2CharTest.CustomNodes;
 
 public class CounterPile : CustomPile
 {
-    public Action<CardModel> OnCardAdded;
-    
     [CustomEnum] 
     public static PileType Counter;
     public CounterPile() : base(Counter)
     {
-        
+        ContentsChanged += OnContentsChanged;
     }
 
     public override bool CardShouldBeVisible(CardModel card)
@@ -32,7 +31,21 @@ public class CounterPile : CustomPile
     public override Vector2 GetTargetPosition(CardModel model, Vector2 size)
     {
         Player player = model.Owner;
-        NCreature creature = NCombatRoom.Instance.GetCreatureNode(player.Creature);
-        return creature.Position + new Vector2(140, -175);
+        NCreature? creature = NCombatRoom.Instance?.GetCreatureNode(player.Creature);
+        if(creature == null)
+            return Vector2.Zero;
+        return creature.Visuals.GlobalPosition + new Vector2(160, -175);
+    }
+    
+    public void AddInternal(CardModel card, int index = -1, bool silent = false)
+    {
+        MainFile.Logger.Info("Adding Counter Pile");
+        base.AddInternal(card);
+    }
+    
+	
+    public void OnContentsChanged()
+    {
+        MainFile.Logger.Info("Counter Pile: Contents of Counter Pile changed");
     }
 }

@@ -21,7 +21,7 @@ public class FlyingPower : CharTestPowerModel
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("DamageDecrease", 50m)];
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer,
-        CardModel? cardSource, CardPlay? cardPlay)
+        CardModel? cardSource, CardPlay? play)
     {
         if (target != base.Owner)
         {

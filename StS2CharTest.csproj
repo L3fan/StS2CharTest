@@ -34,10 +34,10 @@
 
     <!-- Linux -->
     <PropertyGroup Condition="'$(IsLinux)' == 'true'">
-        <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">$(HOME)/.local/share/Steam/steamapps</SteamLibraryPath>
+        <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">/home/l3fan/.steam/debian-installation/steamapps</SteamLibraryPath>
         <Sts2Path Condition="'$(Sts2Path)' == ''">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path>
         <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">$(Sts2Path)/data_sts2_linuxbsd_x86_64</Sts2DataDir>
-        <GodotPath Condition="'$(GodotPath)' == ''">$(SteamLibraryPath)/common/Godot Engine/godot.x11.opt.tools.64</GodotPath>
+        <GodotPath Condition="'$(GodotPath)' == ''">/home/l3fan/Downloads/megadot-4.5.1-m.14-linux-x86_64-editor-csharp/MegaDot_v4.5.1-stable_mono_linux.x86_64</GodotPath>
     </PropertyGroup>
     <!-- // NOTE: Megadot is version 4.5.1, and the game won't load pck if godot is newer. -->
 
@@ -72,6 +72,8 @@
     
     <ItemGroup>
         <Publicize Include="sts2:MegaCrit.Sts2.Core.Nodes.Combat.NCombatCardPile._pile" />
+        <Publicize Include="sts2:MegaCrit.Sts2.Core.Nodes.Combat.NCombatCardPile.CreateAllyNodes" />
+        <Publicize Include="sts2:MegaCrit.Sts2.Core.Nodes.Rooms.NCombatRoom._visuals" />
     </ItemGroup>
     
     <ItemGroup>
