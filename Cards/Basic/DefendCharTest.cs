@@ -13,7 +13,7 @@ using StS2CharTest.CustomNodes;
 namespace StS2CharTest.Code.Cards;
 
 [Pool(typeof(CharTestCardPool))]
-public class DefendCharTest() : CharTestCard(1,
+public class DefendCharTest() : CounterCard(1,
     CardType.Skill, CardRarity.Basic,
     TargetType.Self)
 {
@@ -22,12 +22,12 @@ public class DefendCharTest() : CharTestCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        if (Pile == CardPile.Get(CounterPile.Counter, Owner))
-        {
-            await CommonActions.CardBlock(this, play);
-        }
-        else
-            await CharTestActions.AddToCounterPile(new CardModel[] { this }, Owner.Creature);
+        base.OnPlay(choiceContext, play);
+    }
+
+    protected override async Task OnCounterPlay(PlayerChoiceContext choiceContext, CardPlay play)
+    {
+        await CommonActions.CardBlock(this, play);
     }
 
     protected override void OnUpgrade()

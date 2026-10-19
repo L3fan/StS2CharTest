@@ -3,20 +3,23 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2CharTest.Actions;
 using StS2CharTest.Cards;
 using StS2CharTest.Code.Character;
+using StS2CharTest.CustomNodes;
 
 namespace StS2CharTest.Code.Cards;
 
 [Pool(typeof(CharTestCardPool))]
-public class StrikeCharTest() : CharTestCard(1,
+public class StrikeCharTest() : CounterCard(1,
     CardType.Attack, CardRarity.Basic,
     TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move)];
-    protected override async Task OnPlay(
+    protected override async Task OnCounterPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
