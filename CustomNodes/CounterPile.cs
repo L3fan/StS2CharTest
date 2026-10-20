@@ -25,9 +25,11 @@ public class CounterPile : CustomPile
     [CustomEnum] 
     public static AutoPlayType CounterPlay;
 
+    public event Action CounterCardPlayed;
+
     public CounterPile() : base(Counter)
     {
-        ContentsChanged += OnContentsChanged;
+        
     }
 
     public override bool CardShouldBeVisible(CardModel card)
@@ -50,12 +52,6 @@ public class CounterPile : CustomPile
         base.AddInternal(card);
     }
     
-	
-    public void OnContentsChanged()
-    {   
-        //MainFile.Logger.Info("Counter Pile: Contents of Counter Pile changed");
-    }
-    
 
     public async Task PlayerWasAttacked(Creature damageSource)
     {
@@ -66,7 +62,17 @@ public class CounterPile : CustomPile
 
     public async Task TriggerMostRecentCardInPile(Creature source)
     {
+        if (Cards == null)
+            return;
+        if (Cards.Count <= 0)
+            return;
         CardModel cardToPlay = Cards.First();
+        InvokeCounterCardPlayed();
         await CardCmd.AutoPlay(new BlockingPlayerChoiceContext(), cardToPlay, source, CounterPlay);
+    }
+
+    public void InvokeCounterCardPlayed()
+    {
+        CounterCardPlayed?.Invoke();
     }
 }

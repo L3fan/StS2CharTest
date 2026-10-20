@@ -7,19 +7,13 @@ using StS2CharTest.CustomNodes;
 
 namespace StS2CharTest.patches;
 
-[HarmonyPatch(typeof(Hook), nameof(Hook.BeforeDamageReceived), MethodType.Async)]
+[HarmonyPatch(typeof(Hook), nameof(Hook.BeforeDamageReceived))]
 internal class CreatureTakeDamageTriggerPatch
 {
     [HarmonyPostfix]
-    public static void Postfix(ref Task __result, Creature target, Creature? dealer)
+    public static async Task Postfix(Task __result, Creature target, Creature? dealer)
     {
-        __result = WrappedApplyTask(__result, target, dealer);
-    }
-    
-    static async Task WrappedApplyTask(Task originalTask, Creature target, Creature? dealer)
-    {
-        await originalTask;
-        
+        await __result;
         if (!target.IsPlayer)
             return;
         Player player = target.Player;

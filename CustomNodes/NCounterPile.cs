@@ -25,6 +25,12 @@ public partial class NCounterPile : NCombatCardPile
 
 	public Control cardHoldersContainer;
 
+	private Tween _cardPlayTween;
+	private Vector2 _cardPlayOutPosition = new Vector2(128, 0);
+	private Color _cardPlayOutColor = new Color(1, 1, 1, 0);
+	private Vector2 _cardPlayInPosition = new Vector2(0, -128);
+	private Color _cardPlayInColor = new Color(1, 1, 1, 1);
+
 	public override void _Ready()
 	{
 		this.ConnectSignals();
@@ -42,7 +48,7 @@ public partial class NCounterPile : NCombatCardPile
 		{
 			_pile.CardAdded += CardAdded;
 			_pile.CardRemoved += CardRemoved;
-			_pile.ContentsChanged += ContentsChanged;
+			((CounterPile)_pile).CounterCardPlayed += OnCounterCardPlayed;
 		}
 
 	}
@@ -60,6 +66,7 @@ public partial class NCounterPile : NCombatCardPile
 		holder.SetCardScale(Vector2.One * 0.5f);
 		cardNode.UpdateVisuals(Pile, CardPreviewMode.Normal);
 		OnCardAdded(holder);
+		PlayCardHolderAnimIn(holder);
 
 	}
 
@@ -142,6 +149,39 @@ public partial class NCounterPile : NCombatCardPile
 		int offset = (index - Mathf.FloorToInt(Mathf.Min(_pile.Cards.Count, 3)/2f)) * -15;
 
 		return Vector2.Right * offset;
+	}
+
+	private void OnCounterCardPlayed()
+	{
+		Node child = cardHoldersContainer.GetChild(cardHoldersContainer.GetChildCount() - 1);
+		if (child is NPreviewCardHolder)
+		{
+			NPreviewCardHolder holder = (NPreviewCardHolder)child;
+			PlayCardHolderAnimOut(holder);
+		}
+	}
+
+	private void PlayCardHolderAnimOut(NPreviewCardHolder holder)
+	{
+		Vector2 cardStartPosition = holder.Position;
+		_cardPlayTween?.Kill();
+		_cardPlayTween = this.CreateTween();
+		_cardPlayTween.SetParallel(true);
+		_cardPlayTween.TweenProperty((GodotObject) holder, (NodePath) "position", cardStartPosition + _cardPlayOutPosition, 0.25).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Back);
+		_cardPlayTween.TweenProperty(holder, "modulate", _cardPlayOutColor, 0.25).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Back);
+	}
+	
+	
+	private void PlayCardHolderAnimIn(NPreviewCardHolder holder)
+	{
+		Vector2 cardEndPosition = holder.Position;
+		holder.Position += _cardPlayInPosition;
+		holder.Modulate = _cardPlayOutColor;
+		_cardPlayTween?.Kill();
+		_cardPlayTween = this.CreateTween();
+		_cardPlayTween.SetParallel(true);
+		_cardPlayTween.TweenProperty((GodotObject) holder, (NodePath) "position", cardEndPosition, 0.25).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Back);
+		_cardPlayTween.TweenProperty(holder, "modulate", _cardPlayInColor, 0.25).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Back);
 	}
 }
 
