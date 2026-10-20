@@ -14,7 +14,7 @@ namespace StS2CharTest.Cards.Common;
 [Pool(typeof(CharTestCardPool))]
 public class ScratchingNails() : CharTestCard(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(2, ValueProp.Move), new RepeatVar(2), new HeatVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(2, ValueProp.Move), new RepeatVar(2), new RageVar(1)];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -31,7 +31,7 @@ public class ScratchingNails() : CharTestCard(0, CardType.Attack, CardRarity.Com
                     dealtUnblockedDamage = true;
             
             if(dealtUnblockedDamage)
-                await CharTestActions.GainHeat(choiceContext, Owner, DynamicVars["Heat"].IntValue);
+                await CharTestActions.GainRage(choiceContext, Owner, DynamicVars["Rage"].IntValue);
         }
     }
 

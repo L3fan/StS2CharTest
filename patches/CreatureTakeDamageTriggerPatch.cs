@@ -7,7 +7,7 @@ using StS2CharTest.CustomNodes;
 
 namespace StS2CharTest.patches;
 
-[HarmonyPatch(typeof(Hook), nameof(Hook.BeforeDamageReceived))]
+[HarmonyPatch(typeof(Hook), nameof(Hook.AfterDamageReceived))]
 internal class CreatureTakeDamageTriggerPatch
 {
     [HarmonyPostfix]

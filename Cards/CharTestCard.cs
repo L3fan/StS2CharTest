@@ -30,155 +30,155 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
     public override string CustomPortraitPath => "res://images/packed/card_portraits/" + Id.Entry.RemovePrefix().ToLowerInvariant() + ".png";
     public override string PortraitPath => "res://images/packed/card_portraits/big/" + Id.Entry.RemovePrefix().ToLowerInvariant() + ".png";
 
-    private bool _heatCostSet;
-    private int _baseHeatCost;
-    public virtual int CanonicalHeatCost => -1;
+    private bool _rageCostSet;
+    private int _baseRageCost;
+    public virtual int CanonicalRageCost => -1;
 
-    public int BaseHeatCost
+    public int BaseRageCost
     {
         get
         {
             if (!this.IsMutable)
-                return this.CanonicalHeatCost;
-            if (!this._heatCostSet)
+                return this.CanonicalRageCost;
+            if (!this._rageCostSet)
             {
-                this._baseHeatCost = this.CanonicalHeatCost;
-                this._heatCostSet = true;
+                this._baseRageCost = this.CanonicalRageCost;
+                this._rageCostSet = true;
             }
-            return this._baseHeatCost;
+            return this._baseRageCost;
         }
         private set
         {
             this.AssertMutable();
-            if (!this.HasHeatCostX)
+            if (!this.HasRageCostX)
             {
-                this._baseHeatCost = value;
-                this._heatCostSet = true;
+                this._baseRageCost = value;
+                this._rageCostSet = true;
             }
-            Action heatCostChanged = this.HeatCostChanged;
-            if (heatCostChanged == null)
+            Action rageCostChanged = this.RageCostChanged;
+            if (rageCostChanged == null)
                 return;
-            heatCostChanged();
+            rageCostChanged();
         }
     }
     
-    public bool HasChangedHeatCost { get {return CanonicalHeatCost != _baseHeatCost;} }
+    public bool HasChangedRageCost { get {return CanonicalRageCost != _baseRageCost;} }
     
-    private bool _wasHeatCostJustUpgraded;
-    public bool WasHeatCostJustUpgraded => this._wasHeatCostJustUpgraded;
+    private bool _wasRageCostJustUpgraded;
+    public bool WasRageCostJustUpgraded => this._wasRageCostJustUpgraded;
     
-    private List<TemporaryCardCost> _temporaryHeatCosts = new List<TemporaryCardCost>();
+    private List<TemporaryCardCost> _temporaryRageCosts = new List<TemporaryCardCost>();
     
-    public TemporaryCardCost? TemporaryHeatCost
+    public TemporaryCardCost? TemporaryRageCost
     {
-        get => this._temporaryHeatCosts.LastOrDefault<TemporaryCardCost>();
+        get => this._temporaryRageCosts.LastOrDefault<TemporaryCardCost>();
     }
     
-    private int _lastHeatSpent;
+    private int _lastRageSpent;
     
-    public event Action? HeatCostChanged;
+    public event Action? RageCostChanged;
     
-    public virtual int CurrentHeatCost
+    public virtual int CurrentRageCost
     {
         get
         {
-            int? cost = this._temporaryHeatCosts.LastOrDefault<TemporaryCardCost>()?.Cost;
+            int? cost = this._temporaryRageCosts.LastOrDefault<TemporaryCardCost>()?.Cost;
             if (!cost.HasValue)
-                return this.BaseHeatCost;
+                return this.BaseRageCost;
             int? nullable = cost;
             int num = 0;
-            return nullable.GetValueOrDefault() == num & nullable.HasValue && this.BaseHeatCost < 0 ? this.BaseHeatCost : cost.Value;
+            return nullable.GetValueOrDefault() == num & nullable.HasValue && this.BaseRageCost < 0 ? this.BaseRageCost : cost.Value;
         }
     }
 
-    public virtual bool HasHeatCostX => false;
+    public virtual bool HasRageCostX => false;
     
-    public int LastHeatSpent
+    public int LastRageSpent
     {
-        get => this._lastHeatSpent;
+        get => this._lastRageSpent;
         set
         {
             this.AssertMutable();
-            this._lastHeatSpent = value;
+            this._lastRageSpent = value;
         }
     }
 
-    public int ResolveHeatXValue()
+    public int ResolveRageXValue()
     {
-        if (!this.HasHeatCostX)
+        if (!this.HasRageCostX)
             throw new InvalidOperationException("This card does not have an X-cost.");
-        return Hook.ModifyXValue(this.CombatState, this, this.LastHeatSpent);
+        return Hook.ModifyXValue(this.CombatState, this, this.LastRageSpent);
     }
 
     protected override void DeepCloneFields()
     {
         base.DeepCloneFields();
-        _temporaryHeatCosts = _temporaryHeatCosts.ToList<TemporaryCardCost>();
+        _temporaryRageCosts = _temporaryRageCosts.ToList<TemporaryCardCost>();
     }
 
     protected override void AfterCloned()
     {
         base.AfterCloned();
-        this.HeatCostChanged = (Action) null;
+        this.RageCostChanged = (Action) null;
     }
 
-    public void SetHeatCostUntilPlayed(int cost)
+    public void SetRageCostUntilPlayed(int cost)
     {
-        this.AddTemporaryHeatCost(TemporaryCardCost.UntilPlayed(cost));
+        this.AddTemporaryRageCost(TemporaryCardCost.UntilPlayed(cost));
     }
 
-    public void SetHeatCostThisTurn(int cost)
+    public void SetRageCostThisTurn(int cost)
     {
-        AddTemporaryHeatCost(TemporaryCardCost.ThisTurn(cost));
+        AddTemporaryRageCost(TemporaryCardCost.ThisTurn(cost));
     }
 
-    public void SetHeatCostThisCombat(int cost)
+    public void SetRageCostThisCombat(int cost)
     {
-        this.AddTemporaryHeatCost(TemporaryCardCost.ThisCombat(cost));
+        this.AddTemporaryRageCost(TemporaryCardCost.ThisCombat(cost));
     }
     
-    public int GetHeatCostThisCombat()
+    public int GetRageCostThisCombat()
     {
-        TemporaryCardCost temporaryCardCost = this._temporaryHeatCosts.FirstOrDefault<TemporaryCardCost>((Func<TemporaryCardCost, bool>) (cost => cost != null && !cost.ClearsWhenTurnEnds && !cost.ClearsWhenCardIsPlayed));
-        return temporaryCardCost == null ? this.BaseHeatCost : temporaryCardCost.Cost;
+        TemporaryCardCost temporaryCardCost = this._temporaryRageCosts.FirstOrDefault<TemporaryCardCost>((Func<TemporaryCardCost, bool>) (cost => cost != null && !cost.ClearsWhenTurnEnds && !cost.ClearsWhenCardIsPlayed));
+        return temporaryCardCost == null ? this.BaseRageCost : temporaryCardCost.Cost;
     }
 
-    private void AddTemporaryHeatCost(TemporaryCardCost cost)
+    private void AddTemporaryRageCost(TemporaryCardCost cost)
     {
         this.AssertMutable();
-        this._temporaryHeatCosts.Add(cost);
-        Action heatCostChanged = HeatCostChanged;
-        if (heatCostChanged == null)
+        this._temporaryRageCosts.Add(cost);
+        Action rageCostChanged = RageCostChanged;
+        if (rageCostChanged == null)
             return;
-        heatCostChanged();
+        rageCostChanged();
     }
     
-    protected void UpgradeHeatCostBy(int addend)
+    protected void UpgradeRageCostBy(int addend)
     {
-        if (this.HasHeatCostX)
-            throw new InvalidOperationException($"UpgradeHeatCostBy called on {this.Id.Entry} which has heat cost X.");
+        if (this.HasRageCostX)
+            throw new InvalidOperationException($"UpgradeRageCostBy called on {this.Id.Entry} which has rage cost X.");
         if (addend == 0)
             return;
-        int baseHeatCost = this.BaseHeatCost;
-        this.BaseHeatCost += addend;
-        this._wasHeatCostJustUpgraded = true;
-        if (this.BaseHeatCost >= baseHeatCost)
+        int baseRageCost = this.BaseRageCost;
+        this.BaseRageCost += addend;
+        this._wasRageCostJustUpgraded = true;
+        if (this.BaseRageCost >= baseRageCost)
             return;
-        this._temporaryHeatCosts.RemoveAll((Predicate<TemporaryCardCost>) (c => c.Cost > this.BaseHeatCost));
+        this._temporaryRageCosts.RemoveAll((Predicate<TemporaryCardCost>) (c => c.Cost > this.BaseRageCost));
     }
     
-    public int GetHeatCostWithModifiers()
+    public int GetRageCostWithModifiers()
     {
-        if (this.HasHeatCostX)
+        if (this.HasRageCostX)
         {
             PlayerCombatState playerCombatState = this.Owner.PlayerCombatState;
-            return playerCombatState == null ? 0 : (int)HeatResource.Amount.Get(playerCombatState);
+            return playerCombatState == null ? 0 : (int)RageResource.Amount.Get(playerCombatState);
         }
         CardPile pile = this.Pile;
-        return pile != null && pile.IsCombatPile && this.CombatState != null ? (int) ModifyHeatCost(this.CombatState, this, (Decimal) this.CurrentHeatCost) : this.CurrentHeatCost;
+        return pile != null && pile.IsCombatPile && this.CombatState != null ? (int) ModifyRageCost(this.CombatState, this, (Decimal) this.CurrentRageCost) : this.CurrentRageCost;
     }
     
-    public static Decimal ModifyHeatCost(ICombatState combatState, CardModel card, Decimal originalCost)
+    public static Decimal ModifyRageCost(ICombatState combatState, CardModel card, Decimal originalCost)
     {
         if (originalCost < 0M)
             return originalCost;
@@ -188,13 +188,13 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
             if (!iterateHookListener.GetType().IsSubclassOf(typeof(CharTestCard)))
                 continue;
             CharTestCard charTestCard = iterateHookListener as CharTestCard;
-            charTestCard.TryModifyHeatCost(card, modifiedCost, out modifiedCost);
+            charTestCard.TryModifyRageCost(card, modifiedCost, out modifiedCost);
         }
 
         return modifiedCost;
     }
 
-    public bool TryModifyHeatCost(
+    public bool TryModifyRageCost(
         CardModel card,
         Decimal originalCost,
         out Decimal modifiedCost)
@@ -203,39 +203,39 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
         return false;
     }
     
-    public async Task SpendHeat(int amount)
+    public async Task SpendRage(int amount)
     {
-        this.LastHeatSpent = amount;
-        if (amount <= 0 || HeatResource.Amount.Get(Owner.PlayerCombatState) == 0)
+        this.LastRageSpent = amount;
+        if (amount <= 0 || RageResource.Amount.Get(Owner.PlayerCombatState) == 0)
             return;
-        decimal currentHeat = HeatResource.Amount.Get(Owner.PlayerCombatState);
-        if (currentHeat < LastHeatSpent)
-            LastHeatSpent = (int)HeatResource.Amount.Get(Owner.PlayerCombatState);
-        HeatResource.Amount.Set(Owner.PlayerCombatState, currentHeat-(Decimal)LastHeatSpent);
-        HeatResource.HeatChanged.Get(Owner.PlayerCombatState).Invoke((int)currentHeat, (int)HeatResource.Amount.Get(Owner.PlayerCombatState));
-        await AfterHeatSpent(this.Owner.Creature.CombatState, LastHeatSpent, this.Owner);
+        decimal currentRage = RageResource.Amount.Get(Owner.PlayerCombatState);
+        if (currentRage < LastRageSpent)
+            LastRageSpent = (int)RageResource.Amount.Get(Owner.PlayerCombatState);
+        RageResource.Amount.Set(Owner.PlayerCombatState, currentRage-(Decimal)LastRageSpent);
+        RageResource.RageChanged.Get(Owner.PlayerCombatState).Invoke((int)currentRage, (int)RageResource.Amount.Get(Owner.PlayerCombatState));
+        await AfterRageSpent(this.Owner.Creature.CombatState, LastRageSpent, this.Owner);
     }
 
-    private async Task AfterHeatSpent(ICombatState? combatState, int amount, Player spender)
+    private async Task AfterRageSpent(ICombatState? combatState, int amount, Player spender)
     {
         foreach (AbstractModel model in combatState.IterateHookListeners())
         {
             if (model is CharTestModel)
                 continue;
             CharTestModel charTestModel = model as CharTestModel;
-            await charTestModel.AfterHeatSpent(amount, spender);
+            await charTestModel.AfterRageSpent(amount, spender);
             model.InvokeExecutionFinished();
         }
     }
     
-    public void EndOfTurnCleanupHeat()
+    public void EndOfTurnCleanupRage()
     {
-        if (_temporaryHeatCosts.RemoveAll((Predicate<TemporaryCardCost>) (c => c.ClearsWhenTurnEnds)) <= 0)
+        if (_temporaryRageCosts.RemoveAll((Predicate<TemporaryCardCost>) (c => c.ClearsWhenTurnEnds)) <= 0)
             return;
-        Action heatCostChanged = this.HeatCostChanged;
-        if (heatCostChanged == null)
+        Action rageCostChanged = this.RageCostChanged;
+        if (rageCostChanged == null)
             return;
-        heatCostChanged();
+        rageCostChanged();
     }
     
     private IReadOnlyList<Creature> GetPossibleTargets()
@@ -244,52 +244,52 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
     }
 
     [CustomEnum]
-    public static CardType Overheat;
+    public static CardType Overrage;
 
-    public void ResetTempHeatCost()
+    public void ResetTempRageCost()
     {
-        if (_temporaryHeatCosts.RemoveAll((Predicate<TemporaryCardCost>)(c => c.ClearsWhenCardIsPlayed)) >
+        if (_temporaryRageCosts.RemoveAll((Predicate<TemporaryCardCost>)(c => c.ClearsWhenCardIsPlayed)) >
             0)
         {
-            Action heatCostChanged = HeatCostChanged;
-            if (heatCostChanged != null)
-                heatCostChanged();
+            Action rageCostChanged = RageCostChanged;
+            if (rageCostChanged != null)
+                rageCostChanged();
         }
     }
 
-    public void SetHeatCostWasJustUpgraded(bool b)
+    public void SetRageCostWasJustUpgraded(bool b)
     {
-        _wasHeatCostJustUpgraded = b;
+        _wasRageCostJustUpgraded = b;
     }
 
-    public void DowngradeHeatCost(CharTestCard mutable)
+    public void DowngradeRageCost(CharTestCard mutable)
     {
-        this._baseHeatCost = mutable.CanonicalHeatCost;
+        this._baseRageCost = mutable.CanonicalRageCost;
     }
 }
 
-public class HeatResource
+public class RageResource
 {
     public static readonly SpireField<PlayerCombatState, decimal> Amount = new(() => 0);
     public static readonly SpireField<PlayerCombatState, decimal> MaxAmount = new(() => 20);
 
-    public static readonly SpireField<PlayerCombatState, Action<int,int>> HeatChanged = new(() => null);
+    public static readonly SpireField<PlayerCombatState, Action<int,int>> RageChanged = new(() => null);
 
-    public static readonly SpireField<CharacterModel, bool> ShouldAlwaysShowHeatCounter = new(() => false);
-    public static readonly SpireField<NCombatUi, NHeatCounter> _heatCounter = new(() => null);
+    public static readonly SpireField<CharacterModel, bool> ShouldAlwaysShowRageCounter = new(() => false);
+    public static readonly SpireField<NCombatUi, NRageCounter> _rageCounter = new(() => null);
     
-    public static readonly SpireField<NCard, TextureRect> heatCostIcon = new(() => null);
-    public static readonly SpireField<NCard, MegaLabel> heatCostLabel = new(() => null);
+    public static readonly SpireField<NCard, TextureRect> rageCostIcon = new(() => null);
+    public static readonly SpireField<NCard, MegaLabel> rageCostLabel = new(() => null);
 }
 
 public interface CharTestModel
 {
-    public virtual Task AfterHeatSpent(int amount, Player spender)
+    public virtual Task AfterRageSpent(int amount, Player spender)
     {
         return Task.CompletedTask;
     }
     
-    public virtual Task AfterHeatGained(PlayerChoiceContext choiceContext, int amount, Player gainer)
+    public virtual Task AfterRageGained(PlayerChoiceContext choiceContext, int amount, Player gainer)
     {
         return Task.CompletedTask;
     }

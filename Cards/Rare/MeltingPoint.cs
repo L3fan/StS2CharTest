@@ -17,7 +17,7 @@ public class MeltingPoint() : CharTestCard(0, CardType.Skill,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EmbersVar(0).WithTooltip("EMBERS")];
 
-    public override int CanonicalHeatCost => 3;
+    public override int CanonicalRageCost => 3;
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

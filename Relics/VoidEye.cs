@@ -10,7 +10,6 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using StS2CharTest.Actions;
 using StS2CharTest.Code.Character;
-using StS2CharTest.Code.Powers;
 
 namespace StS2CharTest.Code.Relics;
 
@@ -32,11 +31,11 @@ public class VoidEye() : CustomRelicModel
     }
 
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Heat", 5).WithTooltip("HEAT")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new RageVar( 5).WithTooltip("HEAT")];
 
     public override async Task BeforeCombatStartLate()
     {
         Flash();
-        await CharTestActions.GainHeat(new BlockingPlayerChoiceContext(), Owner, DynamicVars["Heat"].IntValue);
+        await CharTestActions.GainRage(new BlockingPlayerChoiceContext(), Owner, DynamicVars["Rage"].IntValue);
     }
 }

@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using StS2CharTest.Actions;
 using StS2CharTest.Code.Character;
-using StS2CharTest.Code.Powers;
 
 namespace StS2CharTest.Code.Relics;
 
@@ -30,7 +29,7 @@ public class SunStone() : CustomRelicModel
     public override async Task BeforeCombatStartLate()
     {
         Flash();
-        await CharTestActions.GainHeat(new BlockingPlayerChoiceContext(), Owner, DynamicVars["Heat"].IntValue);
+        await CharTestActions.GainRage(new BlockingPlayerChoiceContext(), Owner, DynamicVars["Rage"].IntValue);
     }
 
     public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants,

@@ -13,7 +13,7 @@ public class Spark() : CharTestCard(0, CardType.Skill,
     CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(2)];
-    public override int CanonicalHeatCost => 3;
+    public override int CanonicalRageCost => 3;
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

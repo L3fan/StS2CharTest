@@ -12,16 +12,21 @@ public abstract class CounterCard(int cost, CardType cardType, CardRarity cardRa
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        MainFile.Logger.Info("Card was played from Counter Pile: " + playedFromCounterPile);
+        //MainFile.Logger.Info("Card was played from Counter Pile: " + playedFromCounterPile);
         if (playedFromCounterPile)
             await OnCounterPlay(choiceContext, play);
         else
-            await CharTestActions.AddToCounterPile(new CardModel[] { this }, Owner.Creature);
+            await OnHandPlay(choiceContext, play);
     }
 
-    protected virtual Task OnCounterPlay(PlayerChoiceContext choiceContext, CardPlay play)
+    protected virtual async Task OnCounterPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        return Task.CompletedTask;
+        
+    }
+
+    protected virtual async Task OnHandPlay(PlayerChoiceContext choiceContext, CardPlay play)
+    {
+        await CharTestActions.AddToCounterPile(new CardModel[] { this }, Owner.Creature);
     }
 
     public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy)

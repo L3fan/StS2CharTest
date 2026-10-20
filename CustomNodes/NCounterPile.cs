@@ -31,6 +31,8 @@ public partial class NCounterPile : NCombatCardPile
 	private Vector2 _cardPlayInPosition = new Vector2(0, -128);
 	private Color _cardPlayInColor = new Color(1, 1, 1, 1);
 
+	private List<Tween> _cardMoveTweens;
+
 	public override void _Ready()
 	{
 		this.ConnectSignals();
@@ -40,10 +42,10 @@ public partial class NCounterPile : NCombatCardPile
 	
 	public void Initialize(Player? player)
 	{
-		MainFile.Logger.Info("PlayerCombatState is null? " + (player.PlayerCombatState == null));
-		MainFile.Logger.Info("Counter enum: " + CounterPile.Counter);
+		//MainFile.Logger.Info("PlayerCombatState is null? " + (player.PlayerCombatState == null));
+		//MainFile.Logger.Info("Counter enum: " + CounterPile.Counter);
 		_pile = CustomPiles.GetCustomPile(player.PlayerCombatState, CounterPile.Counter);
-		MainFile.Logger.Info("Gotten Counter Pile is null? " + (_pile == null));
+		//MainFile.Logger.Info("Gotten Counter Pile is null? " + (_pile == null));
 		if (_pile != null)
 		{
 			_pile.CardAdded += CardAdded;
@@ -62,12 +64,16 @@ public partial class NCounterPile : NCombatCardPile
 			return;
 
 		NCard cardNode = NCard.Create(card);
+		AddCardHolder(cardNode);
+	}
+
+	public void AddCardHolder(NCard cardNode)
+	{
 		NPreviewCardHolder holder = NPreviewCardHolder.Create(cardNode, true, true);
 		holder.SetCardScale(Vector2.One * 0.5f);
 		cardNode.UpdateVisuals(Pile, CardPreviewMode.Normal);
 		OnCardAdded(holder);
 		PlayCardHolderAnimIn(holder);
-
 	}
 
 	public void OnCardAdded(NPreviewCardHolder newHolder)
@@ -92,56 +98,62 @@ public partial class NCounterPile : NCombatCardPile
 				NCard card = holder.CardNode;
 				Control cardFrame = card.Body.GetNode<Control>("%Frame");
 				holder.Position = new Vector2(i * cardFrame.Size.X / 2f * holder.Scale.X, 0);
-				MainFile.Logger.Info("Child " + i + " Position: " + holder.Position.X);
-				
-				card.UpdateVisuals(Pile, CardPreviewMode.Normal);
+				//MainFile.Logger.Info("Child " + i + " Position: " + holder.Position.X);
 			}
+
+			UpdateCardsContent();
 		}
 	}
 
 	public void CardRemoved(CardModel removedCard)
 	{
 		MainFile.Logger.Info("Card got removed from Counter Pile");
-		Node child = cardHoldersContainer.GetChild(cardHoldersContainer.GetChildCount() - 1);
-		if (child is NPreviewCardHolder)
+		Node childToRemove = cardHoldersContainer.GetChild(cardHoldersContainer.GetChildCount() - 1);
+		if (childToRemove is NPreviewCardHolder)
 		{
-			NPreviewCardHolder holder = (NPreviewCardHolder)child;
+			NPreviewCardHolder holder = (NPreviewCardHolder)childToRemove;
 			holder.QueueFree();
 		}
 
+		//if there are more cards in the pile...
 		if (_pile.Cards.Count >= 3)
 		{
+			//move already existing cards to the right
+			if (_cardMoveTweens != null)
+			{
+				foreach (Tween cardMoveTween in _cardMoveTweens)
+					cardMoveTween.Kill();
+			}
+
+			_cardMoveTweens = new List<Tween>();
+			
+			for (int i = 0; i < cardHoldersContainer.GetChildCount() - 1; i++)
+			{
+				NPreviewCardHolder child = cardHoldersContainer.GetChild<NPreviewCardHolder>(i);
+				Control cardFrame = child.CardNode.Body.GetNode<Control>("%Frame");
+				Tween newCardMoveTween = this.CreateTween();
+				newCardMoveTween.TweenProperty(child, "position", new Vector2((i + 1) * cardFrame.Size.X / 2f * child.Scale.X, 0), 0.25).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Back);
+				_cardMoveTweens.Add(newCardMoveTween);
+			}
+			
+			//add newest card
 			NCard cardNode = NCard.Create(_pile.Cards[2]);
-			NPreviewCardHolder holder = NPreviewCardHolder.Create(cardNode, true, true);
-			holder.SetCardScale(Vector2.One * 0.5f);
-			cardNode.UpdateVisuals(Pile, CardPreviewMode.Normal);
-			OnCardAdded(holder);
+			AddCardHolder(cardNode);;
 		}
 		
 		UpdateCardHoldersContainer();
+	}
+
+	public void UpdateCardsContent()
+	{
+		foreach(NPreviewCardHolder holder in cardHoldersContainer.GetChildren())
+			holder.CardNode.UpdateVisuals(Pile, CardPreviewMode.Normal);
 	}
 	
 	
 	public void ContentsChanged()
 	{
 		MainFile.Logger.Info("NCounterPile: Contents of Counter Pile changed");
-		/*if (_pile.IsEmpty)
-			return;
-
-		VisibleCards.Clear();
-		for (int i = 0; i < _pile.Cards.Count; i++)
-		{
-			CardModel card = _pile.Cards[i];
-			NCard newCard = GD.Load<PackedScene>(cardNodePath).Instantiate<NCard>();
-			newCard.Model = card;
-			newCard.UpdateVisuals(Pile, CardPreviewMode.Normal);
-			AddChild(newCard);
-			//newCard.Position = GetTargetPosition(_pile.Cards.IndexOf(card))
-			newCard.Position = new Vector2((_pile.Cards.Count - i - 1) / (float)_pile.Cards.Count, 0);
-			VisibleCards.Add(newCard);
-		}
-		
-		MainFile.Logger.Info("Counterpile cards: " + _pile.Cards.Count);*/
 	}
 
 	private Vector2 GetTargetPosition(int index)

@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2CharTest.Actions;
 using StS2CharTest.Code.Character;
-using StS2CharTest.Code.Powers;
 
 namespace StS2CharTest.Cards.Common;
 
@@ -16,8 +15,8 @@ namespace StS2CharTest.Cards.Common;
 public class CoolOff() : CharTestCard(1, CardType.Skill,
     CardRarity.Common, TargetType.Self)
 {
-    public override int CanonicalHeatCost => 1;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(9m, ValueProp.Move).WithTooltip("HEAT_COUNT")];
+    public override int CanonicalRageCost => 1;
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(9m, ValueProp.Move).WithTooltip("RAGE_COUNT")];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

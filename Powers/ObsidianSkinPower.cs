@@ -10,7 +10,6 @@ using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2CharTest.Actions;
 using StS2CharTest.Cards;
-using StS2CharTest.Code.Powers;
 
 namespace StS2CharTest.Powers;
 
@@ -24,7 +23,7 @@ public class ObsidianSkinPower : CharTestPowerModel, CharTestModel
         if(side != Owner.Side)
             return;
 
-        await CharTestActions.SpendHeat(Owner, 1);
+        await CharTestActions.SpendRage(Owner, 1);
     }
 
     public override async Task AfterHeatSpent(int amount, Player spender)

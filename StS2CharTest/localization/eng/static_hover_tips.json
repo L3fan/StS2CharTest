@@ -5,11 +5,8 @@
   "EMBERS.description": "Afflicted creatures take damage and lose half of their stack at the end of their turn.",
   "EMBERS.title": "Embers",
 
-  "HEAT_COUNT.description": "Can collect up to 20 Heat. Reduced by certain cards. At 20 Heat gain 1 [gold]Overheat[/gold].",
-  "HEAT_COUNT.title": "Heat",
-
-  "OVERHEAT.description": "Gain one of two powerful effects unique to each stack (max 3).",
-  "OVERHEAT.title": "Overheat",
+  "RAGE_COUNT.description": "Can collect up to 20 Rage. Spent by certain cards.",
+  "RAGE_COUNT.title": "Rage",
   
   "FLYING.description": "Take [gold]50%[/gold] less damage from attacks.",
   "FLYING.title": "Flying",

@@ -18,7 +18,7 @@ internal class NCounterPileNCombatRoomPatch
         PackedScene nCounterPilePackedScene = GD.Load<PackedScene>(nCounterPilePath);
 
         NCounterPile nCounterPile = nCounterPilePackedScene.Instantiate<NCounterPile>();
-        nCounterPile.Position = new Vector2(790, 500);
+        nCounterPile.Position = new Vector2(750, 400);
         __instance.AddChild(nCounterPile);
         //Player player = LocalContext.GetMe(((CombatRoom)____visuals).CombatState);
         //nCounterPile.Initialize(player);

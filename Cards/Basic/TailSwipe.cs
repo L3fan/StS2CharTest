@@ -18,46 +18,31 @@ using StS2CharTest.Powers;
 namespace StS2CharTest.Code.Cards;
 
 [Pool(typeof(CharTestCardPool))]
-public class TailSwipe() : CharTestCard(1, CardType.Attack,
+public class TailSwipe() : CounterCard(1, CardType.Attack,
     CardRarity.Basic, TargetType.AnyEnemy)
 {
-    protected int embersInfliction = 6;
     protected override IEnumerable<DynamicVar> CanonicalVars => 
     [
-        new CalculationBaseVar(0m), 
-        new ExtraDamageVar(1m), 
-        new EmbersVar(embersInfliction), 
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? target) => (target?.GetPowerAmount<EmbersPower>() ?? 0) + (target != null ? (target.GetPowerAmount<ArtifactPower>() > 0 ? 0 : (card as TailSwipe).embersInfliction) : 0))
+        new DamageVar(5m, ValueProp.Move)
     ];
 
-    protected override async Task OnPlay(
+    protected override async Task OnCounterPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.Apply<EmbersPower>(play.Target, this, DynamicVars["EmbersPower"].IntValue);
-        await CommonActions.CardAttack(this, play.Target, (decimal)DynamicVars.CalculatedDamage.IntValue + play.Target.GetPowerAmount<EmbersPower>()).Execute(choiceContext);
+        await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["EmbersPower"].UpgradeValueBy(2m);
-        embersInfliction = DynamicVars["EmbersPower"].IntValue;
+        DynamicVars.Damage.UpgradeValueBy(2m);
     }
 
-    protected override void AfterDowngraded()
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer,
+        CardModel? cardSource, CardPlay? cardPlay)
     {
-        embersInfliction = DynamicVars["EmbersPower"].IntValue;
-    }
-
-    public int GetEmbersInfliction(CardModel card, Creature? target)
-    {
-        MainFile.Logger.Info("Card: " + card + ", Target: " + target);
-        return embersInfliction;
-    }
-
-    public int GetEmbersStacks(Creature target)
-    {
-        MainFile.Logger.Info("Embers stacks on target: " + (target?.GetPowerAmount<EmbersPower>() ?? 0));
-        return target?.GetPowerAmount<EmbersPower>() ?? 0;
+        if (cardSource != this)
+            return 1M;
+        return dealer.Block > 0 ? 2M : 1M;
     }
 }

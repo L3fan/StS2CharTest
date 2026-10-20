@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using StS2CharTest.Cards;
-using StS2CharTest.Code.Powers;
 using StS2CharTest.CustomNodes;
 using StS2CharTest.Powers;
 
@@ -16,29 +15,28 @@ namespace StS2CharTest.Actions;
 
 public static class CharTestActions
 {
-    public static async Task GainHeat(PlayerChoiceContext choiceContext, Creature target, int amount)
+    public static async Task GainRage(PlayerChoiceContext choiceContext, Creature target, int amount)
     {
         if (!target.IsPlayer)
             return;
-        await GainHeat(choiceContext, target.Player, amount);
+        await GainRage(choiceContext, target.Player, amount);
     }
-    public static async Task GainHeat(PlayerChoiceContext choiceContext, Player target, decimal amount)
+    public static async Task GainRage(PlayerChoiceContext choiceContext, Player target, decimal amount)
     {
         if (amount <= 0)
             return;
         Player player = target;
-        decimal currentHeat = HeatResource.Amount.Get(player.PlayerCombatState);
-        decimal setToAmount = currentHeat + amount;
+        decimal currentRage = RageResource.Amount.Get(player.PlayerCombatState);
+        decimal setToAmount = currentRage + amount;
 
-        if (currentHeat + amount > HeatResource.MaxAmount.Get(player.PlayerCombatState))
+        if (currentRage + amount > RageResource.MaxAmount.Get(player.PlayerCombatState))
         {
-            setToAmount -= HeatResource.MaxAmount.Get(player.PlayerCombatState);
-            await CommonActions.Apply<OverheatPower>(player.Creature, null, 1);
+            setToAmount = RageResource.MaxAmount.Get(player.PlayerCombatState);
         }
         
-        HeatResource.Amount.Set(player.PlayerCombatState, setToAmount);
-        Action<int, int> heatChanged = HeatResource.HeatChanged.Get(player.PlayerCombatState);
-        heatChanged.Invoke((int)currentHeat, (int)setToAmount);
+        RageResource.Amount.Set(player.PlayerCombatState, setToAmount);
+        Action<int, int> rageChanged = RageResource.RageChanged.Get(player.PlayerCombatState);
+        rageChanged.Invoke((int)currentRage, (int)setToAmount);
 
         ICombatState combatState = target.Creature.CombatState;
         if (combatState == null)
@@ -49,22 +47,22 @@ public static class CharTestActions
             if (model is CharTestModel)
             {
                 CharTestModel charTestModel = model as CharTestModel;
-                await charTestModel.AfterHeatGained(choiceContext, (int)amount, player);
+                await charTestModel.AfterRageGained(choiceContext, (int)amount, player);
             }
         }
     }
 
-    public static async Task SpendHeat(Creature target, decimal amount)
+    public static async Task SpendRage(Creature target, decimal amount)
     {
         if (!target.IsPlayer || amount <= 0)
             return;
         Player player = target.Player;
-        decimal currentHeat = HeatResource.Amount.Get(player.PlayerCombatState);
-        decimal setToAmount = (decimal)Mathf.Max((float)(currentHeat - amount), 0);
+        decimal currentRage = RageResource.Amount.Get(player.PlayerCombatState);
+        decimal setToAmount = (decimal)Mathf.Max((float)(currentRage - amount), 0);
         
-        HeatResource.Amount.Set(player.PlayerCombatState, setToAmount);
-        Action<int, int> heatChanged = HeatResource.HeatChanged.Get(player.PlayerCombatState);
-        heatChanged.Invoke((int)currentHeat, (int)setToAmount);
+        RageResource.Amount.Set(player.PlayerCombatState, setToAmount);
+        Action<int, int> rageChanged = RageResource.RageChanged.Get(player.PlayerCombatState);
+        rageChanged.Invoke((int)currentRage, (int)setToAmount);
     }
     
     public static async Task Blaze(ICombatState combatState, Player source, int triggerAmount = 1, bool triggerEffects = true)

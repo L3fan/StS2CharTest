@@ -27,6 +27,8 @@ public class CounterPile : CustomPile
 
     public event Action CounterCardPlayed;
 
+    public Vector2 localTargetPosition = new Vector2(750, 400);
+
     public CounterPile() : base(Counter)
     {
         
@@ -43,7 +45,7 @@ public class CounterPile : CustomPile
         NCreature? creature = NCombatRoom.Instance?.GetCreatureNode(player.Creature);
         if(creature == null)
             return Vector2.Zero;
-        return creature.Visuals.GlobalPosition + new Vector2(160, -175);
+        return localTargetPosition;
     }
     
     public void AddInternal(CardModel card, int index = -1, bool silent = false)

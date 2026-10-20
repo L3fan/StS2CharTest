@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ct6gk6lq8meqw"]
 
 [ext_resource type="PackedScene" uid="uid://d4lbiha8smb7f" path="res://scenes/sts2chartest/energy_counter_chartest.tscn" id="1_1prjw"]
-[ext_resource type="PackedScene" uid="uid://3qwh7ue2vbio" path="res://scenes/sts2chartest/heat_counter.tscn" id="2_mtbgi"]
+[ext_resource type="PackedScene" uid="uid://3qwh7ue2vbio" path="res://scenes/sts2chartest/rage_counter.tscn" id="2_mtbgi"]
 
 [node name="CombatUiTest" type="Control"]
 layout_mode = 3

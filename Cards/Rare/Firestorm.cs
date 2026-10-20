@@ -19,7 +19,7 @@ public class Firestorm() : CharTestCard(3, CardType.Attack,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(16m, ValueProp.Move), new PowerVar<EmbersPower>(3), new BlazeVar(1)];
 
-    public override int CanonicalHeatCost => 5;
+    public override int CanonicalRageCost => 5;
     
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -28,7 +28,7 @@ public class Firestorm() : CharTestCard(3, CardType.Attack,
         await CommonActions.CardAttack(this, play).Execute(choiceContext);
         foreach (Creature enemy in CombatState.HittableEnemies.ToList())
         {
-            await CommonActions.Apply<EmbersPower>(choiceContext, enemy, this, DynamicVars["EmbersPower"].IntValue + LastHeatSpent);
+            await CommonActions.Apply<EmbersPower>(choiceContext, enemy, this, DynamicVars["EmbersPower"].IntValue + LastRageSpent);
         }
 
         await CharTestActions.Blaze(CombatState, Owner, DynamicVars["Blaze"].IntValue);
