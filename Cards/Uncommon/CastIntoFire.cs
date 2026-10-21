@@ -35,6 +35,6 @@ public class CastIntoFire() : CharTestCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Heat"].UpgradeValueBy(1);
+        DynamicVars["Rage"].UpgradeValueBy(1);
     }
 }

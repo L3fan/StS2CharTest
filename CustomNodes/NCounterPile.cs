@@ -5,12 +5,15 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.GodotExtensions;
+using MegaCrit.Sts2.Core.Nodes.HoverTips;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using StS2CharTest;
 using StS2CharTest.CustomNodes;
@@ -97,7 +100,7 @@ public partial class NCounterPile : NCombatCardPile
 				NPreviewCardHolder holder = (NPreviewCardHolder)child;
 				NCard card = holder.CardNode;
 				Control cardFrame = card.Body.GetNode<Control>("%Frame");
-				holder.Position = new Vector2(i * cardFrame.Size.X / 2f * holder.Scale.X, 0);
+				holder.Position = new Vector2(i * cardFrame.Size.X / 2f * holder.Scale.X, 0) + cardFrame.Size / 2f * holder.Scale;
 				//MainFile.Logger.Info("Child " + i + " Position: " + holder.Position.X);
 			}
 
@@ -194,6 +197,28 @@ public partial class NCounterPile : NCombatCardPile
 		_cardPlayTween.SetParallel(true);
 		_cardPlayTween.TweenProperty((GodotObject) holder, (NodePath) "position", cardEndPosition, 0.25).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Back);
 		_cardPlayTween.TweenProperty(holder, "modulate", _cardPlayInColor, 0.25).SetEase(Tween.EaseType.In).SetTrans(Tween.TransitionType.Back);
+	}
+
+	protected override void OnFocus()
+	{ 
+		if (this._pile == null)
+			return;
+		LocString title = new LocString("static_hover_tips", "COUNTER_PILE.title");
+		LocString description = new LocString("static_hover_tips", "COUNTER_PILE.description");
+		string input = ((IEnumerable<string>) this.Hotkeys).FirstOrDefault<string>();
+		Key? nullable = new Key?();
+		if (input != null)
+			nullable = new Key?(NInputManager.Instance.GetCurrentHotkey((StringName) input));
+		if (nullable.HasValue)
+			title.Add("Hotkey", nullable.Value.ToString());
+		else
+			title.Add("Hotkey", "None");
+		NHoverTipSet andShow = NHoverTipSet.CreateAndShow((Godot.Control) this, (IHoverTip) new HoverTip(title, description));
+		if (andShow != null)
+		{
+			NHoverTipSet nhoverTipSet = andShow;
+			nhoverTipSet.GlobalPosition = new Vector2(1200, 500);
+		}
 	}
 }
 

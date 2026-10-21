@@ -12,5 +12,8 @@
   "FLYING.title": "Flying",
   
   "CONSUMPTION.description": "When at [blue]2[/blue] [gold]Consumption[/gold] gain [blue]1[/blue] [gold]Energy[/gold] and draw a card, then lose [blue]2[/blue] [gold]Consumption[/gold].",
-  "CONSUMPTION.title": "Consumption"
+  "CONSUMPTION.title": "Consumption",
+
+  "COUNTER.description": "Added to the [gold]Counter Pile[/gold] when played. Only activates its effect when played from the [gold]Counter Pile[/gold].",
+  "COUNTER.title": "Counter"
 }

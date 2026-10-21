@@ -7,15 +7,23 @@
 [node name="CounterPile" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_right = 310.0
+offset_bottom = 220.0
 script = ExtResource("1_wjrg0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 305.0
+offset_bottom = 216.0
 color = Color(0.8936852, 0, 0.16610745, 0.5176471)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 310.0
+offset_bottom = 220.0
+color = Color(0.3038087, 0.10760919, 0.010303182, 0.5176471)
 
 [node name="Icon" type="Control" parent="."]
 anchors_preset = 0
@@ -39,5 +47,7 @@ theme_override_fonts/font = ExtResource("2_y5v5l")
 [node name="CardHolderContainer" type="Control" parent="."]
 unique_name_in_owner = true
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 305.0
+offset_bottom = 216.0

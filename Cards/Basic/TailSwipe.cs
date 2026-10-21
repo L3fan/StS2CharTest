@@ -23,7 +23,7 @@ public class TailSwipe() : CounterCard(1, CardType.Attack,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => 
     [
-        new DamageVar(5m, ValueProp.Move)
+        new DamageVar(5m, ValueProp.Move).WithTooltip("COUNTER")
     ];
 
     protected override async Task OnCounterPlay(
