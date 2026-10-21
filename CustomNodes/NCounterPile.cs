@@ -28,6 +28,8 @@ public partial class NCounterPile : NCombatCardPile
 
 	public Control cardHoldersContainer;
 
+	public CardModel cardToAdd;
+
 	private Tween _cardPlayTween;
 	private Vector2 _cardPlayOutPosition = new Vector2(128, 0);
 	private Color _cardPlayOutColor = new Color(1, 1, 1, 0);
@@ -38,9 +40,15 @@ public partial class NCounterPile : NCombatCardPile
 
 	public override void _Ready()
 	{
-		this.ConnectSignals();
 		this._emptyPileMessage = new LocString("combat_messages", "OPEN_EMPTY_COUNTER");
 		cardHoldersContainer = GetNode<Control>("%CardHolderContainer");
+		this.ConnectSignals();
+		MouseEntered += MouseEnteredTest;
+	}
+
+	public void MouseEnteredTest()
+	{
+		MainFile.Logger.Info("Mouse Entered Counter Pile! (Test)");
 	}
 	
 	public void Initialize(Player? player)
@@ -52,6 +60,7 @@ public partial class NCounterPile : NCombatCardPile
 		if (_pile != null)
 		{
 			_pile.CardAdded += CardAdded;
+			_pile.CardAddFinished += CardAddFinished;
 			_pile.CardRemoved += CardRemoved;
 			((CounterPile)_pile).CounterCardPlayed += OnCounterCardPlayed;
 		}
@@ -63,11 +72,22 @@ public partial class NCounterPile : NCombatCardPile
 	public void CardAdded(CardModel card)
 	{
 		MainFile.Logger.Info("Added card '" + card.Title + "' to Counter Pile");
+
+		cardToAdd = card;
+	}
+	
+	public void CardAddFinished()
+	{
 		if (_pile.Cards.Count > 3)
 			return;
 
-		NCard cardNode = NCard.Create(card);
-		AddCardHolder(cardNode);
+		if (cardToAdd != null)
+		{
+			NCard cardNode = NCard.Create(cardToAdd);
+			AddCardHolder(cardNode);
+		}
+
+		cardToAdd = null;
 	}
 
 	public void AddCardHolder(NCard cardNode)
@@ -200,7 +220,7 @@ public partial class NCounterPile : NCombatCardPile
 	}
 
 	protected override void OnFocus()
-	{ 
+	{
 		if (this._pile == null)
 			return;
 		LocString title = new LocString("static_hover_tips", "COUNTER_PILE.title");

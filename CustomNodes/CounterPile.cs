@@ -27,7 +27,7 @@ public class CounterPile : CustomPile
 
     public event Action CounterCardPlayed;
 
-    public Vector2 localTargetPosition = new Vector2(750, 400);
+    public Vector2 localTargetPosition = new Vector2(800, 525);
 
     public CounterPile() : base(Counter)
     {
