@@ -5,8 +5,8 @@
   "EMBERS.description": "Afflicted creatures take damage and lose half of their stack at the end of their turn.",
   "EMBERS.title": "Embers",
 
-  "RAGE_COUNT.description": "Can collect up to 20 Rage. Spent by certain cards.",
-  "RAGE_COUNT.title": "Rage",
+  "RAGE.description": "Can collect up to 20 Rage. Spent by certain cards.",
+  "RAGE.title": "Rage",
   
   "FLYING.description": "Take [gold]50%[/gold] less damage from attacks.",
   "FLYING.title": "Flying",

@@ -1,8 +1,11 @@
 using System.Reflection;
+using BaseLib.Patches.Features;
 using Godot;
 using Godot.Bridge;
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Modding;
+using StS2CharTest.CustomNodes;
 
 namespace StS2CharTest;
 

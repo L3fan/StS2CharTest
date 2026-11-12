@@ -3,10 +3,15 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Cards;
 using StS2CharTest.Actions;
 using StS2CharTest.Code.Character;
 
@@ -24,7 +29,9 @@ public class SunStone() : CustomRelicModel
 
     protected override string PackedIconOutlinePath => "res://images/sts2chartest/relics/outline/SunStone.png";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Heat", 10).WithTooltip("HEAT")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Rage", 5).WithTooltip("RAGE")];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<Burn>()];
 
     public override async Task BeforeCombatStartLate()
     {
@@ -39,6 +46,16 @@ public class SunStone() : CustomRelicModel
             return;
         Flash();
         await PowerCmd.Apply<HeatPower>(Owner.Creature, 1, Owner.Creature, null);*/
+        return Task.CompletedTask;
+    }
+    
+
+    public override Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
+    {
+        if (card is not Burn burnCard)
+            return Task.CompletedTask;
+        
+        burnCard.AddKeyword(CardKeyword.Ethereal);
         return Task.CompletedTask;
     }
 

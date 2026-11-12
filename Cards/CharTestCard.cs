@@ -271,11 +271,10 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
 public class RageResource
 {
     public static readonly SpireField<PlayerCombatState, decimal> Amount = new(() => 0);
-    public static readonly SpireField<PlayerCombatState, decimal> MaxAmount = new(() => 20);
+    public static readonly SpireField<PlayerCombatState, decimal> MaxAmount = new(() => 999);
 
     public static readonly SpireField<PlayerCombatState, Action<int,int>> RageChanged = new(() => null);
 
-    public static readonly SpireField<CharacterModel, bool> ShouldAlwaysShowRageCounter = new(() => false);
     public static readonly SpireField<NCombatUi, NRageCounter> _rageCounter = new(() => null);
     
     public static readonly SpireField<NCard, TextureRect> rageCostIcon = new(() => null);

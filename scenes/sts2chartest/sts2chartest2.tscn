@@ -4955,7 +4955,7 @@ bone_angle = -94.02098
 [node name="ShoulderL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2"]
 position = Vector2(-6.002, -39.974)
 rotation = -0.34027717
-scale = Vector2(0.99993855, 0.99993855)
+scale = Vector2(0.99993813, 0.99993813)
 rest = Transform2D(1, 0, 0, 1, -6, -40)
 auto_calculate_length_and_angle = false
 length = 0.0
@@ -5028,7 +5028,7 @@ bone_angle = 28.054995
 [node name="RingBaseL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL"]
 position = Vector2(3, 18)
 rotation = 0.16215858
-scale = Vector2(0.99998146, 0.99998146)
+scale = Vector2(0.99998105, 0.99998105)
 rest = Transform2D(1, 0, 0, 1, 3, 18)
 
 [node name="RingTipL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL/RingBaseL"]
@@ -5043,7 +5043,7 @@ bone_angle = 45.42998
 [node name="PinkyBaseL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL"]
 position = Vector2(0, 17)
 rotation = 0.049438477
-scale = Vector2(0.9999778, 0.9999778)
+scale = Vector2(0.99997646, 0.99997646)
 rest = Transform2D(1, 0, 0, 1, 0, 17)
 
 [node name="PinkyTipL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL/PinkyBaseL"]

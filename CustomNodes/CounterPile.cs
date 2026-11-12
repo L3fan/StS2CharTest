@@ -24,10 +24,15 @@ public class CounterPile : CustomPile
 
     [CustomEnum] 
     public static AutoPlayType CounterPlay;
+    
+    [CustomEnum]
+    public static TargetType CounterTarget;
 
     public event Action CounterCardPlayed;
 
     public Vector2 localTargetPosition = new Vector2(800, 525);
+    
+    public bool IsCombatPile => true;
 
     public CounterPile() : base(Counter)
     {

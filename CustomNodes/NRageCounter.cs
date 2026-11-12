@@ -1,9 +1,11 @@
 using Godot;
 using System;
 using System.ComponentModel;
+using BaseLib.Patches.Content;
 using Godot.Bridge;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Assets;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -33,6 +35,8 @@ public partial class NRageCounter : Control
   private HoverTip _hoverTip;
 
   private CharTestParticlesContainer particlesContainer;
+
+  [CustomEnum] public static UnplayableReason NotEnoughRage;
 
   public override void _Ready()
   {
@@ -74,6 +78,7 @@ public partial class NRageCounter : Control
     rageChangedAction += new Action<int, int>(this.OnRageChanged);
     RageResource.RageChanged.Set(_player.PlayerCombatState, rageChangedAction);
     this._isListeningToCombatState = true;
+    
   }
 
   public void Initialize(Player player)

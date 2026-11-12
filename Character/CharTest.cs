@@ -47,7 +47,7 @@ public class CharTest : CustomCharacterModel
         ModelDb.Card<DefendCharTest>(),
         ModelDb.Card<DefendCharTest>(),
         ModelDb.Card<TailSwipe>(),
-        ModelDb.Card<Enrage>()
+        ModelDb.Card<ManifestAnger>()
     ];
 
     public override string CustomAttackSfx {

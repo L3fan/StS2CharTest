@@ -1,15 +1,15 @@
-﻿{
+{
   "STS2CHARTEST-STRIKE_CHAR_TEST.description": "Deal {Damage:diff()} damage.",
   "STS2CHARTEST-STRIKE_CHAR_TEST.title": "Strike",
   
   "STS2CHARTEST-DEFEND_CHAR_TEST.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "STS2CHARTEST-DEFEND_CHAR_TEST.title": "Defend",
 
-  "STS2CHARTEST-TAIL_SWIPE.description": "[gold]Counter[/gold]: Deal {Damage:diff()} damage. Deal double damage if you have [gold]Block[/gold].",
+  "STS2CHARTEST-TAIL_SWIPE.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Counter[/gold]: Deal {Damage:diff()} damage. If you lost no HP, deal double damage.",
   "STS2CHARTEST-TAIL_SWIPE.title": "Tail Swipe",
 
-  "STS2CHARTEST-ENRAGE.description": "Gain {Block:diff()} [gold]Block[/gold].\n Gain {Rage} [gold]Rage[/gold].",
-  "STS2CHARTEST-ENRAGE.title": "Enrage",
+  "STS2CHARTEST-MANIFEST_ANGER.description": "Add a [gold]Burn[/gold] to your [gold]Hand[/gold].\nGain {VigorPower:diff()} [gold]Vigor[/gold].",
+  "STS2CHARTEST-MANIFEST_ANGER.title": "Manifest Anger",
   
   "STS2CHARTEST-SWEEPING_FIRE.description": "Deal {Damage:diff()} damage and apply {EmbersPower:diff()} [gold]Embers[/gold] to ALL enemies.",
   "STS2CHARTEST-SWEEPING_FIRE.title": "Sweeping Fire",
@@ -27,7 +27,7 @@
   "STS2CHARTEST-MELTING_POINT.title": "Melting Point",
 
   "STS2CHARTEST-HEATWAVE.description": "Apply {EmbersPower:diff()} [gold]Embers[/gold] to ALL enemies.\n[gold]Blaze[/gold].",
-  "STS2CHARTEST-HEATWAVE.title": "Ragewave",
+  "STS2CHARTEST-HEATWAVE.title": "Heatwave",
 
   "STS2CHARTEST-NAILS_STRIKE.description": "Deal {Damage:diff()} damage {Repeat:cond:<3?twice|three times}.",
   "STS2CHARTEST-NAILS_STRIKE.title": "Nails Strike",

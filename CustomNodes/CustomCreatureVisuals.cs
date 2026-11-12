@@ -12,6 +12,7 @@ public partial class CustomCreatureVisuals : NCreatureVisuals
     {
         base._Ready();
         _animationPlayer = GetNode<AnimationPlayer>("%Visuals/AnimationPlayer");
+        _animationPlayer.AnimationFinished += _OnAnimationFinished;
     }
 
     public override void _Process(double delta)
@@ -26,6 +27,7 @@ public partial class CustomCreatureVisuals : NCreatureVisuals
         
         if (animName != "idle" && animName != "die")
         {
+            MainFile.Logger.Info("Playing Idle Animation");
             _animationPlayer.Play("idle");
         }
     }

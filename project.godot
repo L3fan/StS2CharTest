@@ -27,3 +27,7 @@ project/assembly_name="StS2CharTest"
 [gui]
 
 fonts/dynamic_fonts/use_oversampling=false
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

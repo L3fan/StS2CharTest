@@ -138,6 +138,9 @@ public static class NCardRageCostVisuals
             return CardCostColor.Unmodified;
         if (charTestCard.HasRageCostX)
             return CardCostColor.Unmodified;
+        UnplayableReason reason;
+        if (!card.CanPlay(out reason, out AbstractModel _) && reason.HasFlag((Enum) NRageCounter.NotEnoughRage))
+            return CardCostColor.InsufficientResources;
         Decimal hookModifiedCost;
         if (TryModifyRageCostWithHooks(charTestCard, state, out hookModifiedCost))
             return GetColorForHookModifiedCost(hookModifiedCost, charTestCard.BaseRageCost);

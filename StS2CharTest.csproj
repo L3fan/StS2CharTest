@@ -37,7 +37,7 @@
         <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">/home/l3fan/.steam/debian-installation/steamapps</SteamLibraryPath>
         <Sts2Path Condition="'$(Sts2Path)' == ''">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path>
         <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">$(Sts2Path)/data_sts2_linuxbsd_x86_64</Sts2DataDir>
-        <GodotPath Condition="'$(GodotPath)' == ''">/home/l3fan/Downloads/megadot-4.5.1-m.14-linux-x86_64-editor-csharp/MegaDot_v4.5.1-stable_mono_linux.x86_64</GodotPath>
+        <GodotPath Condition="'$(GodotPath)' == ''">/home/l3fan/Downloads/Godot_v4.5.1-stable_mono_linux_x86_64/Godot_v4.5.1-stable_mono_linux.x86_64</GodotPath>
     </PropertyGroup>
     <!-- // NOTE: Megadot is version 4.5.1, and the game won't load pck if godot is newer. -->
 
@@ -51,7 +51,11 @@
 
 
     <ItemGroup>
-        <PackageReference Include="Krafs.Publicizer" Version="2.3.0">
+        <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.5.0-beta.2">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Krafs.Publicizer" Version="2.3.2">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
@@ -64,10 +68,10 @@
             <Private>false</Private>
         </Reference>
 
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.4.0" PrivateAssets="All" />
-        <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.4.7" PrivateAssets="All" />
+        <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.2.1" />
         <AdditionalFiles Include="StS2CharTest\localization\**\*.json" />
-        <PackageReference Update="GodotSharp" Version="4.7.0-dev.4" />
+        <PackageReference Update="GodotSharp" Version="4.7.2" />
     </ItemGroup>
     
     <ItemGroup>
@@ -90,13 +94,6 @@
         <None Include="StS2CharTest.json" />
         <None Include="project.godot" />
         <None Include="StS2CharTest\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.3">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>

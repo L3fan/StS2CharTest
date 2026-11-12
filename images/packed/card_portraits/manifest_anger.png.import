@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c228fmdblpg2n"
-path="res://.godot/imported/enrage.png-6247f7652a6ccda112a1d36691824885.ctex"
+uid="uid://rl5pw0ugvmdy"
+path="res://.godot/imported/manifest_anger.png-badf9d1e3dafb93e13d2d51e6e403b8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/packed/card_portraits/big/enrage.png"
-dest_files=["res://.godot/imported/enrage.png-6247f7652a6ccda112a1d36691824885.ctex"]
+source_file="res://images/packed/card_portraits/manifest_anger.png"
+dest_files=["res://.godot/imported/manifest_anger.png-badf9d1e3dafb93e13d2d51e6e403b8a.ctex"]
 
 [params]
 
