@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using StS2CharTest.Cards;
+using StS2CharTest.Code.Character;
 
 namespace StS2CharTest.patches;
 

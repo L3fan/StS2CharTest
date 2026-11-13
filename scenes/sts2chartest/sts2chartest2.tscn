@@ -5043,7 +5043,7 @@ bone_angle = 45.42998
 [node name="PinkyBaseL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL"]
 position = Vector2(0, 17)
 rotation = 0.049438477
-scale = Vector2(0.99997646, 0.99997646)
+scale = Vector2(0.99997634, 0.99997634)
 rest = Transform2D(1, 0, 0, 1, 0, 17)
 
 [node name="PinkyTipL" type="Bone2D" parent="Visuals/Skeleton2D/Spine0/Spine1/Spine2/ShoulderL/UpperArmL/LowerArmL/HandL/PinkyBaseL"]

@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using StS2CharTest.Cards;
+using StS2CharTest.Code.Character;
 using StS2CharTest.CustomNodes;
 using StS2CharTest.Powers;
 

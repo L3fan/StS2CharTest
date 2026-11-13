@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Helpers.Models;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using StS2CharTest.Cards;
+using StS2CharTest.Code.Character;
 
 namespace StS2CharTest.CustomNodes;
 

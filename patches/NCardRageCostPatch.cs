@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using StS2CharTest.Cards;
+using StS2CharTest.Code.Character;
 using StS2CharTest.CustomNodes;
 
 namespace StS2CharTest.patches;

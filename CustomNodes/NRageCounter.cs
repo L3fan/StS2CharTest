@@ -8,8 +8,10 @@ using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.HoverTips;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using StS2CharTest;
@@ -178,8 +180,20 @@ public partial class NRageCounter : Control
     {
       int rage = (int)RageResource.Amount.Get(_player.PlayerCombatState);
       bool ShouldAlwaysShowRageCounter = _player.Character.GetType() == typeof(CharTest);
-      this.Visible = this.Visible || ShouldAlwaysShowRageCounter || rage > 0;
+      this.Visible = this.Visible || ShouldAlwaysShowRageCounter || rage > 0 || PlayerHasRageCard(_player);
     }
     MainFile.Logger.Info("Rage Counter Visibility: " + Visible);
+  }
+
+  public bool PlayerHasRageCard(Player player)
+  {
+    foreach (CardModel card in player.Deck.Cards)
+    {
+      if(card is CharTestCard charTestCard)
+        if (charTestCard.BaseRageCost > 0)
+          return true;
+    }
+
+    return false;
   }
 }
