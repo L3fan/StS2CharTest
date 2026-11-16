@@ -27,16 +27,17 @@ public static class CharTestActions
         if (amount <= 0)
             return;
         Player player = target;
-        decimal currentRage = RageResource.Amount.Get(player.PlayerCombatState);
+        Creature creature = target.Creature;
+        decimal currentRage = RageResource.Amount.Get(creature.CombatState);
         decimal setToAmount = currentRage + amount;
 
-        if (currentRage + amount > RageResource.MaxAmount.Get(player.PlayerCombatState))
+        if (currentRage + amount > RageResource.MaxAmount.Get(creature.CombatState))
         {
-            setToAmount = RageResource.MaxAmount.Get(player.PlayerCombatState);
+            setToAmount = RageResource.MaxAmount.Get(creature.CombatState);
         }
         
-        RageResource.Amount.Set(player.PlayerCombatState, setToAmount);
-        Action<int, int> rageChanged = RageResource.RageChanged.Get(player.PlayerCombatState);
+        RageResource.Amount.Set(creature.CombatState, setToAmount);
+        Action<int, int> rageChanged = RageResource.RageChanged.Get(creature.CombatState);
         rageChanged.Invoke((int)currentRage, (int)setToAmount);
 
         ICombatState combatState = target.Creature.CombatState;
@@ -58,11 +59,11 @@ public static class CharTestActions
         if (!target.IsPlayer || amount <= 0)
             return;
         Player player = target.Player;
-        decimal currentRage = RageResource.Amount.Get(player.PlayerCombatState);
+        decimal currentRage = RageResource.Amount.Get(target.CombatState);
         decimal setToAmount = (decimal)Mathf.Max((float)(currentRage - amount), 0);
         
-        RageResource.Amount.Set(player.PlayerCombatState, setToAmount);
-        Action<int, int> rageChanged = RageResource.RageChanged.Get(player.PlayerCombatState);
+        RageResource.Amount.Set(target.CombatState, setToAmount);
+        Action<int, int> rageChanged = RageResource.RageChanged.Get(target.CombatState);
         rageChanged.Invoke((int)currentRage, (int)setToAmount);
     }
     

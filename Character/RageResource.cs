@@ -1,6 +1,7 @@
 using BaseLib.Utils;
 using Godot;
 using MegaCrit.Sts2.addons.mega_text;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -15,10 +16,10 @@ namespace StS2CharTest.Code.Character;
 
 public class RageResource
 {
-    public static readonly SpireField<PlayerCombatState, decimal> Amount = new(() => 0);
-    public static readonly SpireField<PlayerCombatState, decimal> MaxAmount = new(() => 999);
+    public static readonly SpireField<ICombatState, decimal> Amount = new(() => 0);
+    public static readonly SpireField<ICombatState, decimal> MaxAmount = new(() => 999);
 
-    public static readonly SpireField<PlayerCombatState, Action<int,int>> RageChanged = new(() => null);
+    public static readonly SpireField<ICombatState, Action<int,int>> RageChanged = new(() => null);
 
     public static readonly SpireField<NCombatUi, NRageCounter> _rageCounter = new(() => null);
     

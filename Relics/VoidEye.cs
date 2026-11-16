@@ -34,7 +34,7 @@ public class VoidEye() : CustomRelicModel
     }
 
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new RageVar( 3).WithTooltip("RAGE")];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new RageVar( 20).WithTooltip("RAGE")];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<Burn>()];
 

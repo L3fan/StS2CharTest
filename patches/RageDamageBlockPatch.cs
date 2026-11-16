@@ -11,14 +11,14 @@ internal class RageDamageBlockPatch
 {
     private static void Postfix(Creature target, HpLossHookPhase phases, ref Decimal __result)
     {
-        if (!target.IsPlayer)
+        if (!target.IsPlayer || __result == 0)
             return;
 
         if (phases != HpLossHookPhase.AfterOsty)
             return;
         
         Player player = target.Player;
-        Decimal rageAmount = RageResource.Amount.Get(player.PlayerCombatState);
+        Decimal rageAmount = RageResource.Amount.Get(target.CombatState);
         
         MainFile.Logger.Info("Player taking " + __result + " Damage");
         
@@ -27,7 +27,7 @@ internal class RageDamageBlockPatch
         
         __result = remainingDamage;
         
-        RageResource.Amount.Set(player.PlayerCombatState, rageLeft);
-        RageResource.RageChanged.Get(player.PlayerCombatState)?.Invoke((int)rageAmount, (int)rageLeft);
+        RageResource.Amount.Set(target.CombatState, rageLeft);
+        RageResource.RageChanged.Get(target.CombatState)?.Invoke((int)rageAmount, (int)rageLeft);
     }
 }

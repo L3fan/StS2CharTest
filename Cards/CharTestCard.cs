@@ -172,8 +172,8 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
     {
         if (this.HasRageCostX)
         {
-            PlayerCombatState playerCombatState = this.Owner.PlayerCombatState;
-            return playerCombatState == null ? 0 : (int)RageResource.Amount.Get(playerCombatState);
+            ICombatState combatState = Owner.Creature.CombatState;
+            return combatState == null ? 0 : (int)RageResource.Amount.Get(Owner.Creature.CombatState);
         }
         CardPile pile = this.Pile;
         return pile != null && pile.IsCombatPile && this.CombatState != null ? (int) ModifyRageCost(this.CombatState, this, (Decimal) this.CurrentRageCost) : this.CurrentRageCost;
@@ -207,13 +207,13 @@ public abstract class CharTestCard(int cost, CardType cardType, CardRarity cardR
     public async Task SpendRage(int amount)
     {
         this.LastRageSpent = amount;
-        if (amount <= 0 || RageResource.Amount.Get(Owner.PlayerCombatState) == 0)
+        if (amount <= 0 || RageResource.Amount.Get(Owner.Creature.CombatState) == 0)
             return;
-        decimal currentRage = RageResource.Amount.Get(Owner.PlayerCombatState);
+        decimal currentRage = RageResource.Amount.Get(Owner.Creature.CombatState);
         if (currentRage < LastRageSpent)
-            LastRageSpent = (int)RageResource.Amount.Get(Owner.PlayerCombatState);
-        RageResource.Amount.Set(Owner.PlayerCombatState, currentRage-(Decimal)LastRageSpent);
-        RageResource.RageChanged.Get(Owner.PlayerCombatState).Invoke((int)currentRage, (int)RageResource.Amount.Get(Owner.PlayerCombatState));
+            LastRageSpent = (int)RageResource.Amount.Get(Owner.Creature.CombatState);
+        RageResource.Amount.Set(Owner.Creature.CombatState, currentRage-(Decimal)LastRageSpent);
+        RageResource.RageChanged.Get(Owner.Creature.CombatState).Invoke((int)currentRage, (int)RageResource.Amount.Get(Owner.Creature.CombatState));
         await AfterRageSpent(this.Owner.Creature.CombatState, LastRageSpent, this.Owner);
     }
 

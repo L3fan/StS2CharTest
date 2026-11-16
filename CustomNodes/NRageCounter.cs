@@ -61,24 +61,13 @@ public partial class NRageCounter : Control
     this.ConnectRageChangedSignal();
   }
 
-  public override void _ExitTree()
-  {
-    base._ExitTree();
-    if (this._player == null || !this._isListeningToCombatState)
-      return;
-    Action<int,int> rageChangedAction = RageResource.RageChanged.Get(_player.PlayerCombatState);
-    rageChangedAction -= new Action<int, int>(this.OnRageChanged);
-    RageResource.RageChanged.Set(_player.PlayerCombatState, rageChangedAction);
-    this._isListeningToCombatState = false;
-  }
-
   private void ConnectRageChangedSignal()
   {
     if (this._player == null || this._isListeningToCombatState)
       return;
-    Action<int,int> rageChangedAction = RageResource.RageChanged.Get(_player.PlayerCombatState);
-    rageChangedAction += new Action<int, int>(this.OnRageChanged);
-    RageResource.RageChanged.Set(_player.PlayerCombatState, rageChangedAction);
+    Action<int,int> rageChangedAction = RageResource.RageChanged.Get(_player.Creature.CombatState);
+    rageChangedAction += OnRageChanged;
+    RageResource.RageChanged.Set(_player.Creature.CombatState, rageChangedAction);
     this._isListeningToCombatState = true;
     
   }
@@ -108,7 +97,7 @@ public partial class NRageCounter : Control
   {
     if (this._player == null)
       return;
-    float num = RageResource.Amount.Get(_player.PlayerCombatState) == 0 ? 5f : 30f;
+    float num = RageResource.Amount.Get(_player.Creature.CombatState) == 0 ? 5f : 30f;
     for (int idx = 0; idx < this._rotationLayers.GetChildCount(); ++idx)
       this._rotationLayers.GetChild<Godot.Control>(idx).RotationDegrees += (float) delta * num * (float) (idx + 1);
   }
@@ -178,7 +167,7 @@ public partial class NRageCounter : Control
     }
     else
     {
-      int rage = (int)RageResource.Amount.Get(_player.PlayerCombatState);
+      int rage = (int)RageResource.Amount.Get(_player.Creature.CombatState);
       bool ShouldAlwaysShowRageCounter = _player.Character.GetType() == typeof(CharTest);
       this.Visible = this.Visible || ShouldAlwaysShowRageCounter || rage > 0 || PlayerHasRageCard(_player);
     }
