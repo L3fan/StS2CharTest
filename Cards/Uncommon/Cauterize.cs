@@ -10,25 +10,25 @@ using StS2CharTest.Powers;
 namespace StS2CharTest.Cards.Common;
 
 [Pool(typeof(CharTestCardPool))]
-public class Cauterize() : CharTestCard(1, CardType.Attack,
-    CardRarity.Common, TargetType.AnyEnemy)
+public class Cauterize() : CounterCard(1, CardType.Skill,
+    CardRarity.Uncommon, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new[] { CardKeyword.Exhaust };
+
     protected override IEnumerable<DynamicVar> CanonicalVars => 
     [
-        new EmbersVar(5m), 
-        new BlazeVar(1)
+        new RageVar(7m).WithTooltip("RAGE")
     ];
 
-    protected override async Task OnPlay(
+    protected override async Task OnCounterPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.Apply<EmbersPower>(choiceContext, play.Target, this, DynamicVars["EmbersPower"].IntValue);
-        await CharTestActions.Blaze(CombatState, Owner);
+        await CharTestActions.GainRage(choiceContext, Owner, DynamicVars["Rage"].IntValue);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["EmbersPower"].UpgradeValueBy(3m);
+        DynamicVars["Rage"].UpgradeValueBy(2m);
     }
 }

@@ -45,7 +45,7 @@ public class TailSwipe() : CounterCard(1, CardType.Attack,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
         DynamicVars.Block.UpgradeValueBy(1m);
     }
 
@@ -54,11 +54,11 @@ public class TailSwipe() : CounterCard(1, CardType.Attack,
     {
         if (cardSource != this)
             return 1M;
-        return LostHpThisTurn(dealer) ? 1M : 2M;
+        return LostHpInLastAttack(dealer) ? 1M : 2M;
     }
     
-    private static bool LostHpThisTurn(Creature creature)
+    private static bool LostHpInLastAttack(Creature creature)
     {
-        return CombatManager.Instance.History.Entries.OfType<DamageReceivedEntry>().Any<DamageReceivedEntry>((Func<DamageReceivedEntry, bool>) (e => e.HappenedThisTurn(creature.CombatState) && e.Receiver == creature && e.Result.UnblockedDamage > 0));
+        return CombatManager.Instance.History.Entries.OfType<DamageReceivedEntry>().Last<DamageReceivedEntry>().Result.UnblockedDamage > 0;
     }
 }

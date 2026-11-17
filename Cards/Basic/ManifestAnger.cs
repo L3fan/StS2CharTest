@@ -23,7 +23,7 @@ public class ManifestAnger() : CharTestCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<VigorPower>(5m)
+        new RageVar(7m)
     ];
 
 protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<VigorPower>(), HoverTipFactory.FromCard<Burn>()];
@@ -33,11 +33,11 @@ protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Fro
         CardPlay play)
     {
         await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<Burn>(Owner), PileType.Hand, Owner);
-        await CommonActions.ApplySelf<VigorPower>(choiceContext, this, DynamicVars["VigorPower"].IntValue, false);
+        await CharTestActions.GainRage(choiceContext, Owner, DynamicVars["Rage"].IntValue);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["VigorPower"].UpgradeValueBy(2m);
+        DynamicVars["Rage"].UpgradeValueBy(2m);
     }
 }

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjd8u3a3b67lf"]
 
-[ext_resource type="Script" uid="uid://b3j1oeexchv41" path="res://CustomNodes/NCounterPile.cs" id="1_wjrg0"]
+[ext_resource type="Script" uid="uid://df45oh3rly4y5" path="res://CustomNodes/NCounterPile.cs" id="1_wjrg0"]
 [ext_resource type="Script" uid="uid://bxac2vmsu7bno" path="res://CustomNodes/CustomMegaLabel.cs" id="2_mm1nt"]
 [ext_resource type="FontFile" uid="uid://gpbynlriq8xq" path="res://StS2CharTest/fonts/Kreon/static/Kreon-Bold.ttf" id="2_y5v5l"]
 

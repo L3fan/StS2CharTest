@@ -9,6 +9,6 @@ public class RageVar : DynamicVar
     
     public RageVar(decimal baseValue) : base(name, baseValue)
     {
-        this.WithTooltip("RAGE_COUNT");
+        this.WithTooltip("RAGE");
     }
 }
